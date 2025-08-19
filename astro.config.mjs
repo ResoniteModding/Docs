@@ -21,5 +21,8 @@ export default defineConfig({
 				autogenerate: { directory: 'reference' },
 			},
 		],
+		components: {
+			Head: "./src/components/Head.astro",
+		}
 		}), svelte()],
 });
