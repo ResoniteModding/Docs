@@ -1,0 +1,229 @@
+---
+title: Troubleshooting Guide
+description: Solutions to common Resonite modding issues
+---
+
+This guide covers solutions to common problems when setting up and using Resonite mods.
+
+## Common Issues
+
+### Resonite Won't Start
+
+**Symptoms**: Game crashes on launch or shows error dialogs
+
+**Solutions**:
+- Verify all BepisLoader files were extracted to the correct location (next to `Resonite.exe`)
+- Check that `hostfxr.dll` exists in the Resonite folder
+- Try running Steam as administrator
+- Temporarily disable antivirus software and try again
+- Verify game files through Steam (Properties → Local Files → Verify integrity)
+
+### BepInEx Not Loading
+
+**Symptoms**: No BepInEx console window, no `LogOutput.log` file created
+
+**Solutions**:
+- Install or repair the [.NET 9.0 Runtime](https://dotnet.microsoft.com/download/dotnet/9.0)
+- Check if Windows Defender or antivirus has quarantined files
+- Right-click downloaded files → Properties → Unblock if there's a security warning
+- Look for errors in Windows Event Viewer under Application logs
+
+### Mods Not Loading
+
+**Symptoms**: Mods in `plugins` folder don't work in-game
+
+**Checklist**:
+- ✅ Mod files are `.dll` files in `BepInEx/plugins/`
+- ✅ Mods target .NET 9.0 or compatible framework
+- ✅ No error messages in `BepInEx/LogOutput.log`
+- ✅ Mod dependencies are installed
+- ✅ BepInEx is properly initialized
+
+**Check the logs**:
+```bash
+# Look for mod loading messages
+tail -f "BepInEx/LogOutput.log" | grep -i "plugin\|mod"
+```
+
+### Linux-Specific Issues
+
+**Symptoms**: Game won't launch or BepInEx doesn't load on Linux
+
+**Solutions**:
+- Ensure `LinuxBootstrap.sh` has execute permissions:
+  ```bash
+  chmod +x LinuxBootstrap.sh
+  ```
+- Verify the bootstrap script points to `BepisLoader.dll`:
+  ```bash
+  grep -i "bepisloader" LinuxBootstrap.sh
+  ```
+- Check for missing .NET dependencies:
+  ```bash
+  ldd BepisLoader.dll
+  ```
+- Use forward slashes (`/`) not backslashes (`\`) in file paths
+
+### Performance Problems
+
+**Symptoms**: Game runs slowly, high CPU usage, or frequent stuttering
+
+**Solutions**:
+- Disable console logging in `BepInEx/config/BepInEx.cfg`:
+  ```ini
+  [Logging.Console]
+  Enabled = false
+  ```
+- Remove unused mods from `plugins` folder
+- Check mod compatibility - some mods may conflict
+- Monitor system resources while playing
+- Close other resource-intensive programs
+
+### Mod Manager Issues
+
+**Gale Problems**:
+- Clear mod cache in Gale settings
+- Verify Resonite installation path in Gale
+- Check for Gale updates
+- Try launching with administrator privileges
+
+**r2modmanPlus Problems**:
+- Refresh mod list in r2modman
+- Clear r2modman cache folder
+- Verify profile settings point to correct Resonite installation
+- Check r2modman Discord for known issues
+
+## Advanced Troubleshooting
+
+### Examining Log Files
+
+**BepInEx Log Location**: `BepInEx/LogOutput.log`
+
+**What to look for**:
+- Initialization messages: `BepInEx [version] - Resonite`
+- Plugin loading: `Loading [plugin name]`
+- Error messages: `[Error]` or `[Fatal]`
+- Assembly loading failures: `Could not load`
+
+**Example healthy log**:
+```
+[Info   :   BepInEx] BepInEx 6.0.0.0 - Resonite
+[Info   :   BepInEx] Running under .NET 9.0.0
+[Info   :   BepInEx] BepisLoader initialized successfully
+[Info   :BepInEx] Loading [MyMod 1.0.0]
+[Info   :BepInEx] Loaded 1 plugin(s)
+```
+
+### Windows Event Logs
+
+For system-level issues, check Windows Event Viewer:
+
+1. Open Event Viewer (`eventvwr.msc`)
+2. Navigate to Windows Logs → Application
+3. Look for errors from `Resonite.exe` or `.NET Runtime`
+4. Check the error details for specific failure reasons
+
+### Process Monitoring
+
+Use Process Monitor (ProcMon) to track file and registry access:
+
+1. Download [ProcMon from Microsoft](https://docs.microsoft.com/sysinternals/downloads/procmon)
+2. Set filter to Process Name is `Resonite.exe`
+3. Launch Resonite and watch for access denied or file not found errors
+4. Focus on operations involving BepisLoader files
+
+### Network and Firewall Issues
+
+If mods have network functionality:
+- Check Windows Firewall exceptions for Resonite
+- Verify router/antivirus isn't blocking connections
+- Test with Windows Defender temporarily disabled
+- Check if mod requires specific ports to be open
+
+## Configuration Issues
+
+### Wrong .NET Framework
+
+**Error**: `The framework Microsoft.NETCore.App version 9.0.0 was not found`
+
+**Solution**: Install [.NET 9.0 Runtime](https://dotnet.microsoft.com/download/dotnet/9.0)
+
+### File Permissions
+
+**Error**: Access denied or unable to write files
+
+**Solutions**:
+- Run Steam as administrator
+- Check folder permissions on Resonite directory
+- Ensure user has write access to BepInEx folders
+- Disable "Controlled folder access" in Windows Security
+
+### Path Issues
+
+**Error**: Cannot find Resonite installation
+
+**Check these locations**:
+- Default: `C:\Program Files (x86)\Steam\steamapps\common\Resonite`
+- Custom library: Steam → Settings → Downloads → Steam Library Folders
+- Verify through Steam: Library → Right-click Resonite → Properties → Local Files
+
+## Getting Additional Help
+
+### Collecting Debug Information
+
+Before asking for help, gather this information:
+
+1. **System specs**: OS version, .NET version, hardware
+2. **Resonite version**: Check in-game or Steam properties
+3. **BepisLoader version**: Check `BepisLoader.dll` properties
+4. **Full log file**: Share complete `LogOutput.log`
+5. **Mod list**: List all mods in `plugins` folder
+6. **Steps to reproduce**: Exact actions that cause the problem
+
+### Community Resources
+
+- **Discord**: [FrooxEngine Modding Discord](https://discord.gg/vCDJK9xyvm)
+  - `#mod-help` channel for user support
+  - `#mod-development` for development questions
+  - Search previous messages before asking
+
+- **GitHub Issues**:
+  - [BepisLoader Issues](https://github.com/art0007i/BepisLoader/issues)
+  - [BepInEx Issues](https://github.com/BepInEx/BepInEx/issues)
+  - Check existing issues before creating new ones
+
+- **Reddit**: [r/resonite](https://reddit.com/r/resonite)
+  - Community discussions and help
+  - Search for similar problems first
+
+### Reporting Bugs
+
+When reporting issues:
+
+1. **Use descriptive titles**: "BepInEx fails to load on Windows 11" not "Help!"
+2. **Include system information**: OS, Resonite version, mod versions
+3. **Attach log files**: Use pastebin or GitHub gists for long logs
+4. **Describe steps to reproduce**: What exactly triggers the problem
+5. **Mention workarounds**: If you found temporary fixes
+
+## Clean Reinstall
+
+If all else fails, completely remove and reinstall:
+
+### Complete Removal
+
+1. **Backup saves**: Copy your Resonite saves/worlds if needed
+2. **Uninstall Resonite**: Through Steam or Windows Settings
+3. **Delete leftover folders**: 
+   - Resonite installation directory
+   - `%USERPROFILE%\AppData\LocalLow\Yellow Dog Man Studios\Resonite`
+4. **Clear registry**: Use Steam's built-in cleanup or tools like CCleaner
+
+### Fresh Installation
+
+1. **Reinstall Resonite**: Through Steam
+2. **Test vanilla**: Launch once to ensure base game works
+3. **Install mod manager**: Use method from installation guide
+4. **Gradually add mods**: Install one mod at a time to identify conflicts
+
+This systematic approach helps identify exactly what's causing issues.
