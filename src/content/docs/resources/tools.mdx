@@ -10,6 +10,7 @@ This page covers the essential tools and utilities you'll need for effective Res
 ### Mod Loaders
 
 #### BepisLoader
+
 **Purpose**: Primary mod loading framework for Resonite
 
 - **Download**: [Latest Release](https://github.com/art0007i/BepisLoader/releases/latest/download/BepisLoader-full.zip)
@@ -20,58 +21,68 @@ This page covers the essential tools and utilities you'll need for effective Res
   - Easy installation process
 
 **Installation**:
+
 1. Extract `BepisLoader-full.zip` over Resonite folder
 2. (Linux) Modify `LinuxBootstrap.sh` to launch `BepisLoader.dll`
 
 ### IDEs and Editors
 
 #### Visual Studio Community (Free)
+
 **Best for**: Full-featured development
 
 **Setup**:
+
 1. Install with ".NET desktop development" workload
 2. Add "Game development with Unity" (optional)
 3. Configure debugging for external processes
 
 **Extensions**:
+
 - **Productivity Power Tools** - Enhanced editing features
 - **CodeMaid** - Code cleanup and organization
 - **OzCode** - Advanced debugging tools
 
 #### JetBrains Rider
+
 **Best for**: Professional development
 
 **Features**:
+
 - Excellent refactoring tools
 - Built-in version control
 - Superior debugging capabilities
 - Cross-platform support
 
 #### Visual Studio Code
+
 **Best for**: Lightweight development
 
 **Essential Extensions**:
+
 - **C# Dev Kit** - Microsoft's official C# support
 - **C#** - Base C# language support
 - **GitLens** - Enhanced Git integration
 - **Bracket Pair Colorizer** - Visual bracket matching
 
 **Sample `.vscode/settings.json`**:
+
 ```json
 {
-  "dotnet.defaultSolution": "MyMod.sln",
-  "editor.formatOnSave": true,
-  "csharp.semanticHighlighting.enabled": true,
-  "files.exclude": {
-    "**/bin": true,
-    "**/obj": true
-  }
+	"dotnet.defaultSolution": "MyMod.sln",
+	"editor.formatOnSave": true,
+	"csharp.semanticHighlighting.enabled": true,
+	"files.exclude": {
+		"**/bin": true,
+		"**/obj": true
+	}
 }
 ```
 
 ## Decompilation & Analysis Tools
 
 ### ILSpy (Free)
+
 **Purpose**: Decompile .NET assemblies to C#
 
 - **Download**: [GitHub Releases](https://github.com/icsharpcode/ILSpy/releases)
@@ -82,12 +93,14 @@ This page covers the essential tools and utilities you'll need for effective Res
   - Explore third-party mods
 
 **Key Features**:
+
 - Multiple output formats (C#, IL, VB.NET)
 - Search functionality
 - Assembly comparison
 - Plugin architecture
 
 ### dotPeek (Free)
+
 **Purpose**: JetBrains' .NET decompiler
 
 - **Download**: [JetBrains Website](https://www.jetbrains.com/decompiler/)
@@ -100,19 +113,24 @@ This page covers the essential tools and utilities you'll need for effective Res
 ## Debugging Tools
 
 ### Built-in .NET Debugger
+
 **Setup for Resonite**:
+
 1. Build mod in Debug configuration
 2. Copy PDB files to plugins folder
 3. Launch Resonite
 4. Attach debugger to `Resonite.exe`
 
 **Debugging Tips**:
+
 - Use conditional breakpoints for performance
 - Watch window for complex objects
 - Call stack analysis for patch issues
 
 ### BepInEx Console
+
 **Enable in config** (`BepInEx/config/BepInEx.cfg`):
+
 ```ini
 [Logging.Console]
 Enabled = true
@@ -122,23 +140,24 @@ LogLevels = Fatal, Error, Warning, Info, Debug
 ### Custom Debug Tools
 
 #### Performance Profiler
+
 ```csharp
 public class SimpleProfiler
 {
     private static Dictionary<string, (long ticks, int calls)> timings = new();
-    
+
     public static void Profile(string name, Action action)
     {
         var sw = Stopwatch.StartNew();
         action();
         sw.Stop();
-        
+
         if (timings.TryGetValue(name, out var existing))
             timings[name] = (existing.ticks + sw.ElapsedTicks, existing.calls + 1);
         else
             timings[name] = (sw.ElapsedTicks, 1);
     }
-    
+
     public static void PrintReport()
     {
         foreach (var (name, (ticks, calls)) in timings.OrderByDescending(x => x.Value.ticks))
@@ -151,6 +170,7 @@ public class SimpleProfiler
 ```
 
 #### Memory Monitor
+
 ```csharp
 public static void LogMemoryUsage(string context)
 {
@@ -159,7 +179,7 @@ public static void LogMemoryUsage(string context)
     GC.WaitForPendingFinalizers();
     GC.Collect();
     var afterCollection = GC.GetTotalMemory(false);
-    
+
     MyMod.Logger.LogInfo($"{context} - Memory: {beforeCollection / 1024 / 1024}MB -> {afterCollection / 1024 / 1024}MB");
 }
 ```
@@ -169,6 +189,7 @@ public static void LogMemoryUsage(string context)
 ### MSBuild Configurations
 
 #### Debug Configuration
+
 ```xml
 <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
   <DebugSymbols>true</DebugSymbols>
@@ -180,6 +201,7 @@ public static void LogMemoryUsage(string context)
 ```
 
 #### Release Configuration
+
 ```xml
 <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
   <DebugType>pdbonly</DebugType>
@@ -192,6 +214,7 @@ public static void LogMemoryUsage(string context)
 ### Automated Deployment
 
 #### PowerShell Deploy Script
+
 ```powershell
 param(
     [string]$Configuration = "Debug",
@@ -216,6 +239,7 @@ if ($LASTEXITCODE -eq 0) {
 ```
 
 #### Bash Deploy Script
+
 ```bash
 #!/bin/bash
 MOD_NAME="MyMod"
@@ -239,7 +263,9 @@ fi
 ## Version Control
 
 ### Git Setup
+
 **.gitignore for C# Projects**:
+
 ```gitignore
 # Build results
 [Dd]ebug/
@@ -260,6 +286,7 @@ obj/
 ```
 
 ### Recommended Workflow
+
 1. **Feature Branches**: Create branches for new features
 2. **Commit Messages**: Use conventional commits
 3. **Tags**: Tag releases for easy identification
@@ -268,6 +295,7 @@ obj/
 ## Testing Tools
 
 ### Unit Testing Setup
+
 ```xml
 <ItemGroup>
   <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
@@ -278,28 +306,29 @@ obj/
 ```
 
 ### Mock Framework
+
 ```csharp
 [TestFixture]
 public class MyModTests
 {
     private Mock<ILogger> mockLogger;
-    
+
     [SetUp]
     public void Setup()
     {
         mockLogger = new Mock<ILogger>();
     }
-    
+
     [Test]
     public void TestMyFunction()
     {
         // Arrange
         var input = "test";
         var expected = "expected";
-        
+
         // Act
         var result = MyMod.ProcessInput(input);
-        
+
         // Assert
         Assert.AreEqual(expected, result);
     }
@@ -309,7 +338,9 @@ public class MyModTests
 ## Package Management
 
 ### NuGet Package Creation
+
 **Create `.nuspec` file**:
+
 ```xml
 <?xml version="1.0"?>
 <package>
@@ -326,16 +357,16 @@ public class MyModTests
 ```
 
 ### Thunderstore Package
+
 **Create `manifest.json`**:
+
 ```json
 {
-    "name": "MyMod",
-    "version_number": "1.0.0",
-    "website_url": "https://github.com/yourusername/mymod",
-    "description": "Description of your mod",
-    "dependencies": [
-        "BepInEx-BepInExPack-5.4.2100"
-    ]
+	"name": "MyMod",
+	"version_number": "1.0.0",
+	"website_url": "https://github.com/yourusername/mymod",
+	"description": "Description of your mod",
+	"dependencies": ["BepInEx-BepInExPack-5.4.2100"]
 }
 ```
 
@@ -344,31 +375,33 @@ public class MyModTests
 ### Log Analysis Tools
 
 #### LogTail Script
+
 ```powershell
 # PowerShell log monitor
 param([string]$LogPath = "BepInEx\LogOutput.log")
 
-Get-Content $LogPath -Wait -Tail 10 | 
+Get-Content $LogPath -Wait -Tail 10 |
     Where-Object { $_ -match "MyMod" } |
-    ForEach-Object { 
+    ForEach-Object {
         $timestamp = Get-Date -Format "HH:mm:ss"
-        Write-Host "[$timestamp] $_" 
+        Write-Host "[$timestamp] $_"
     }
 ```
 
 #### Performance Counter
+
 ```csharp
 public class PerformanceCounter
 {
     private readonly Dictionary<string, List<double>> metrics = new();
-    
+
     public void Record(string metric, double value)
     {
         if (!metrics.ContainsKey(metric))
             metrics[metric] = new List<double>();
         metrics[metric].Add(value);
     }
-    
+
     public void PrintSummary()
     {
         foreach (var (metric, values) in metrics)
@@ -385,7 +418,9 @@ public class PerformanceCounter
 ## Documentation Tools
 
 ### XML Documentation
+
 Enable in project file:
+
 ```xml
 <PropertyGroup>
   <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -393,6 +428,7 @@ Enable in project file:
 ```
 
 ### README Template
+
 ```markdown
 # MyMod
 
@@ -419,18 +455,21 @@ List compatible Resonite versions.
 ## Changelog
 
 ### v1.0.0
+
 - Initial release
 ```
 
 ## Recommended Tool Chain
 
 ### Beginner Setup
+
 1. **Visual Studio Code** with C# Dev Kit
-2. **ILSpy** for code exploration  
+2. **ILSpy** for code exploration
 3. **Git** for version control
 4. **BepisLoader** for mod loading
 
 ### Advanced Setup
+
 1. **JetBrains Rider** or Visual Studio Professional
 2. **dotPeek** for advanced decompilation
 3. **Custom build scripts** for automation
@@ -438,8 +477,9 @@ List compatible Resonite versions.
 5. **Automated testing** framework
 
 ### Pro Tips
+
 - Set up environment variables for paths
-- Create templates for new projects  
+- Create templates for new projects
 - Use snippet libraries for common patterns
 - Automate repetitive tasks with scripts
 - Join the Discord community for tool recommendations

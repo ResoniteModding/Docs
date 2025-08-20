@@ -17,7 +17,9 @@ This guide covers advanced BepInEx features for Resonite mod development.
 ## Plugin Attributes
 
 ### BepInPlugin
+
 Required attribute for all plugins:
+
 ```csharp
 [BepInPlugin(GUID, Name, Version)]
 public class MyPlugin : BaseUnityPlugin
@@ -29,7 +31,9 @@ public class MyPlugin : BaseUnityPlugin
 ```
 
 ### BepInDependency
+
 Specify plugin dependencies:
+
 ```csharp
 [BepInDependency("com.other.plugin", BepInDependency.DependencyFlags.HardDependency)]
 [BepInDependency("com.optional.plugin", BepInDependency.DependencyFlags.SoftDependency)]
@@ -37,14 +41,18 @@ public class MyPlugin : BaseUnityPlugin { }
 ```
 
 ### BepInIncompatibility
+
 Mark incompatible plugins:
+
 ```csharp
 [BepInIncompatibility("com.conflicting.plugin")]
 public class MyPlugin : BaseUnityPlugin { }
 ```
 
 ### BepInProcess
+
 Target specific processes:
+
 ```csharp
 [BepInProcess("Resonite.exe")]
 public class MyPlugin : BaseUnityPlugin { }
@@ -53,13 +61,14 @@ public class MyPlugin : BaseUnityPlugin { }
 ## Configuration System
 
 ### Basic Configuration
+
 ```csharp
 public class MyPlugin : BaseUnityPlugin
 {
     private ConfigEntry<bool> EnableFeature;
     private ConfigEntry<float> Multiplier;
     private ConfigEntry<KeyCode> Hotkey;
-    
+
     private void Awake()
     {
         EnableFeature = Config.Bind(
@@ -68,7 +77,7 @@ public class MyPlugin : BaseUnityPlugin
             true,               // Default value
             "Enables the main feature" // Description
         );
-        
+
         Multiplier = Config.Bind(
             "Gameplay",
             "Speed Multiplier",
@@ -78,7 +87,7 @@ public class MyPlugin : BaseUnityPlugin
                 new AcceptableValueRange<float>(0.1f, 10f)
             )
         );
-        
+
         Hotkey = Config.Bind(
             "Controls",
             "Toggle Key",
@@ -89,6 +98,7 @@ public class MyPlugin : BaseUnityPlugin
 ```
 
 ### Advanced Configuration
+
 ```csharp
 // Custom config file
 var customConfig = new ConfigFile(
@@ -113,6 +123,7 @@ Config.Bind(
 ```
 
 ### Runtime Configuration Changes
+
 ```csharp
 // Listen for changes
 EnableFeature.SettingChanged += (sender, args) =>
@@ -131,6 +142,7 @@ Config.Reload();
 ## Logging System
 
 ### Log Levels
+
 ```csharp
 Logger.LogFatal("Fatal error - mod cannot continue");
 Logger.LogError("Error occurred but mod can continue");
@@ -141,13 +153,16 @@ Logger.LogDebug("Debug information");
 ```
 
 ### Custom Log Source
+
 ```csharp
 var customLog = BepInEx.Logging.Logger.CreateLogSource("CustomSystem");
 customLog.LogInfo("Custom log message");
 ```
 
 ### Log Filtering
+
 Configure in `BepInEx.cfg`:
+
 ```ini
 [Logging.Console]
 LogLevels = Fatal, Error, Warning, Message, Info
@@ -160,24 +175,25 @@ LogLevels = All
 ## Harmony Integration
 
 ### Manual Patching
+
 ```csharp
 public class MyPlugin : BaseUnityPlugin
 {
     private Harmony harmony;
-    
+
     private void Awake()
     {
         harmony = new Harmony(Info.Metadata.GUID);
-        
+
         // Patch specific method
         var original = typeof(World).GetMethod("Initialize");
         var prefix = typeof(MyPatch).GetMethod("Prefix");
         harmony.Patch(original, prefix: new HarmonyMethod(prefix));
-        
+
         // Or patch all in assembly
         harmony.PatchAll();
     }
-    
+
     private void OnDestroy()
     {
         harmony?.UnpatchSelf();
@@ -186,6 +202,7 @@ public class MyPlugin : BaseUnityPlugin
 ```
 
 ### Conditional Patching
+
 ```csharp
 [HarmonyPatch]
 public class ConditionalPatch
@@ -195,13 +212,13 @@ public class ConditionalPatch
         // Return false to skip this patch
         return Config.EnablePatch.Value;
     }
-    
+
     static MethodBase TargetMethod()
     {
         // Dynamically determine method to patch
         return typeof(World).GetMethod("Update");
     }
-    
+
     static void Postfix()
     {
         // Patch logic
@@ -210,6 +227,7 @@ public class ConditionalPatch
 ```
 
 ### Priority and Execution Order
+
 ```csharp
 [HarmonyPatch(typeof(World), "Initialize")]
 [HarmonyPriority(Priority.First)]  // Run before other patches
@@ -230,6 +248,7 @@ public class LatePatch
 ## Resource Management
 
 ### Embedded Resources
+
 ```csharp
 public class MyPlugin : BaseUnityPlugin
 {
@@ -238,7 +257,7 @@ public class MyPlugin : BaseUnityPlugin
         // Load embedded resource
         var assembly = Assembly.GetExecutingAssembly();
         var resourceName = "MyPlugin.Resources.config.json";
-        
+
         using (var stream = assembly.GetManifestResourceStream(resourceName))
         using (var reader = new StreamReader(stream))
         {
@@ -250,12 +269,13 @@ public class MyPlugin : BaseUnityPlugin
 ```
 
 ### Asset Bundles
+
 ```csharp
 private void LoadAssetBundle()
 {
     var bundlePath = Path.Combine(Paths.PluginPath, "MyPlugin", "assets");
     var bundle = AssetBundle.LoadFromFile(bundlePath);
-    
+
     if (bundle != null)
     {
         var prefab = bundle.LoadAsset<GameObject>("MyPrefab");
@@ -268,6 +288,7 @@ private void LoadAssetBundle()
 ## Networking
 
 ### Custom Messages
+
 ```csharp
 public class NetworkedMod : BaseUnityPlugin
 {
@@ -276,12 +297,12 @@ public class NetworkedMod : BaseUnityPlugin
         // Register custom network message
         NetworkManager.RegisterMessageHandler<MyCustomMessage>(HandleMessage);
     }
-    
+
     private void HandleMessage(MyCustomMessage msg)
     {
         Logger.LogInfo($"Received: {msg.Data}");
     }
-    
+
     private void SendMessage(string data)
     {
         var msg = new MyCustomMessage { Data = data };
@@ -293,20 +314,21 @@ public class NetworkedMod : BaseUnityPlugin
 ## Performance Monitoring
 
 ### Profiling
+
 ```csharp
 using System.Diagnostics;
 
 public class PerformanceMonitor
 {
     private Stopwatch stopwatch = new Stopwatch();
-    
+
     public void ProfileMethod()
     {
         stopwatch.Restart();
-        
+
         // Code to profile
         ExpensiveOperation();
-        
+
         stopwatch.Stop();
         Logger.LogInfo($"Operation took: {stopwatch.ElapsedMilliseconds}ms");
     }
@@ -314,12 +336,13 @@ public class PerformanceMonitor
 ```
 
 ### Memory Tracking
+
 ```csharp
 private void LogMemoryUsage()
 {
     var memory = GC.GetTotalMemory(false) / 1024 / 1024;
     Logger.LogInfo($"Memory usage: {memory}MB");
-    
+
     // Force garbage collection if needed
     if (memory > 100)
     {
@@ -333,17 +356,18 @@ private void LogMemoryUsage()
 ## Inter-Plugin Communication
 
 ### Soft Dependencies
+
 ```csharp
 public class MyPlugin : BaseUnityPlugin
 {
     private bool otherPluginLoaded;
-    
+
     private void Awake()
     {
         // Check if other plugin is loaded
         otherPluginLoaded = BepInEx.Bootstrap.Chainloader
             .PluginInfos.ContainsKey("com.other.plugin");
-        
+
         if (otherPluginLoaded)
         {
             // Access other plugin
@@ -356,6 +380,7 @@ public class MyPlugin : BaseUnityPlugin
 ```
 
 ### Shared Interfaces
+
 ```csharp
 // Shared library
 public interface IModAPI
@@ -386,37 +411,39 @@ public class ConsumerPlugin : BaseUnityPlugin
 ## Security Considerations
 
 ### Input Validation
+
 ```csharp
 public void ProcessUserInput(string input)
 {
     // Sanitize input
     input = input.Trim();
-    
+
     if (string.IsNullOrWhiteSpace(input))
         return;
-    
+
     if (input.Length > 1000)
     {
         Logger.LogWarning("Input too long");
         return;
     }
-    
+
     // Process safely
 }
 ```
 
 ### Safe File Operations
+
 ```csharp
 private void SaveData(string filename, string data)
 {
     // Validate filename
     filename = Path.GetFileName(filename); // Remove path
-    
+
     if (string.IsNullOrEmpty(filename))
         return;
-    
+
     var safePath = Path.Combine(Paths.ConfigPath, filename);
-    
+
     try
     {
         File.WriteAllText(safePath, data);
@@ -431,21 +458,21 @@ private void SaveData(string filename, string data)
 ## Distribution
 
 ### Plugin Manifest
+
 Create `manifest.json` for Thunderstore:
+
 ```json
 {
-    "name": "MyResoniteMod",
-    "version_number": "1.0.0",
-    "website_url": "https://github.com/user/mod",
-    "description": "Description here",
-    "dependencies": [
-        "BepInExPack_Resonite-1.0.0",
-        "OtherDependency-2.0.0"
-    ]
+	"name": "MyResoniteMod",
+	"version_number": "1.0.0",
+	"website_url": "https://github.com/user/mod",
+	"description": "Description here",
+	"dependencies": ["BepInExPack_Resonite-1.0.0", "OtherDependency-2.0.0"]
 }
 ```
 
 ### File Structure
+
 ```
 MyMod.zip
 ├── manifest.json

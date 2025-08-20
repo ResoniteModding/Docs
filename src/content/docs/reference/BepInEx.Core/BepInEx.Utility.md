@@ -4,6 +4,7 @@ slug: reference/bepinex.utility
 sidebar:
   label: Utility
 ---
+
 ## Definition
 
 Generic helper properties and methods.
@@ -189,11 +190,11 @@ Function that maps a node to a collection of its dependencies.
 
 [IEnumerable\<TNode\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1/)  
 Collection of nodes sorted in the order of least dependencies to the most.
+
 #### Exceptions
 
 [Exception](https://learn.microsoft.com/dotnet/api/system.exception/)  
 Thrown when a cyclic dependency occurs.
-
 
 ### TryResolveDllAssembly<T>(AssemblyName, string, Func<string, T>, out T)
 
@@ -211,7 +212,7 @@ Name of the assembly, of the type <xref href="System.Reflection.AssemblyName" da
 `directory` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 Directory to search the assembly from.
 
-`loader` [Func\<string, T\>](https://learn.microsoft.com/dotnet/api/system.func-2/)  
+`loader` [Func\<string, T\>](https://learn.microsoft.com/dotnet/api/system.func-2/)
 
 `assembly` T  
 The loaded assembly.
@@ -330,7 +331,7 @@ public static IEnumerable<MethodDefinition> EnumerateAllMethods(this TypeDefinit
 
 #### Parameters
 
-`type` [TypeDefinition](https://github.com/jbevain/cecil/blob/8c123e16bd0d693afc9932da85e1c9e740aa508c/mono.cecil/typedefinition.cs/)  
+`type` [TypeDefinition](https://github.com/jbevain/cecil/blob/8c123e16bd0d693afc9932da85e1c9e740aa508c/mono.cecil/typedefinition.cs/)
 
 #### Returns
 
@@ -428,6 +429,7 @@ Resulting <xref href="System.Reflection.AssemblyName" data-throw-if-not-resolved
 
 [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)  
 `true`, if parsing was successful, otherwise `false`
+
 #### Remarks
 
 On some versions of mono, using [GetName()](https://learn.microsoft.com/dotnet/api/system.reflection.assembly.getname#system-reflection-assembly-getname/) fails because it runs on unmanaged side which has problems with encoding. Using [AssemblyName](https://learn.microsoft.com/dotnet/api/system.reflection.assemblyname/) solves this by doing parsing on managed side instead.

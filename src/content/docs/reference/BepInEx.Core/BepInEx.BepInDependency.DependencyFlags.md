@@ -4,6 +4,7 @@ slug: reference/bepinex.bepindependency.dependencyflags
 sidebar:
   label: BepInDependency.DependencyFlags
 ---
+
 ## Definition
 
 Flags that are applied to a dependency
@@ -12,7 +13,6 @@ Flags that are applied to a dependency
 [Flags]
 public enum BepInDependency.DependencyFlags
 ```
-
 
 ## Fields
 

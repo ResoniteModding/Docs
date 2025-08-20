@@ -12,6 +12,7 @@ This guide covers solutions to common problems when setting up and using Resonit
 **Symptoms**: Game crashes on launch or shows error dialogs
 
 **Solutions**:
+
 - Verify all BepisLoader files were extracted to the correct location (next to `Resonite.exe`)
 - Check that `hostfxr.dll` exists in the Resonite folder
 - Try running Steam as administrator
@@ -23,6 +24,7 @@ This guide covers solutions to common problems when setting up and using Resonit
 **Symptoms**: No BepInEx console window, no `LogOutput.log` file created
 
 **Solutions**:
+
 - Install or repair the [.NET 9.0 Runtime](https://dotnet.microsoft.com/download/dotnet/9.0)
 - Check if Windows Defender or antivirus has quarantined files
 - Right-click downloaded files → Properties → Unblock if there's a security warning
@@ -33,6 +35,7 @@ This guide covers solutions to common problems when setting up and using Resonit
 **Symptoms**: Mods in `plugins` folder don't work in-game
 
 **Checklist**:
+
 - ✅ Mod files are `.dll` files in `BepInEx/plugins/`
 - ✅ Mods target .NET 9.0 or compatible framework
 - ✅ No error messages in `BepInEx/LogOutput.log`
@@ -40,6 +43,7 @@ This guide covers solutions to common problems when setting up and using Resonit
 - ✅ BepInEx is properly initialized
 
 **Check the logs**:
+
 ```bash
 # Look for mod loading messages
 tail -f "BepInEx/LogOutput.log" | grep -i "plugin\|mod"
@@ -50,6 +54,7 @@ tail -f "BepInEx/LogOutput.log" | grep -i "plugin\|mod"
 **Symptoms**: Game won't launch or BepInEx doesn't load on Linux
 
 **Solutions**:
+
 - Ensure `LinuxBootstrap.sh` has execute permissions:
   ```bash
   chmod +x LinuxBootstrap.sh
@@ -69,6 +74,7 @@ tail -f "BepInEx/LogOutput.log" | grep -i "plugin\|mod"
 **Symptoms**: Game runs slowly, high CPU usage, or frequent stuttering
 
 **Solutions**:
+
 - Disable console logging in `BepInEx/config/BepInEx.cfg`:
   ```ini
   [Logging.Console]
@@ -82,12 +88,14 @@ tail -f "BepInEx/LogOutput.log" | grep -i "plugin\|mod"
 ### Mod Manager Issues
 
 **Gale Problems**:
+
 - Clear mod cache in Gale settings
 - Verify Resonite installation path in Gale
 - Check for Gale updates
 - Try launching with administrator privileges
 
 **r2modmanPlus Problems**:
+
 - Refresh mod list in r2modman
 - Clear r2modman cache folder
 - Verify profile settings point to correct Resonite installation
@@ -100,12 +108,14 @@ tail -f "BepInEx/LogOutput.log" | grep -i "plugin\|mod"
 **BepInEx Log Location**: `BepInEx/LogOutput.log`
 
 **What to look for**:
+
 - Initialization messages: `BepInEx [version] - Resonite`
 - Plugin loading: `Loading [plugin name]`
 - Error messages: `[Error]` or `[Fatal]`
 - Assembly loading failures: `Could not load`
 
 **Example healthy log**:
+
 ```
 [Info   :   BepInEx] BepInEx 6.0.0.0 - Resonite
 [Info   :   BepInEx] Running under .NET 9.0.0
@@ -135,6 +145,7 @@ Use Process Monitor (ProcMon) to track file and registry access:
 ### Network and Firewall Issues
 
 If mods have network functionality:
+
 - Check Windows Firewall exceptions for Resonite
 - Verify router/antivirus isn't blocking connections
 - Test with Windows Defender temporarily disabled
@@ -153,6 +164,7 @@ If mods have network functionality:
 **Error**: Access denied or unable to write files
 
 **Solutions**:
+
 - Run Steam as administrator
 - Check folder permissions on Resonite directory
 - Ensure user has write access to BepInEx folders
@@ -163,6 +175,7 @@ If mods have network functionality:
 **Error**: Cannot find Resonite installation
 
 **Check these locations**:
+
 - Default: `C:\Program Files (x86)\Steam\steamapps\common\Resonite`
 - Custom library: Steam → Settings → Downloads → Steam Library Folders
 - Verify through Steam: Library → Right-click Resonite → Properties → Local Files
@@ -214,7 +227,7 @@ If all else fails, completely remove and reinstall:
 
 1. **Backup saves**: Copy your Resonite saves/worlds if needed
 2. **Uninstall Resonite**: Through Steam or Windows Settings
-3. **Delete leftover folders**: 
+3. **Delete leftover folders**:
    - Resonite installation directory
    - `%USERPROFILE%\AppData\LocalLow\Yellow Dog Man Studios\Resonite`
 4. **Clear registry**: Use Steam's built-in cleanup or tools like CCleaner

@@ -3,7 +3,16 @@ title: What is BepisLoader?
 description: Understanding BepisLoader and BepInEx architecture for Resonite
 ---
 
-import { Card, CardGrid, Steps, Tabs, TabItem, Code, Badge, LinkButton } from '@astrojs/starlight/components';
+import {
+	Card,
+	CardGrid,
+	Steps,
+	Tabs,
+	TabItem,
+	Code,
+	Badge,
+	LinkButton
+} from '@astrojs/starlight/components';
 
 ## Overview
 
@@ -49,11 +58,13 @@ Resonite/
 ## Why BepisLoader?
 
 ### Compatibility
+
 - Bridges the gap between BepInEx (designed for Unity games) and Resonite's custom .NET 9 architecture
 - Provides necessary runtime patches for mod compatibility
 - Handles assembly loading and dependency resolution
 
 ### Features
+
 - **Non-invasive**: Doesn't modify Resonite's core files
 - **Transparent**: Resonite runs normally without knowing mods exist
 - **Flexible**: Supports the full BepInEx plugin ecosystem
@@ -73,12 +84,14 @@ Resonite/
 ### Logs and Debugging
 
 BepisLoader provides comprehensive logging:
+
 - BepInEx logs: `BepInEx/LogOutput.log`
 - Resonite logs: `%USERPROFILE%\AppData\LocalLow\Yellow Dog Man Studios\Resonite\`
 
 ## Next Steps
 
 Now that you understand what BepisLoader is:
+
 - [Set up BepisLoader](/getting-started/bepisloader/setup/) to install and configure it
 - [Create your first mod](/getting-started/first-mod/) to start building
 - [Learn about BepInEx](/guides/bepinex/) for advanced features

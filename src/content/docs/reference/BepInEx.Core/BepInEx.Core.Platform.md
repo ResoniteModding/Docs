@@ -4,6 +4,7 @@ slug: reference/bepinex.core.platform
 sidebar:
   label: Platform
 ---
+
 ## Definition
 
 Generic platform enum.
@@ -12,7 +13,6 @@ Generic platform enum.
 [Flags]
 public enum Platform
 ```
-
 
 ## Fields
 

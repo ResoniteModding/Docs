@@ -4,6 +4,7 @@ slug: reference/bepinex.configuration.configdefinition
 sidebar:
   label: ConfigDefinition
 ---
+
 ## Definition
 
 Section and key of a setting. Used as a unique key for identification within a [ConfigFile](../bepinex.configuration.configfile/). The same definition can be used in multiple config files, it will point to different settings then.
@@ -34,12 +35,12 @@ Group of the setting, case sensitive.
 `key` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 Name of the setting, case sensitive.
 
-
 ### ConfigDefinition(string, string, string)
 
 :::caution[Obsolete]
 description argument is no longer used, put it in a ConfigDescription instead
 :::
+
 ```csharp title="C#"
 [Obsolete("description argument is no longer used, put it in a ConfigDescription instead")]
 public ConfigDefinition(string section, string key, string description)
@@ -47,12 +48,11 @@ public ConfigDefinition(string section, string key, string description)
 
 #### Parameters
 
-`section` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
+`section` [string](https://learn.microsoft.com/dotnet/api/system.string/)
 
-`key` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
+`key` [string](https://learn.microsoft.com/dotnet/api/system.string/)
 
-`description` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
-
+`description` [string](https://learn.microsoft.com/dotnet/api/system.string/)
 
 ## Properties
 
@@ -102,7 +102,7 @@ public override bool Equals(object obj)
 
 #### Parameters
 
-`obj` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
+`obj` [object](https://learn.microsoft.com/dotnet/api/system.object/)
 
 #### Returns
 

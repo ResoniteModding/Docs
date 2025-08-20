@@ -1,5 +1,5 @@
 ---
-import MobileMenuToggle from "@astrojs/starlight/components/MobileMenuToggle.astro";
+import MobileMenuToggle from '@astrojs/starlight/components/MobileMenuToggle.astro';
 
 const { hasSidebar } = Astro.locals.starlightRoute;
 ---
@@ -8,10 +8,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 	<header class="header backdrop-blur-md bg-gray-900/70"><slot name="header" /></header>
 	{
 		hasSidebar && (
-			<nav
-				class="sidebar print:hidden"
-				aria-label={Astro.locals.t("sidebarNav.accessibleLabel")}
-			>
+			<nav class="sidebar print:hidden" aria-label={Astro.locals.t('sidebarNav.accessibleLabel')}>
 				<MobileMenuToggle />
 				<div id="starlight__sidebar" class="sidebar-pane backdrop-blur-md bg-gray-900/80">
 					<div class="sidebar-content sl-flex">
@@ -61,7 +58,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 			overflow-y: auto;
 		}
 
-		:global([aria-expanded="true"]) ~ .sidebar-pane {
+		:global([aria-expanded='true']) ~ .sidebar-pane {
 			--sl-sidebar-visibility: visible;
 		}
 
@@ -75,7 +72,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 
 		@media (min-width: 50rem) {
 			.sidebar-content::after {
-				content: "";
+				content: '';
 				padding-bottom: 1px;
 			}
 		}

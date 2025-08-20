@@ -4,6 +4,7 @@ slug: reference/bepinex.core.logging.interpolation.bepinexfatalloginterpolatedst
 sidebar:
   label: BepInExFatalLogInterpolatedStringHandler
 ---
+
 ## Definition
 
 Interpolated string handler for BepInEx [Logger](../bepinex.logging.logger/). This allows to conditionally skip logging certain messages and speed up logging in certain places.
@@ -13,6 +14,7 @@ public class BepInExFatalLogInterpolatedStringHandler : BepInExLogInterpolatedSt
 ```
 
 Inheritance [object](https://learn.microsoft.com/dotnet/api/system.object/) → [BepInExLogInterpolatedStringHandler](../bepinex.core.logging.interpolation.bepinexloginterpolatedstringhandler/)
+
 ## Remarks
 
 The class isn't meant to be constructed manually. Instead, use `BepInEx.Logging.ManualLogSource.Log(BepInEx.Logging.LogLevel%2cBepInEx.Core.Logging.Interpolation.BepInExLogInterpolatedStringHandler)` with string interpolation.
@@ -27,8 +29,8 @@ public BepInExFatalLogInterpolatedStringHandler(int literalLength, int formatted
 
 #### Parameters
 
-`literalLength` [int](https://learn.microsoft.com/dotnet/api/system.int32/)  
+`literalLength` [int](https://learn.microsoft.com/dotnet/api/system.int32/)
 
-`formattedCount` [int](https://learn.microsoft.com/dotnet/api/system.int32/)  
+`formattedCount` [int](https://learn.microsoft.com/dotnet/api/system.int32/)
 
 `isEnabled` [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)

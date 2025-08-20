@@ -4,6 +4,7 @@ slug: reference/bepinex.logging.loglevel
 sidebar:
   label: LogLevel
 ---
+
 ## Definition
 
 The level, or severity of a log entry.
@@ -12,7 +13,6 @@ The level, or severity of a log entry.
 [Flags]
 public enum LogLevel
 ```
-
 
 ## Fields
 

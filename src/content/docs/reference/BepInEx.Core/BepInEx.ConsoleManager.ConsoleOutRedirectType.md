@@ -4,12 +4,12 @@ slug: reference/bepinex.consolemanager.consoleoutredirecttype
 sidebar:
   label: ConsoleManager.ConsoleOutRedirectType
 ---
+
 ## Definition
 
 ```csharp title="C#"
 public enum ConsoleManager.ConsoleOutRedirectType
 ```
-
 
 ## Fields
 

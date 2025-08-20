@@ -4,6 +4,7 @@ slug: reference/bepinex.preloader.core.assemblybuildinfo
 sidebar:
   label: AssemblyBuildInfo
 ---
+
 ## Definition
 
 ```csharp title="C#"
@@ -48,7 +49,7 @@ public static AssemblyBuildInfo DetermineInfo(AssemblyDefinition assemblyDefinit
 
 #### Parameters
 
-`assemblyDefinition` [AssemblyDefinition](https://github.com/jbevain/cecil/blob/8c123e16bd0d693afc9932da85e1c9e740aa508c/mono.cecil/assemblydefinition.cs/)  
+`assemblyDefinition` [AssemblyDefinition](https://github.com/jbevain/cecil/blob/8c123e16bd0d693afc9932da85e1c9e740aa508c/mono.cecil/assemblydefinition.cs/)
 
 #### Returns
 

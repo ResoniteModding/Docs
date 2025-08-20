@@ -4,6 +4,7 @@ slug: reference/bepinex.logging.diskloglistener
 sidebar:
   label: DiskLogListener
 ---
+
 ## Definition
 
 Logs entries using Unity specific outputs.
@@ -44,7 +45,6 @@ when debugging crashes.
 `fileLimit` [int](https://learn.microsoft.com/dotnet/api/system.int32/)  
 Maximum amount of concurrently opened log files. Can help with infinite game boot loops.
 
-
 ## Fields
 
 ### BlacklistedSources
@@ -78,6 +78,7 @@ What log levels the listener preliminarily wants.
 ```csharp title="C#"
 public LogLevel LogLevelFilter { get; }
 ```
+
 ## Remarks
 
 The filter is used to more efficiently discard log messages that aren't being listened to. As such, the filter should represent the log levels that the listener will always want to process. It is up to the the implementation of `BepInEx.Logging.ILogListener.LogEvent(System.Object%2cBepInEx.Logging.LogEventArgs)` whether the messages are going to be processed or discarded.
@@ -100,7 +101,6 @@ Log source that sent the event. Don't use; instead use <xref href="BepInEx.Loggi
 `eventArgs` [LogEventArgs](../bepinex.logging.logeventargs/)  
 Information about the log message.
 
-
 ### Dispose()
 
 Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -108,7 +108,6 @@ Performs application-defined tasks associated with freeing, releasing, or resett
 ```csharp title="C#"
 public void Dispose()
 ```
-
 
 ### ~DiskLogListener()
 

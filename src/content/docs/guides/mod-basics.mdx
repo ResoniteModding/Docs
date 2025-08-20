@@ -8,14 +8,18 @@ This guide covers essential concepts for developing Resonite mods with BepInEx.
 ## Understanding Resonite Architecture
 
 ### FrooxEngine
+
 The core engine that powers Resonite:
+
 - Handles world simulation
 - Manages users and sessions
 - Provides the component system
 - Processes Protoflux
 
 ### Elements.Core
+
 Low-level utilities and data structures:
+
 - Math types (float3, floatQ, color)
 - Collections and data structures
 - Networking primitives
@@ -23,24 +27,28 @@ Low-level utilities and data structures:
 ### Key Concepts
 
 #### Worlds
+
 - Each session has a World instance
 - Contains the root slot hierarchy
 - Manages users in the session
 - Handles physics and updates
 
 #### Slots
+
 - Basic scene graph nodes
 - Can have components attached
 - Form parent-child hierarchies
 - Have transforms (position, rotation, scale)
 
 #### Components
+
 - Add functionality to slots
 - Examples: MeshRenderer, Collider, Light
 - Can reference other components
 - Update each frame or on-demand
 
 #### Users
+
 - Represent players in a world
 - Have avatars and permissions
 - Can be local or remote
@@ -48,12 +56,15 @@ Low-level utilities and data structures:
 ## Harmony Patching
 
 ### What is Harmony?
+
 Harmony is a library for patching .NET methods at runtime without modifying files.
 
 ### Patch Types
 
 #### Prefix Patches
+
 Run before the original method:
+
 ```csharp
 [HarmonyPatch(typeof(World), "Initialize")]
 [HarmonyPrefix]
@@ -66,7 +77,9 @@ static bool BeforeWorldInit(World __instance)
 ```
 
 #### Postfix Patches
+
 Run after the original method:
+
 ```csharp
 [HarmonyPatch(typeof(User), "Spawn")]
 [HarmonyPostfix]
@@ -78,7 +91,9 @@ static void AfterUserSpawn(User __instance, Slot __result)
 ```
 
 #### Transpiler Patches
+
 Modify IL code directly:
+
 ```csharp
 [HarmonyTranspiler]
 static IEnumerable<CodeInstruction> Transpiler(
@@ -91,6 +106,7 @@ static IEnumerable<CodeInstruction> Transpiler(
 ### Patch Parameters
 
 Special parameter names Harmony recognizes:
+
 - `__instance` - The instance (for non-static methods)
 - `__result` - The return value (in postfix)
 - `__state` - Pass data from prefix to postfix
@@ -99,6 +115,7 @@ Special parameter names Harmony recognizes:
 ## Working with Components
 
 ### Finding Components
+
 ```csharp
 // Find component on slot
 var renderer = slot.GetComponent<MeshRenderer>();
@@ -111,6 +128,7 @@ var lights = slot.GetComponentsInChildren<Light>();
 ```
 
 ### Creating Components
+
 ```csharp
 // Add component to slot
 var text = slot.AttachComponent<TextRenderer>();
@@ -119,6 +137,7 @@ text.Color.Value = color.Red;
 ```
 
 ### Component References
+
 ```csharp
 // Reference another component
 var driver = slot.AttachComponent<ValueCopy<float>>();
@@ -129,12 +148,14 @@ driver.Target.Target = targetValue;
 ## Working with Fields
 
 ### Field Types
+
 - `Sync<T>` - Synchronized value
 - `SyncRef<T>` - Reference to component/slot
 - `SyncList<T>` - Dynamic list
 - `AssetRef<T>` - Reference to asset
 
 ### Accessing Fields
+
 ```csharp
 // Read value
 float currentValue = myComponent.SomeFloat.Value;
@@ -149,13 +170,14 @@ myComponent.TargetSlot.Target = someSlot;
 ## Async Operations
 
 ### Using UniTask
+
 ```csharp
 using Cysharp.Threading.Tasks;
 
 public async UniTaskVoid MyAsyncMethod()
 {
     await UniTask.Delay(1000); // Wait 1 second
-    
+
     // Do something after delay
     await UniTask.SwitchToMainThread();
     // Now safe to modify Unity objects
@@ -163,6 +185,7 @@ public async UniTaskVoid MyAsyncMethod()
 ```
 
 ### Coroutines
+
 ```csharp
 StartCoroutine(MyCoroutine());
 
@@ -177,12 +200,13 @@ IEnumerator MyCoroutine()
 ## Event Handling
 
 ### Common Events
+
 ```csharp
 // World events
 World.WorldManager.WorldAdded += OnWorldAdded;
 World.WorldManager.WorldRemoved += OnWorldRemoved;
 
-// User events  
+// User events
 world.UserJoined += OnUserJoined;
 world.UserLeft += OnUserLeft;
 
@@ -191,6 +215,7 @@ component.Changed += OnComponentChanged;
 ```
 
 ### Custom Events
+
 ```csharp
 public static event Action<User> MyCustomEvent;
 
@@ -204,6 +229,7 @@ MyCustomEvent += HandleMyEvent;
 ## Performance Best Practices
 
 ### Caching
+
 ```csharp
 // Bad: Finding component every frame
 void Update()
@@ -225,6 +251,7 @@ void Update()
 ```
 
 ### Pooling
+
 ```csharp
 // Reuse objects instead of creating new ones
 Queue<Slot> slotPool = new Queue<Slot>();
@@ -244,6 +271,7 @@ void ReturnToPool(Slot slot)
 ```
 
 ### Batching
+
 ```csharp
 // Batch operations when possible
 world.RunInUpdates(3, () =>
@@ -256,6 +284,7 @@ world.RunInUpdates(3, () =>
 ## Error Handling
 
 ### Try-Catch
+
 ```csharp
 try
 {
@@ -270,6 +299,7 @@ catch (Exception ex)
 ```
 
 ### Null Checking
+
 ```csharp
 // Always check for null
 if (slot?.GetComponent<MeshRenderer>() is MeshRenderer renderer)
@@ -279,6 +309,7 @@ if (slot?.GetComponent<MeshRenderer>() is MeshRenderer renderer)
 ```
 
 ### Validation
+
 ```csharp
 if (!slot.IsValid || slot.IsDestroyed)
 {
@@ -290,6 +321,7 @@ if (!slot.IsValid || slot.IsDestroyed)
 ## Testing Your Mod
 
 ### Debug Logging
+
 ```csharp
 // Different log levels
 Logger.LogDebug("Debug info");
@@ -299,6 +331,7 @@ Logger.LogError("Error occurred");
 ```
 
 ### Conditional Compilation
+
 ```csharp
 #if DEBUG
     // Only in debug builds
@@ -307,7 +340,9 @@ Logger.LogError("Error occurred");
 ```
 
 ### Test Worlds
+
 Create specific test scenarios:
+
 1. Empty world for isolation
 2. Populated world for interaction
 3. Multiplayer for networking
@@ -315,16 +350,19 @@ Create specific test scenarios:
 ## Common Pitfalls
 
 ### Thread Safety
+
 - FrooxEngine is not thread-safe
 - Always use main thread for modifications
 - Use `UniTask.SwitchToMainThread()`
 
 ### Reference Management
+
 - Components can be destroyed
 - Always check `IsValid` before use
 - Use weak references when appropriate
 
 ### Memory Leaks
+
 - Unsubscribe from events
 - Dispose resources properly
 - Clear references when done

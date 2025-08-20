@@ -4,12 +4,12 @@ slug: reference/bepinex.preloader.core.assemblybuildinfo.frameworktype
 sidebar:
   label: AssemblyBuildInfo.FrameworkType
 ---
+
 ## Definition
 
 ```csharp title="C#"
 public enum AssemblyBuildInfo.FrameworkType
 ```
-
 
 ## Fields
 

@@ -4,6 +4,7 @@ slug: reference/bepinex.bepinincompatibility
 sidebar:
   label: BepInIncompatibility
 ---
+
 ## Definition
 
 This attribute specifies other plugins that are incompatible with this plugin.
@@ -31,7 +32,6 @@ public BepInIncompatibility(string IncompatibilityGUID)
 
 `IncompatibilityGUID` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 The GUID of the referenced plugin.
-
 
 ## Properties
 

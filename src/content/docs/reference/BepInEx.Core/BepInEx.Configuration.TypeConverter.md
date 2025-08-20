@@ -4,6 +4,7 @@ slug: reference/bepinex.configuration.typeconverter
 sidebar:
   label: TypeConverter
 ---
+
 ## Definition
 
 A serializer/deserializer combo for some type(s). Used by the config system.

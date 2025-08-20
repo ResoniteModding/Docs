@@ -4,6 +4,7 @@ slug: reference/bepinex.preloader.core.patching.targettypeattribute
 sidebar:
   label: TargetTypeAttribute
 ---
+
 ## Definition
 
 Defines a type that a patch method will target.
@@ -30,7 +31,6 @@ The short filename of the assembly of which <code class="paramref">targetType</c
 
 `targetType` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 The full name of the type to target for patching.
-
 
 ## Properties
 

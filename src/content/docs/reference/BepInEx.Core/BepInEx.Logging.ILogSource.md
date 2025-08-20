@@ -4,6 +4,7 @@ slug: reference/bepinex.logging.ilogsource
 sidebar:
   label: ILogSource
 ---
+
 ## Definition
 
 Log source that can output log messages.
@@ -11,7 +12,6 @@ Log source that can output log messages.
 ```csharp title="C#"
 public interface ILogSource : IDisposable
 ```
-
 
 ## Properties
 

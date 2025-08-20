@@ -4,6 +4,7 @@ slug: reference/bepinex.logging.logger
 sidebar:
   label: Logger
 ---
+
 ## Definition
 
 Handles pub-sub event marshalling across all log listeners and sources.

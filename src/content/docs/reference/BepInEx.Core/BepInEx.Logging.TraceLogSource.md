@@ -4,6 +4,7 @@ slug: reference/bepinex.logging.tracelogsource
 sidebar:
   label: TraceLogSource
 ---
+
 ## Definition
 
 A source that routes all logs from the inbuilt .NET [Trace](https://learn.microsoft.com/dotnet/api/system.diagnostics.trace/) API to the BepInEx logging system.
@@ -25,7 +26,6 @@ Creates a new trace log source.
 ```csharp title="C#"
 protected TraceLogSource()
 ```
-
 
 ## Properties
 
@@ -73,7 +73,6 @@ public override void Write(string message)
 `message` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 The message to write.
 
-
 ### WriteLine(string)
 
 Writes a message and a newline to the underlying [ManualLogSource](../bepinex.logging.manuallogsource/) instance.
@@ -86,7 +85,6 @@ public override void WriteLine(string message)
 
 `message` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 The message to write.
-
 
 ### TraceEvent(TraceEventCache, string, TraceEventType, int, string, params object[])
 
@@ -115,7 +113,6 @@ A format string that contains zero or more format items, which correspond to obj
 
 `args` [object[]](https://learn.microsoft.com/dotnet/api/system.object/)  
 An <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/reference-types">object</a> array containing zero or more objects to format.
-
 
 ### TraceEvent(TraceEventCache, string, TraceEventType, int, string)
 

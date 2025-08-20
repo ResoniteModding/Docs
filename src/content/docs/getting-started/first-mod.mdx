@@ -111,7 +111,7 @@ namespace MyFirstResoniteMod
             if (user.IsLocalUser)
             {
                 MyFirstMod.ModLog.LogInfo($"Welcome to {__instance.Name}!");
-                
+
                 // Send a notification in-game
                 NotificationMessage.SpawnTextMessage(
                     "Welcome!",
@@ -155,7 +155,7 @@ using BepInEx.Configuration;
 public class MyFirstMod : BaseUnityPlugin
 {
     // ... previous code ...
-    
+
     private ConfigEntry<string> WelcomeMessage;
     private ConfigEntry<bool> ShowNotification;
 
@@ -164,11 +164,11 @@ public class MyFirstMod : BaseUnityPlugin
         // Configure settings
         WelcomeMessage = Config.Bind(
             "General",
-            "WelcomeMessage", 
+            "WelcomeMessage",
             "Welcome to Resonite!",
             "The message to display when joining a world"
         );
-        
+
         ShowNotification = Config.Bind(
             "General",
             "ShowNotification",
@@ -178,9 +178,9 @@ public class MyFirstMod : BaseUnityPlugin
 
         // ... rest of Awake method ...
     }
-    
+
     internal static MyFirstMod Instance { get; private set; }
-    
+
     private void Awake()
     {
         Instance = this;
@@ -270,6 +270,7 @@ private IEnumerator MyCoroutine()
 ### Create a README
 
 Include:
+
 - What your mod does
 - Installation instructions
 - Configuration options
@@ -279,13 +280,14 @@ Include:
 ### Upload to Thunderstore
 
 1. Create a `manifest.json`:
+
 ```json
 {
-    "name": "MyFirstResoniteMod",
-    "version_number": "1.0.0",
-    "website_url": "https://github.com/yourusername/MyFirstResoniteMod",
-    "description": "A simple welcome message mod",
-    "dependencies": ["BepInExPack_Resonite-1.0.0"]
+	"name": "MyFirstResoniteMod",
+	"version_number": "1.0.0",
+	"website_url": "https://github.com/yourusername/MyFirstResoniteMod",
+	"description": "A simple welcome message mod",
+	"dependencies": ["BepInExPack_Resonite-1.0.0"]
 }
 ```
 

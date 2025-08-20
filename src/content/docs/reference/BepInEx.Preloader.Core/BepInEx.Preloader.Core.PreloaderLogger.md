@@ -4,6 +4,7 @@ slug: reference/bepinex.preloader.core.preloaderlogger
 sidebar:
   label: PreloaderLogger
 ---
+
 ## Definition
 
 ```csharp title="C#"

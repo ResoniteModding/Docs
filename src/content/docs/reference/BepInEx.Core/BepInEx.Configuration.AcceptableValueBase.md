@@ -4,6 +4,7 @@ slug: reference/bepinex.configuration.acceptablevaluebase
 sidebar:
   label: AcceptableValueBase
 ---
+
 ## Definition
 
 Base type of all classes representing and enforcing acceptable values of config settings.
@@ -27,7 +28,6 @@ protected AcceptableValueBase(Type valueType)
 `valueType` [Type](https://learn.microsoft.com/dotnet/api/system.type/)  
 Type of values that this class can Clamp.
 
-
 ## Properties
 
 ### ValueType
@@ -50,7 +50,7 @@ public abstract object Clamp(object value)
 
 #### Parameters
 
-`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
+`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)
 
 #### Returns
 
@@ -66,7 +66,7 @@ public abstract bool IsValid(object value)
 
 #### Parameters
 
-`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
+`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)
 
 #### Returns
 

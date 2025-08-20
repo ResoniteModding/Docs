@@ -4,6 +4,7 @@ slug: reference/bepinex.configuration.tomltypeconverter
 sidebar:
   label: TomlTypeConverter
 ---
+
 ## Definition
 
 Serializer/deserializer used by the config system.
@@ -26,9 +27,9 @@ public static string ConvertToString(object value, Type valueType)
 
 #### Parameters
 
-`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
+`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)
 
-`valueType` [Type](https://learn.microsoft.com/dotnet/api/system.type/)  
+`valueType` [Type](https://learn.microsoft.com/dotnet/api/system.type/)
 
 #### Returns
 
@@ -44,7 +45,7 @@ public static T ConvertToValue<T>(string value)
 
 #### Parameters
 
-`value` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
+`value` [string](https://learn.microsoft.com/dotnet/api/system.string/)
 
 #### Returns
 
@@ -60,9 +61,9 @@ public static object ConvertToValue(string value, Type valueType)
 
 #### Parameters
 
-`value` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
+`value` [string](https://learn.microsoft.com/dotnet/api/system.string/)
 
-`valueType` [Type](https://learn.microsoft.com/dotnet/api/system.type/)  
+`valueType` [Type](https://learn.microsoft.com/dotnet/api/system.type/)
 
 #### Returns
 
@@ -78,7 +79,7 @@ public static TypeConverter GetConverter(Type valueType)
 
 #### Parameters
 
-`valueType` [Type](https://learn.microsoft.com/dotnet/api/system.type/)  
+`valueType` [Type](https://learn.microsoft.com/dotnet/api/system.type/)
 
 #### Returns
 
@@ -94,9 +95,9 @@ public static bool AddConverter(Type type, TypeConverter converter)
 
 #### Parameters
 
-`type` [Type](https://learn.microsoft.com/dotnet/api/system.type/)  
+`type` [Type](https://learn.microsoft.com/dotnet/api/system.type/)
 
-`converter` [TypeConverter](../bepinex.configuration.typeconverter/)  
+`converter` [TypeConverter](../bepinex.configuration.typeconverter/)
 
 #### Returns
 
@@ -112,7 +113,7 @@ public static bool CanConvert(Type type)
 
 #### Parameters
 
-`type` [Type](https://learn.microsoft.com/dotnet/api/system.type/)  
+`type` [Type](https://learn.microsoft.com/dotnet/api/system.type/)
 
 #### Returns
 

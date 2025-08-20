@@ -4,6 +4,7 @@ slug: reference/bepinex.preloader.core.patching.assemblypatcher
 sidebar:
   label: AssemblyPatcher
 ---
+
 ## Definition
 
 Worker class which is used for loading and patching entire folders of assemblies, or alternatively patching and loading assemblies one at a time.
@@ -26,8 +27,7 @@ public AssemblyPatcher(Func<byte[], string, Assembly> assemblyLoader)
 
 #### Parameters
 
-`assemblyLoader` [Func\<byte[], string, Assembly\>](https://learn.microsoft.com/dotnet/api/system.func-3/)  
-
+`assemblyLoader` [Func\<byte[], string, Assembly\>](https://learn.microsoft.com/dotnet/api/system.func-3/)
 
 ## Properties
 
@@ -49,7 +49,6 @@ Performs work to dispose collection objects.
 public void Dispose()
 ```
 
-
 ### AddPatchersFromDirectory(string)
 
 Adds all patchers from all managed assemblies specified in a directory.
@@ -63,7 +62,6 @@ public void AddPatchersFromDirectory(string directory)
 `directory` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 Directory to search patcher DLLs from.
 
-
 ### LoadAssemblyDirectories(params string[])
 
 Adds all .dll assemblies in given directories to be patched and loaded by this patcher instance. Non-managed assemblies are skipped.
@@ -76,7 +74,6 @@ public void LoadAssemblyDirectories(params string[] directories)
 
 `directories` [string[]](https://learn.microsoft.com/dotnet/api/system.string/)  
 The directories to search.
-
 
 ### LoadAssemblyDirectories(IEnumerable<string>, IEnumerable<string>)
 
@@ -93,7 +90,6 @@ The directory to search.
 
 `assemblyExtensions` [IEnumerable\<string\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1/)  
 The file extensions to attempt to load.
-
 
 ### TryLoadAssembly(string, out AssemblyDefinition)
 

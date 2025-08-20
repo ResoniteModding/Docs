@@ -4,6 +4,7 @@ slug: reference/bepinex.preloader.core.patching.patchdefinition
 sidebar:
   label: PatchDefinition
 ---
+
 ## Definition
 
 A definition of an individual patch for use by [AssemblyPatcher](../bepinex.preloader.core.patching.assemblypatcher/).
@@ -24,12 +25,11 @@ public PatchDefinition(TargetAssemblyAttribute targetAssembly, BasePatcher insta
 
 #### Parameters
 
-`targetAssembly` [TargetAssemblyAttribute](../bepinex.preloader.core.patching.targetassemblyattribute/)  
+`targetAssembly` [TargetAssemblyAttribute](../bepinex.preloader.core.patching.targetassemblyattribute/)
 
-`instance` [BasePatcher](../bepinex.preloader.core.patching.basepatcher/)  
+`instance` [BasePatcher](../bepinex.preloader.core.patching.basepatcher/)
 
-`methodInfo` [MethodInfo](https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo/)  
-
+`methodInfo` [MethodInfo](https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo/)
 
 ### PatchDefinition(TargetTypeAttribute, BasePatcher, MethodInfo)
 
@@ -39,12 +39,11 @@ public PatchDefinition(TargetTypeAttribute targetType, BasePatcher instance, Met
 
 #### Parameters
 
-`targetType` [TargetTypeAttribute](../bepinex.preloader.core.patching.targettypeattribute/)  
+`targetType` [TargetTypeAttribute](../bepinex.preloader.core.patching.targettypeattribute/)
 
-`instance` [BasePatcher](../bepinex.preloader.core.patching.basepatcher/)  
+`instance` [BasePatcher](../bepinex.preloader.core.patching.basepatcher/)
 
-`methodInfo` [MethodInfo](https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo/)  
-
+`methodInfo` [MethodInfo](https://learn.microsoft.com/dotnet/api/system.reflection.methodinfo/)
 
 ## Properties
 

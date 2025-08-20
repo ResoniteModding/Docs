@@ -10,6 +10,7 @@ This guide covers setting up your development environment and debugging techniqu
 ### IDE Configuration
 
 #### Visual Studio / Rider
+
 1. Create a new Class Library project targeting `.NET 9.0`
 2. Add references to required assemblies:
    ```xml
@@ -26,30 +27,32 @@ This guide covers setting up your development environment and debugging techniqu
    ```
 
 #### Visual Studio Code
+
 1. Install the C# Dev Kit extension
 2. Create a new folder for your mod project
 3. Run `dotnet new classlib -n MyResoniteMod -f net9.0`
 4. Create a `.vscode/settings.json` file:
    ```json
    {
-     "dotnet.defaultSolution": "MyResoniteMod.sln",
-     "files.associations": {
-       "*.cs": "csharp"
-     }
+   	"dotnet.defaultSolution": "MyResoniteMod.sln",
+   	"files.associations": {
+   		"*.cs": "csharp"
+   	}
    }
    ```
 5. Add required packages to your `.csproj`:
+
    ```xml
    <PropertyGroup>
      <TargetFramework>net9.0</TargetFramework>
      <LangVersion>latest</LangVersion>
    </PropertyGroup>
-   
+
    <ItemGroup>
      <PackageReference Include="BepInEx.Core" Version="5.4.22" />
      <PackageReference Include="HarmonyX" Version="2.10.1" />
    </ItemGroup>
-   
+
    <ItemGroup>
      <Reference Include="FrooxEngine">
        <HintPath>path\to\Resonite_Data\Managed\FrooxEngine.dll</HintPath>
@@ -63,56 +66,61 @@ This guide covers setting up your development environment and debugging techniqu
    ```
 
 #### VSCode Debugging Setup
+
 Create a `.vscode/launch.json` for debugging:
+
 ```json
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Debug Resonite Mod",
-      "type": "coreclr",
-      "request": "attach",
-      "processName": "Resonite.exe"
-    }
-  ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug Resonite Mod",
+			"type": "coreclr",
+			"request": "attach",
+			"processName": "Resonite.exe"
+		}
+	]
 }
 ```
 
 Create `.vscode/tasks.json` for build tasks:
+
 ```json
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "build",
-      "command": "dotnet",
-      "type": "process",
-      "args": ["build", "${workspaceFolder}/MyResoniteMod.csproj"],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "silent",
-        "focus": false,
-        "panel": "shared"
-      }
-    },
-    {
-      "label": "copy to resonite",
-      "command": "cp",
-      "type": "shell",
-      "args": [
-        "${workspaceFolder}/bin/Debug/net9.0/MyResoniteMod.dll",
-        "${env:RESONITE_PATH}/BepInEx/plugins/"
-      ],
-      "dependsOn": "build",
-      "group": "build"
-    }
-  ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build",
+			"command": "dotnet",
+			"type": "process",
+			"args": ["build", "${workspaceFolder}/MyResoniteMod.csproj"],
+			"group": "build",
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "copy to resonite",
+			"command": "cp",
+			"type": "shell",
+			"args": [
+				"${workspaceFolder}/bin/Debug/net9.0/MyResoniteMod.dll",
+				"${env:RESONITE_PATH}/BepInEx/plugins/"
+			],
+			"dependsOn": "build",
+			"group": "build"
+		}
+	]
 }
 ```
 
 #### Project Template
+
 Create a basic mod structure:
+
 ```csharp
 using BepInEx;
 using BepInEx.Logging;
@@ -124,19 +132,19 @@ public class MyMod : BaseUnityPlugin
     public const string GUID = "com.example.mymod";
     public const string NAME = "My Resonite Mod";
     public const string VERSION = "1.0.0";
-    
+
     internal static ManualLogSource Logger;
     private static Harmony harmony;
-    
+
     private void Awake()
     {
         Logger = base.Logger;
         harmony = new Harmony(GUID);
         harmony.PatchAll();
-        
+
         Logger.LogInfo($"{NAME} v{VERSION} loaded!");
     }
-    
+
     private void OnDestroy()
     {
         harmony?.UnpatchSelf();
@@ -147,6 +155,7 @@ public class MyMod : BaseUnityPlugin
 ### Build Configuration
 
 #### Debug vs Release
+
 Configure build settings in your project file:
 
 ```xml
@@ -165,6 +174,7 @@ Configure build settings in your project file:
 ```
 
 #### Auto-Deploy Script
+
 Create a post-build script to automatically copy your mod:
 
 ```xml
@@ -181,15 +191,17 @@ Set `RESONITE_PATH` environment variable to your Resonite installation directory
 ### BepInEx Logging
 
 #### Log Levels
+
 ```csharp
 Logger.LogDebug("Detailed debug information");
-Logger.LogInfo("General information");  
+Logger.LogInfo("General information");
 Logger.LogWarning("Warning message");
 Logger.LogError("Error occurred");
 Logger.LogFatal("Critical error");
 ```
 
 #### Conditional Logging
+
 ```csharp
 #if DEBUG
 Logger.LogDebug($"Processing {items.Count} items");
@@ -204,10 +216,11 @@ private static void DebugLog(string message)
 ```
 
 #### Custom Log Categories
+
 ```csharp
-private static readonly ManualLogSource NetworkLogger = 
+private static readonly ManualLogSource NetworkLogger =
     BepInEx.Logging.Logger.CreateLogSource("MyMod.Network");
-private static readonly ManualLogSource UILogger = 
+private static readonly ManualLogSource UILogger =
     BepInEx.Logging.Logger.CreateLogSource("MyMod.UI");
 
 NetworkLogger.LogInfo("Network event occurred");
@@ -217,7 +230,9 @@ UILogger.LogWarning("UI warning");
 ### Console Output
 
 #### Enable Console Window
+
 Add to your BepInEx config (`BepInEx/config/BepInEx.cfg`):
+
 ```ini
 [Logging.Console]
 Enabled = true
@@ -225,7 +240,9 @@ LogLevels = Fatal, Error, Warning, Info, Debug
 ```
 
 #### Console Commands
+
 Create debug commands for testing:
+
 ```csharp
 [HarmonyPatch(typeof(FrooxEngine.ConsoleInterface), "ExecuteCommand")]
 class ConsoleCommandPatch
@@ -240,7 +257,7 @@ class ConsoleCommandPatch
         }
         return true;
     }
-    
+
     static void HandleMyModCommand(string cmd)
     {
         switch (cmd)
@@ -259,12 +276,14 @@ class ConsoleCommandPatch
 ### In-Game Debugging
 
 #### Debug UI
+
 Create visual debug information:
+
 ```csharp
 public class DebugUI : Component
 {
     private TextRenderer debugText;
-    
+
     protected override void OnAwake()
     {
         var textSlot = Slot.AddSlot("Debug Text");
@@ -273,7 +292,7 @@ public class DebugUI : Component
         debugText.Size.Value = 0.1f;
         debugText.Color.Value = color.Red;
     }
-    
+
     protected override void OnCommonUpdate()
     {
         debugText.Text.Value = $"FPS: {Time.FPS:F1}\n" +
@@ -284,7 +303,9 @@ public class DebugUI : Component
 ```
 
 #### Debug Gizmos
+
 Visualize data in 3D space:
+
 ```csharp
 // Draw lines for debugging
 void DrawDebugLine(float3 start, float3 end, color col)
@@ -294,7 +315,7 @@ void DrawDebugLine(float3 start, float3 end, color col)
     line.Points.Add().Position = start;
     line.Points.Add().Position = end;
     line.Material.Target = myLineMaterial;
-    
+
     // Auto-destroy after 1 second
     lineSlot.CreateSpawner().Destroy(1f);
 }
@@ -303,6 +324,7 @@ void DrawDebugLine(float3 start, float3 end, color col)
 ### Stack Traces and Exceptions
 
 #### Exception Handling
+
 ```csharp
 try
 {
@@ -313,7 +335,7 @@ catch (Exception ex)
 {
     Logger.LogError($"Exception in {nameof(RiskyMethod)}: {ex}");
     Logger.LogError($"Stack trace: {ex.StackTrace}");
-    
+
     // Log additional context
     Logger.LogError($"World: {World?.Name ?? "null"}");
     Logger.LogError($"Users: {World?.AllUsers?.Count() ?? -1}");
@@ -321,6 +343,7 @@ catch (Exception ex)
 ```
 
 #### Stack Trace Utilities
+
 ```csharp
 using System.Diagnostics;
 
@@ -340,19 +363,20 @@ public static void LogStackTrace(string prefix = "")
 ## Performance Profiling
 
 ### Performance Monitoring
+
 ```csharp
 using System.Diagnostics;
 
 public class PerformanceMonitor
 {
     private static readonly Stopwatch stopwatch = new Stopwatch();
-    
+
     public static void StartTiming(string operation)
     {
         Logger.LogDebug($"Starting: {operation}");
         stopwatch.Restart();
     }
-    
+
     public static void EndTiming(string operation)
     {
         stopwatch.Stop();
@@ -369,12 +393,13 @@ PerformanceMonitor.EndTiming("Heavy Operation");
 ```
 
 ### Memory Usage
+
 ```csharp
 public static void LogMemoryUsage(string context = "")
 {
     var totalMemory = GC.GetTotalMemory(false);
     var workingSet = Environment.WorkingSet;
-    
+
     Logger.LogInfo($"Memory {context}:");
     Logger.LogInfo($"  GC Memory: {totalMemory / 1024 / 1024}MB");
     Logger.LogInfo($"  Working Set: {workingSet / 1024 / 1024}MB");
@@ -386,7 +411,9 @@ public static void LogMemoryUsage(string context = "")
 ### Automated Testing
 
 #### Unit Test Setup
+
 Create test project targeting the same .NET version:
+
 ```csharp
 [TestFixture]
 public class MyModTests
@@ -396,16 +423,16 @@ public class MyModTests
     {
         // Initialize test environment
     }
-    
+
     [Test]
     public void TestMyFunction()
     {
         // Arrange
         var input = "test";
-        
+
         // Act
         var result = MyMod.ProcessInput(input);
-        
+
         // Assert
         Assert.AreEqual("expected", result);
     }
@@ -413,6 +440,7 @@ public class MyModTests
 ```
 
 #### Mock Objects
+
 ```csharp
 // Create mock world for testing
 public static World CreateTestWorld()
@@ -426,6 +454,7 @@ public static World CreateTestWorld()
 ### Manual Testing
 
 #### Test Scenarios
+
 1. **Fresh World**: Test in empty worlds
 2. **Populated World**: Test with existing content
 3. **Multiplayer**: Test with multiple users
@@ -433,6 +462,7 @@ public static World CreateTestWorld()
 5. **Performance**: Test with high loads
 
 #### Test Checklist
+
 ```markdown
 - [ ] Mod loads without errors
 - [ ] All features work as expected
@@ -447,6 +477,7 @@ public static World CreateTestWorld()
 ## Launch Arguments for Development
 
 ### Recommended Developer Arguments
+
 Add these to your Resonite launch options:
 
 ```bash
@@ -454,6 +485,7 @@ Add these to your Resonite launch options:
 ```
 
 #### Argument Explanations
+
 - `-SkipIntroTutorial`: Skip intro for faster testing
 - `-DoNotAutoLoadHome`: Don't load home world automatically
 - `-NoUI`: Disable overlay UI (optional)
@@ -462,7 +494,9 @@ Add these to your Resonite launch options:
 - `-ForceLegacyRenderer`: Use legacy renderer if needed
 
 ### Development Batch File
+
 Create `dev_launch.bat`:
+
 ```batch
 @echo off
 cd /d "C:\Path\To\Resonite"
@@ -474,6 +508,7 @@ pause
 ## Remote Debugging
 
 ### Visual Studio Debugger
+
 1. Enable "Enable native code debugging" in project properties
 2. Attach to Resonite process:
    - Debug → Attach to Process
@@ -481,7 +516,9 @@ pause
    - Make sure "Managed (.NET)" is selected
 
 ### Debug Symbols
+
 Ensure PDB files are copied with your DLL:
+
 ```xml
 <PropertyGroup>
   <DebugSymbols>true</DebugSymbols>
@@ -492,17 +529,19 @@ Ensure PDB files are copied with your DLL:
 ## Common Debug Scenarios
 
 ### Component Not Found
+
 ```csharp
 var component = slot.GetComponent<MyComponent>();
 if (component == null)
 {
     Logger.LogWarning($"Component not found on slot: {slot.Name}");
-    Logger.LogDebug($"Available components: {string.Join(", ", 
+    Logger.LogDebug($"Available components: {string.Join(", ",
         slot.Components.Select(c => c.GetType().Name))}");
 }
 ```
 
 ### Field Access Issues
+
 ```csharp
 try
 {
@@ -516,6 +555,7 @@ catch (NullReferenceException)
 ```
 
 ### Harmony Patch Debugging
+
 ```csharp
 [HarmonyPatch(typeof(TargetClass), "TargetMethod")]
 class DebugPatch
@@ -524,12 +564,12 @@ class DebugPatch
     {
         Logger.LogDebug($"Method called with args: [{string.Join(", ", __args)}]");
     }
-    
+
     static void Postfix(object __result)
     {
         Logger.LogDebug($"Method returned: {__result}");
     }
-    
+
     static Exception Finalizer(Exception __exception)
     {
         if (__exception != null)
@@ -542,12 +582,15 @@ class DebugPatch
 ## Log Analysis
 
 ### Log File Locations
+
 - **BepInEx Log**: `BepInEx/LogOutput.log`
 - **Resonite Log**: `Logs/` folder in Resonite directory
 - **Unity Log**: Unity Console (accessible via mods)
 
 ### Log Parsing Tools
+
 Create log analysis scripts:
+
 ```csharp
 public static class LogAnalyzer
 {
@@ -556,9 +599,9 @@ public static class LogAnalyzer
         var lines = File.ReadAllLines(logPath);
         var errors = lines.Where(l => l.Contains("[Error]"));
         var warnings = lines.Where(l => l.Contains("[Warning]"));
-        
+
         Logger.LogInfo($"Found {errors.Count()} errors, {warnings.Count()} warnings");
-        
+
         foreach (var error in errors.Take(10))
             Logger.LogInfo($"Error: {error}");
     }
@@ -568,6 +611,7 @@ public static class LogAnalyzer
 ## Best Practices
 
 ### Debug Code Organization
+
 ```csharp
 public static class DebugHelpers
 {
@@ -580,7 +624,7 @@ public static class DebugHelpers
             LogStackTrace();
         }
     }
-    
+
     [Conditional("DEBUG")]
     public static void LogMethodEntry([CallerMemberName] string method = "")
     {
@@ -590,6 +634,7 @@ public static class DebugHelpers
 ```
 
 ### Error Recovery
+
 ```csharp
 public static T SafeExecute<T>(Func<T> func, T defaultValue = default(T))
 {
@@ -606,6 +651,7 @@ public static T SafeExecute<T>(Func<T> func, T defaultValue = default(T))
 ```
 
 ### Development Workflow
+
 1. Write failing test
 2. Implement feature
 3. Run tests

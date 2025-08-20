@@ -14,39 +14,39 @@ on:
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Clone BepInEx repository
         run: |
           git clone https://github.com/ResoniteModding/BepInEx.git
           cp docfx.json BepInEx/
-          
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
-          
+
       - name: Install DocFX
         run: |
           dotnet tool install -g docfx
-          
+
       - name: Install docfx2astro
         run: |
           dotnet tool install -g hertzole.docfx2astro
-          
+
       - name: Generate metadata
         working-directory: ./BepInEx
         run: |
           docfx metadata docfx.json
-          
+
       - name: Convert to Astro format
         working-directory: ./BepInEx
         run: |
           docfx2astro -i ./api -o ../src/content/docs/reference --verbose
-          
+
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"

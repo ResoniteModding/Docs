@@ -4,6 +4,7 @@ slug: reference/bepinex.configuration.configdescription
 sidebar:
   label: ConfigDescription
 ---
+
 ## Definition
 
 Metadata of a [ConfigEntryBase](../bepinex.configuration.configentrybase/).
@@ -35,7 +36,6 @@ clamped.
 
 `tags` [object[]](https://learn.microsoft.com/dotnet/api/system.object/)  
 Objects that can be used by user-made classes to add functionality.
-
 
 ## Properties
 

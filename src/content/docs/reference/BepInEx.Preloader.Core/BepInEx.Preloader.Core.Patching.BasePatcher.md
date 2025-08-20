@@ -4,6 +4,7 @@ slug: reference/bepinex.preloader.core.patching.basepatcher
 sidebar:
   label: BasePatcher
 ---
+
 ## Definition
 
 A patcher that can contain multiple methods for patching assemblies.
@@ -21,7 +22,6 @@ Inheritance [object](https://learn.microsoft.com/dotnet/api/system.object/)
 ```csharp title="C#"
 protected BasePatcher()
 ```
-
 
 ## Properties
 
@@ -66,7 +66,6 @@ Executed before any patches from any plugin are applied.
 ```csharp title="C#"
 public virtual void Initialize()
 ```
-
 
 ### Finalizer()
 

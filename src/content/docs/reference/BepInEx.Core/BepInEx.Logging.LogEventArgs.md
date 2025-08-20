@@ -4,6 +4,7 @@ slug: reference/bepinex.logging.logeventargs
 sidebar:
   label: LogEventArgs
 ---
+
 ## Definition
 
 Log event arguments. Contains info about the log message.
@@ -34,7 +35,6 @@ Log level of the data.
 
 `source` [ILogSource](../bepinex.logging.ilogsource/)  
 Log source that emits these args.
-
 
 ## Properties
 

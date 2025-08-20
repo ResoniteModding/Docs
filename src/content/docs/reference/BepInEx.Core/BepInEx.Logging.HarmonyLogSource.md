@@ -4,6 +4,7 @@ slug: reference/bepinex.logging.harmonylogsource
 sidebar:
   label: HarmonyLogSource
 ---
+
 ## Definition
 
 ```csharp title="C#"
@@ -21,7 +22,6 @@ Implements [ILogSource](../bepinex.logging.ilogsource/), [IDisposable](https://l
 ```csharp title="C#"
 public HarmonyLogSource()
 ```
-
 
 ## Properties
 
@@ -42,7 +42,6 @@ Performs application-defined tasks associated with freeing, releasing, or resett
 ```csharp title="C#"
 public void Dispose()
 ```
-
 
 ## Events
 

@@ -4,6 +4,7 @@ slug: reference/bepinex.logging.iloglistener
 sidebar:
   label: ILogListener
 ---
+
 ## Definition
 
 A generic log listener that receives log events and can route them to some output (e.g. file, console, socket).
@@ -11,7 +12,6 @@ A generic log listener that receives log events and can route them to some outpu
 ```csharp title="C#"
 public interface ILogListener : IDisposable
 ```
-
 
 ## Properties
 
@@ -22,6 +22,7 @@ What log levels the listener preliminarily wants.
 ```csharp title="C#"
 LogLevel LogLevelFilter { get; }
 ```
+
 ## Remarks
 
 The filter is used to more efficiently discard log messages that aren't being listened to. As such, the filter should represent the log levels that the listener will always want to process. It is up to the the implementation of `BepInEx.Logging.ILogListener.LogEvent(System.Object%2cBepInEx.Logging.LogEventArgs)` whether the messages are going to be processed or discarded.
