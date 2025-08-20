@@ -8,7 +8,9 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   integrations: [starlight({
-      title: 'Resonite Modding',
+      title: {
+				en: 'Resonite Modding',
+			},
 			expressiveCode: {
 				themes: ['catppuccin-mocha']
 			},
@@ -27,45 +29,51 @@ export default defineConfig({
       locales: {
           root: {
               label: 'English',
-              lang: 'en',
+							lang: 'en',
           },
       },
       sidebar: [
           {
               label: 'Getting Started',
+              translations: { en: 'Getting Started' },
               items: [
-                  { label: 'Introduction', slug: 'index' },
-                  { label: 'Installation', slug: 'getting-started/installation' },
-                  { label: 'BepisLoader', items: [
-										{ label: 'Introduction', slug: 'getting-started/bepisloader/introduction' },
-                  	{ label: 'What is BepisLoader?', slug: 'getting-started/bepisloader/what-is' },
-										{ label: 'Setting Up BepisLoader', slug: 'getting-started/bepisloader/setup' },
+                  { translations: { en: 'Introduction' }, slug: 'index' },
+                  { translations: { en: 'Installation' }, slug: 'getting-started/installation' },
+                  { label: 'BepisLoader', translations: { en: 'BepisLoader' }, items: [
+										{ translations: { en: 'Introduction' }, slug: 'getting-started/bepisloader/introduction' },
+                  	{ translations: { en: 'What is BepisLoader?' }, slug: 'getting-started/bepisloader/what-is' },
+										{ translations: { en: 'Setting Up BepisLoader' }, slug: 'getting-started/bepisloader/setup' },
 									]  },
-                  { label: 'Your First Mod', slug: 'getting-started/first-mod' },
-                  { label: 'Troubleshooting', slug: 'getting-started/troubleshooting' },
+                  { translations: { en: 'Your First Mod' }, slug: 'getting-started/first-mod' },
+                  { translations: { en: 'Troubleshooting' }, slug: 'getting-started/troubleshooting' },
               ],
           },
           {
               label: 'Guides',
+              translations: { en: 'Guides' },
               items: [
-                  { label: 'Mod Development Basics', slug: 'guides/mod-basics' },
-                  { label: 'Using BepInEx', slug: 'guides/bepinex' },
-                  { label: 'Debugging Mods', slug: 'guides/debugging' },
+                  { translations: { en: 'Mod Development Basics' }, slug: 'guides/mod-basics' },
+                  { translations: { en: 'Using BepInEx' }, slug: 'guides/bepinex' },
+                  { translations: { en: 'Debugging Mods' }, slug: 'guides/debugging' },
               ],
           },
           {
               label: 'Recipes',
+              translations: { en: 'Recipes' },
               items: [],
           },
           {
               label: 'Reference',
-              items: [],
+              translations: { en: 'Reference' },
+							collapsed: true,
+              autogenerate: { directory: 'reference' },
           },
           {
               label: 'Resources',
+              translations: { en: 'Resources' },
               items: [
-                  { label: 'Tools & Utilities', slug: 'resources/tools' },
-                  { label: 'Links & Community', slug: 'resources/links' },
+                  { translations: { en: 'Tools & Utilities' }, slug: 'resources/tools' },
+                  { translations: { en: 'Links & Community' }, slug: 'resources/links' },
               ],
           },
       ],
