@@ -21,7 +21,7 @@ jobs:
         
       - name: Clone BepInEx repository
         run: |
-          git clone https://github.com/art0007i/BepInEx.git
+          git clone https://github.com/ResoniteModding/BepInEx.git
           cp docfx.json BepInEx/
           
       - name: Setup .NET
