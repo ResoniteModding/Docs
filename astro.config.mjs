@@ -4,7 +4,6 @@ import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
 import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
-import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,7 +25,7 @@ export default defineConfig({
 				{
 					icon: 'github',
 					label: 'GitHub',
-					href: 'https://github.com/art0007i/BepisLoader'
+					href: 'https://github.com/ResoniteModding'
 				}
 			],
 			customCss: ['./src/styles/global.css'],
@@ -107,11 +106,5 @@ export default defineConfig({
 
 	vite: {
 		plugins: [tailwindcss()]
-	},
-	adapter: cloudflare({
-		imageService: 'compile',
-		platformProxy: {
-			enabled: true
-		}
-	})
+	}
 });
