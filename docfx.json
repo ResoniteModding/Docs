@@ -1,46 +1,46 @@
 {
-	"$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
-	"metadata": [
-		{
-			"src": [
-				{
-					"files": [
-						"BepInEx.Preloader.Core/BepInEx.Preloader.Core.csproj",
-						"BepInEx.Core/BepInEx.Core.csproj"
-					],
-					"exclude": ["**/bin/**", "**/obj/**"]
-				}
-			],
-			"output": "api",
-			"shouldSkipMarkup": false,
-			"disableGitFeatures": false,
-			"disableDefaultFilter": false,
-			"categoryLayout": "flattened",
-			"namespaceLayout": "flattened",
-			"memberLayout": "separatePages",
-			"properties": {
-				"TargetFramework": "net9.0"
-			},
-			"allowCompilationErrors": true,
-			"noRestore": false
-		}
-	],
-	"build": {
-		"content": [
-			{
-				"files": ["api/**.md", "api/**/toc.yml"]
-			},
-			{
-				"files": ["docs/**.md", "docs/**/toc.yml", "toc.yml", "*.md"]
-			}
-		],
-		"resource": [
-			{
-				"files": ["images/**", "assets/**"]
-			}
-		],
-		"output": "_site",
-		"template": ["default"],
-		"disableGitFeatures": false
-	}
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "BepInEx.Preloader.Core/BepInEx.Preloader.Core.csproj",
+            "BepInEx.Core/BepInEx.Core.csproj"
+          ],
+          "exclude": ["**/bin/**", "**/obj/**"]
+        }
+      ],
+      "output": "api",
+      "shouldSkipMarkup": false,
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false,
+      "categoryLayout": "flattened",
+      "namespaceLayout": "flattened",
+      "memberLayout": "separatePages",
+      "properties": {
+        "TargetFramework": "net9.0"
+      },
+      "allowCompilationErrors": true,
+      "noRestore": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["api/**.md", "api/**/toc.yml"]
+      },
+      {
+        "files": ["docs/**.md", "docs/**/toc.yml", "toc.yml", "*.md"]
+      }
+    ],
+    "resource": [
+      {
+        "files": ["images/**", "assets/**"]
+      }
+    ],
+    "output": "_site",
+    "template": ["default"],
+    "disableGitFeatures": false
+  }
 }
