@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+	site: "https://modding.resonite.net",
   integrations: [starlight({
       title: {
 				en: 'Resonite Modding',
@@ -80,6 +81,7 @@ export default defineConfig({
       components: {
           Head: "./src/components/Head.astro",
           PageFrame: "./src/components/PageFrame.astro",
+          Footer: "./src/components/Footer.astro",
       }
       }), svelte(), mdx()],
 
