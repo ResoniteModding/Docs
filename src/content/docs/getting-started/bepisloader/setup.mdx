@@ -64,18 +64,21 @@ HideManagerGameObject = false
 ## Plugin Development Setup
 
 <Steps>
-1. **Create a new Class Library project** targeting .NET 9
+<ol>
+	<li>**Create a new Class Library project** targeting .NET 9</li>
+	<li>
+		**Add BepInEx references** to your project:
 
-2. **Add BepInEx references** to your project:
+    ```xml
+    <PackageReference Include="BepInEx.Core" Version="6.0.0-be.*" />
+    ```
 
-   ```xml
-   <PackageReference Include="BepInEx.Core" Version="6.0.0-be.*" />
-   ```
+  </li>
+	<li>**Reference Resonite assemblies** from your game folder</li>
+	<li>**Set up your development environment** with proper debugging tools</li>
 
-3. **Reference Resonite assemblies** from your game folder
-
-4. **Set up your development environment** with proper debugging tools
-   </Steps>
+</ol>
+</Steps>
 
 ## Plugin Templates
 
