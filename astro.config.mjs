@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
 import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
+import starlightThemeRapide from 'starlight-theme-rapide';
 
 // https://astro.build/config
 export default defineConfig({
@@ -33,7 +34,7 @@ export default defineConfig({
 					href: 'https://github.com/ResoniteModding',
 				},
 			],
-			customCss: ['./src/styles/global.css'],
+			customCss: ['./src/styles/theme.css'],
 			defaultLocale: 'root',
 			locales: {
 				root: {
@@ -82,9 +83,10 @@ export default defineConfig({
 			],
 			components: {
 				Head: './src/components/Head.astro',
-				PageFrame: './src/components/PageFrame.astro',
+				// PageFrame: './src/components/PageFrame.astro',
 				Footer: './src/components/Footer.astro',
 			},
+			plugins: [starlightThemeRapide()],
 		}),
 		svelte(),
 		mdx(),
