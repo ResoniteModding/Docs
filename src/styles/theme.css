@@ -1,0 +1,61 @@
+:root,
+::backdrop {
+	--sl-hue-green: 50;
+	/* --sl-hue-base: 14; */
+}
+
+:root:is(:root),
+::backdrop:is(::backdrop) {
+	--sl-color-green-low: oklch(20% 0.018 var(--sl-hue-green));
+	--sl-color-green: oklch(61% 0.115 var(--sl-hue-green));
+	--sl-color-green-high: oklch(86% 0.054 var(--sl-hue-green));
+	--sl-color-green-accent: oklch(93% 0.054 var(--sl-hue-green));
+	--sl-color-green-accent-invert: oklch(66% 0.14 var(--sl-hue-green));
+
+	--sl-color-accent-low: oklch(20% 0.018 var(--sl-hue-green));
+	--sl-color-accent: oklch(61% 0.115 var(--sl-hue-green));
+	--sl-color-accent-high: oklch(86% 0.054 var(--sl-hue-green));
+
+	--bg-gradient: radial-gradient(
+		circle at 50% 50%,
+		oklch(0.81 0.12 225.13 / 0.08) 0%,
+		oklch(0.6 0.25 307.78 / 0.06) 25%,
+		oklch(0.68 0.21 24.81 / 0.05) 50%,
+		oklch(0.95 0.19 109.25 / 0.05) 75%,
+		oklch(0.83 0.22 143.55 / 0.05) 100%
+	);
+	--bg-color: oklch(15% 0.02 250);
+}
+
+:root[data-theme='light']:is(:root[data-theme='light']),
+[data-theme='light'] ::backdrop:is(::backdrop) {
+	--sl-color-green-low: oklch(96% 0.01 var(--sl-hue-green));
+	--sl-color-green: oklch(66% 0.14 var(--sl-hue-green));
+	--sl-color-green-high: oklch(43% 0.09 var(--sl-hue-green));
+	--sl-color-green-accent: oklch(36% 0.07 var(--sl-hue-green));
+	--sl-color-green-accent-invert: oklch(50% 0.1 var(--sl-hue-green));
+
+	--sl-color-accent-low: oklch(96% 0.01 var(--sl-hue-green));
+	--sl-color-accent: oklch(66% 0.14 var(--sl-hue-green));
+	--sl-color-accent-high: oklch(43% 0.09 var(--sl-hue-green));
+
+	--bg-gradient: radial-gradient(
+		circle at 50% 50%,
+		oklch(0.81 0.12 225.13 / 0.12) 0%,
+		oklch(0.6 0.25 307.78 / 0.08) 25%,
+		oklch(0.68 0.21 24.81 / 0.08) 50%,
+		oklch(0.95 0.19 109.25 / 0.08) 75%,
+		oklch(0.83 0.22 143.55 / 0.08) 100%
+	);
+	--bg-color: oklch(98% 0.005 90);
+}
+
+body {
+	background: var(--bg-gradient), var(--bg-color);
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+header.header {
+	border-bottom: unset;
+}

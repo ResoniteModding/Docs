@@ -7,45 +7,32 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
-	/* Resonite Neutral Colors */
-	--color-white: #fff;
-	/* White 100 */
-	--color-gray-50: #fafaf9;
-	--color-gray-100: #f5f5f4;
-	--color-gray-200: #e1e1e0;
-	/* White 100 */
-	--color-gray-300: #c0c0bf;
-	--color-gray-400: #86888b;
-	/* Gray 500 */
-	--color-gray-500: #86888b;
-	/* Gray 500 */
-	--color-gray-600: #5a5c5f;
-	--color-gray-700: #2b2f35;
-	/* Black 800 */
-	--color-gray-800: #2b2f35;
-	/* Black 800 */
-	--color-gray-900: #11151d;
-	/* Black 900 */
-	--color-gray-950: #0a0d12;
+	/* Resonite Neutral Colors using Tailwind's built-in colors */
+	--color-white: white;
+	--color-gray-50: gray-50;
+	--color-gray-100: stone-100;
+	--color-gray-200: stone-200;
+	--color-gray-300: gray-300;
+	--color-gray-400: gray-500;
+	--color-gray-500: gray-500;
+	--color-gray-600: gray-600;
+	--color-gray-700: gray-800;
+	--color-gray-800: gray-800;
+	--color-gray-900: gray-950;
+	--color-gray-950: black;
 
-	/* Resonite Cyan (Primary Accent) */
-	--color-accent-50: #e6f6fc;
-	--color-accent-100: #c8ecf9;
-	--color-accent-200: #a3dff7;
-	--color-accent-300: #61d1fa;
-	/* Cyan */
-	--color-accent-400: #51c6f2;
-	--color-accent-500: #458fab;
-	/* Cyan Mid */
-	--color-accent-600: #458fab;
-	/* Cyan Mid */
-	--color-accent-700: #3a7691;
-	--color-accent-800: #284c5d;
-	/* Cyan Sub */
-	--color-accent-900: #284c5d;
-	/* Cyan Sub */
-	--color-accent-950: #1a2a36;
-	/* Cyan Dark */
+	/* Resonite Cyan (Primary Accent) using Tailwind's cyan colors */
+	--color-accent-50: cyan-50;
+	--color-accent-100: cyan-100;
+	--color-accent-200: cyan-200;
+	--color-accent-300: cyan-300;
+	--color-accent-400: cyan-400;
+	--color-accent-500: cyan-600;
+	--color-accent-600: cyan-600;
+	--color-accent-700: cyan-700;
+	--color-accent-800: cyan-900;
+	--color-accent-900: cyan-900;
+	--color-accent-950: cyan-950;
 }
 
 @layer utilities {
@@ -63,7 +50,7 @@
 		--sl-color-black: var(--color-gray-900);
 		--sl-color-accent-low: var(--color-accent-950, var(--color-accent-900, #1a2a36));
 		--sl-color-accent: var(--color-accent-600, #458fab);
-		--sl-color-accent-high: var(--color-accent-200, #a3dff7);
+		--sl-color-accent-high: var(--color-accent-200, #0a0a0a);
 
 		--bg-gradient: radial-gradient(
 			circle at 50% 50%,
