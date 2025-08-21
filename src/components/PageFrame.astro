@@ -5,12 +5,12 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 ---
 
 <div class="page sl-flex">
-	<header class="header backdrop-blur-md bg-gray-900/70"><slot name="header" /></header>
+	<header class="header backdrop-blur-md dark:bg-gray-900/70"><slot name="header" /></header>
 	{
 		hasSidebar && (
 			<nav class="sidebar print:hidden" aria-label={Astro.locals.t('sidebarNav.accessibleLabel')}>
 				<MobileMenuToggle />
-				<div id="starlight__sidebar" class="sidebar-pane backdrop-blur-md bg-gray-900/80">
+				<div id="starlight__sidebar" class="sidebar-pane backdrop-blur-md dark:bg-gray-900/70">
 					<div class="sidebar-content sl-flex">
 						<slot name="sidebar" />
 					</div>
@@ -38,7 +38,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 			border-bottom: 1px solid var(--sl-color-hairline-shade);
 			padding: var(--sl-nav-pad-y) var(--sl-nav-pad-x);
 			padding-inline-end: var(--sl-nav-pad-x);
-			/* Removed background-color for blur effect */
+			/* background-color: color-mix(in oklab, var(--sl-color-bg-nav) 80%, transparent); */
 		}
 
 		:global([data-has-sidebar]) .header {
@@ -54,7 +54,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 			inset-block: var(--sl-nav-height) 0;
 			inset-inline-start: 0;
 			width: 100%;
-			/* Removed background-color for blur effect */
+			/* background-color: color-mix(in oklab, var(--sl-color-black) 80%, transparent); */
 			overflow-y: auto;
 		}
 
@@ -89,7 +89,7 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 			.sidebar-pane {
 				--sl-sidebar-visibility: visible;
 				width: var(--sl-sidebar-width);
-				/* Removed background-color for blur effect */
+				/* background-color: color-mix(in oklab, var(--sl-color-bg-sidebar) 80%, transparent); */
 				border-inline-end: 1px solid var(--sl-color-hairline-shade);
 			}
 		}
