@@ -14,6 +14,11 @@ export default defineConfig({
 			title: {
 				en: 'Resonite Modding',
 			},
+			logo: {
+				src: './src/assets/resonite-modding-v1.svg',
+				alt: 'Resonite Modding Logo',
+			},
+			favicon: './src/assets/resonite-modding-v1.svg',
 			expressiveCode: {
 				themes: ['catppuccin-mocha'],
 			},
