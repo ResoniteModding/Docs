@@ -83,11 +83,20 @@ export default defineConfig({
 				},
 			],
 			components: {
-				Head: './src/components/Head.astro',
+				// Head: './src/components/Head.astro',
 				// PageFrame: './src/components/PageFrame.astro',
 				Footer: './src/components/Footer.astro',
 			},
 			plugins: [starlightThemeRapide()],
+			head: [
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'color-scheme',
+						content: 'light dark',
+					},
+				},
+			],
 		}),
 		svelte(),
 		mdx(),

@@ -1,3 +1,7 @@
+@view-transition {
+	navigation: auto;
+}
+
 :root,
 ::backdrop {
 	--sl-hue-green: 50;
