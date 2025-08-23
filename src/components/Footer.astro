@@ -1,8 +1,10 @@
 ---
 import StarlightFooter from '@astrojs/starlight/components/Footer.astro';
+import DisclaimerModal from './DisclaimerModal.svelte';
 ---
 
 <StarlightFooter />
+<DisclaimerModal client:load />
 <div class="footer-bottom">
 	<div class="disclaimer">
 		<p>
