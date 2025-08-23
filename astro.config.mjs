@@ -22,9 +22,6 @@ export default defineConfig({
 				alt: 'Resonite Modding Logo',
 			},
 			favicon: './src/assets/bepinite-logo-v1.svg',
-			expressiveCode: {
-				themes: ['catppuccin-mocha'],
-			},
 			editLink: {
 				baseUrl: 'https://github.com/ResoniteModding/docs/edit/main/',
 			},
