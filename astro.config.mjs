@@ -3,13 +3,11 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
 import mdx from '@astrojs/mdx';
-import tailwindcss from '@tailwindcss/vite';
 import starlightThemeRapide from 'starlight-theme-rapide';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://modding.resonite.net',
-
 	integrations: [
 		starlight({
 			prerender: true,
@@ -97,8 +95,4 @@ export default defineConfig({
 		svelte(),
 		mdx(),
 	],
-
-	vite: {
-		plugins: [tailwindcss()],
-	},
 });
