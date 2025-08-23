@@ -16,10 +16,9 @@ export default defineConfig({
 				en: 'Resonite Modding',
 			},
 			logo: {
-				src: './src/assets/bepinite-logo-v1.svg',
+				src: './public/favicon.svg',
 				alt: 'Resonite Modding Logo',
 			},
-			favicon: './src/assets/bepinite-logo-v1.svg',
 			editLink: {
 				baseUrl: 'https://github.com/ResoniteModding/docs/edit/main/',
 			},
