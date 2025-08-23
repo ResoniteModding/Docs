@@ -4,7 +4,6 @@ import starlight from '@astrojs/starlight';
 import svelte from '@astrojs/svelte';
 import mdx from '@astrojs/mdx';
 import starlightThemeRapide from 'starlight-theme-rapide';
-import favicons from 'astro-favicons';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +19,7 @@ export default defineConfig({
 				src: './src/assets/bepinite-logo-v1.svg',
 				alt: 'Resonite Modding Logo',
 			},
+			favicon: './src/assets/bepinite-logo-v1.svg',
 			editLink: {
 				baseUrl: 'https://github.com/ResoniteModding/docs/edit/main/',
 			},
@@ -94,12 +94,5 @@ export default defineConfig({
 		}),
 		svelte(),
 		mdx(),
-		favicons({
-			input: {
-				favicons: ['./src/assets/bepinite-logo-v1.svg'],
-			},
-			name: 'Resonite Modding',
-			short_name: 'ResoniteModding',
-		}),
 	],
 });
