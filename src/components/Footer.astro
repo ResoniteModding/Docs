@@ -3,26 +3,46 @@ import StarlightFooter from '@astrojs/starlight/components/Footer.astro';
 ---
 
 <StarlightFooter />
-
-<div
-	class="text-center p-4 border-t border-gray-300 dark:border-gray-700 mt-8 text-sm text-gray-600 dark:text-gray-400"
->
-	<p class="my-2">
-		We are an independent project and are not affiliated with <a
-			href="https://resonite.com/"
-			class="text-accent-700 dark:text-accent-300 hover:text-accent-800 dark:hover:text-accent-200 hover:underline"
-			>Resonite</a
-		> or <a
-			href="https://yellowdogman.com/"
-			class="text-accent-700 dark:text-accent-300 hover:text-accent-800 dark:hover:text-accent-200 hover:underline"
-			>Yellow Dog Man Studios</a
-		>.
-	</p>
-	<p class="my-2">
-		These docs are made by <a
-			href="https://github.com/ResoniteModding"
-			class="text-accent-700 dark:text-accent-300 hover:text-accent-800 dark:hover:text-accent-200 hover:underline"
-			>ResoniteModding</a
-		>
-	</p>
+<div class="footer-bottom">
+	<div class="disclaimer">
+		<p>
+			We are an independent project and are not affiliated with
+			<a href="https://resonite.com/" class="link-styled">Resonite</a> or 
+			<a href="https://yellowdogman.com/" class="link-styled">Yellow Dog Man Studios</a>.
+		</p>
+	</div>
 </div>
+</div>
+
+<style>
+	.footer-bottom {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		border-top: 1px solid var(--sl-color-gray-5);
+    padding-top: 1.5rem;
+	}
+
+	.disclaimer {
+		line-height: 1.8;
+	}
+
+	.disclaimer p {
+		margin: 0.25rem 0;
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+
+	.link-styled {
+		color: var(--sl-color-accent);
+		text-decoration: none;
+		transition: all 0.2s ease;
+		border-bottom: 1px solid transparent;
+	}
+
+	.link-styled:hover {
+		color: var(--sl-color-accent-high);
+		border-bottom-color: var(--sl-color-accent);
+	}
+</style>

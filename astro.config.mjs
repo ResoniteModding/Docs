@@ -13,6 +13,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			prerender: true,
+			lastUpdated: true,
 			title: {
 				en: 'Resonite Modding',
 			},
@@ -83,8 +84,6 @@ export default defineConfig({
 				},
 			],
 			components: {
-				// Head: './src/components/Head.astro',
-				// PageFrame: './src/components/PageFrame.astro',
 				Footer: './src/components/Footer.astro',
 			},
 			plugins: [starlightThemeRapide()],
