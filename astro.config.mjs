@@ -12,6 +12,7 @@ export default defineConfig({
 
 	integrations: [
 		starlight({
+			prerender: true,
 			title: {
 				en: 'Resonite Modding',
 			},
