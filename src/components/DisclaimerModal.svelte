@@ -67,15 +67,13 @@
       <h2 id="disclaimer-title">{strings.title}</h2>
       <div class="modal-body">
         <p>
-          {strings.independence.split('Resonite')[0]}
-          <a href="https://resonite.com/" target="_blank" rel="noopener">Resonite</a>
-          {strings.independence.split('Resonite')[1].split('Yellow Dog Man Studios S.r.o.')[0]}
+          {strings.independence.prefix} <strong>{strings.independence.type}</strong> {strings.independence.suffix}
+          <a href="https://resonite.com/" target="_blank" rel="noopener">Resonite</a> or
           <a href="https://yellowdogman.com/" target="_blank" rel="noopener">Yellow Dog Man Studios S.r.o.</a>
-          {strings.independence.split('Yellow Dog Man Studios S.r.o.')[1]}
         </p>
         <p>{strings.goal}</p>
         <p>
-          {strings.openSource.split('GitHub repository')[0]}
+          {strings.openSource.prefix} <strong>{strings.openSource.type}</strong> {strings.openSource.suffix}
           <a href="https://github.com/ResoniteModding/Docs" target="_blank" rel="noopener">GitHub repository</a>.
         </p>
         <p>{strings.wrongPlace}</p>

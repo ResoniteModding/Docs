@@ -9,9 +9,13 @@ export const collections = {
 		schema: i18nSchema({
 			extend: z.object({
 				'disclaimer.title': z.string().optional(),
-				'disclaimer.independence': z.string().optional(),
+				'disclaimer.independence.prefix': z.string().optional(),
+				'disclaimer.independence.type': z.string().optional(),
+				'disclaimer.independence.suffix': z.string().optional(),
 				'disclaimer.goal': z.string().optional(),
-				'disclaimer.openSource': z.string().optional(),
+				'disclaimer.openSource.prefix': z.string().optional(),
+				'disclaimer.openSource.type': z.string().optional(),
+				'disclaimer.openSource.suffix': z.string().optional(),
 				'disclaimer.wrongPlace': z.string().optional(),
 				'disclaimer.visitOfficial': z.string().optional(),
 				'disclaimer.continue': z.string().optional(),

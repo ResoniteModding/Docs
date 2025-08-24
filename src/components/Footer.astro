@@ -8,9 +8,17 @@ const hash = childProcess.execSync('git rev-parse --short HEAD').toString().trim
 const t = Astro.locals.t;
 const disclaimerStrings = {
 	title: t('disclaimer.title'),
-	independence: t('disclaimer.independence'),
+	independence: {
+		prefix: t('disclaimer.independence.prefix'),
+		type: t('disclaimer.independence.type'),
+		suffix: t('disclaimer.independence.suffix'),
+	},
 	goal: t('disclaimer.goal'),
-	openSource: t('disclaimer.openSource'),
+	openSource: {
+		prefix: t('disclaimer.openSource.prefix'),
+		type: t('disclaimer.openSource.type'),
+		suffix: t('disclaimer.openSource.suffix'),
+	},
 	wrongPlace: t('disclaimer.wrongPlace'),
 	visitOfficial: t('disclaimer.visitOfficial'),
 	continue: t('disclaimer.continue'),
