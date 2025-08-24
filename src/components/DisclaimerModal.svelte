@@ -123,32 +123,6 @@
     border: 1px solid var(--sl-color-gray-5);
   }
 
-  /* h2 {
-    margin: 0 0 1.5rem 0;
-    color: var(--sl-color-text);
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-
-  .modal-body {
-    margin-bottom: 1.5rem;
-    color: var(--sl-color-text);
-    line-height: 1.6;
-  } */
-
-  /* .modal-body p {
-    margin: 0 0 1rem 0;
-  }
-
-  .modal-body ul {
-    margin: 0.5rem 0 1rem 1.5rem;
-    padding: 0;
-  }
-
-  .modal-body li {
-    margin: 0.5rem 0;
-  } */
-
   .modal-body a {
     color: var(--sl-color-accent);
     text-decoration: none;
