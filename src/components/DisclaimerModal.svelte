@@ -2,6 +2,8 @@
   import { onMount } from 'svelte';
   import { fade, scale } from 'svelte/transition';
   
+  let { strings } = $props();
+  
   let showModal = $state(false);
   
   function checkDismissed() {
@@ -23,29 +25,25 @@
     document.body.classList.remove('modal-open');
   }
   
-  function handleBackdropClick(event) {
-    if (event.target === event.currentTarget) {
-      dismissModal();
-    }
-  }
   
-  function handleKeydown(event) {
-    if (event.key === 'Escape' && showModal) {
-      dismissModal();
-    }
+  
+  function openModal() {
+    showModal = true;
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
   }
   
   onMount(() => {
     if (!checkDismissed()) {
-      showModal = true;
-      document.body.style.overflow = 'hidden';
-      document.body.classList.add('modal-open');
+      openModal();
     }
     
-    document.addEventListener('keydown', handleKeydown);
+    // Listen for custom event to open modal
+    const handleOpenModal = () => openModal();
+    window.addEventListener('open-disclaimer-modal', handleOpenModal);
     
     return () => {
-      document.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener('open-disclaimer-modal', handleOpenModal);
       document.body.style.overflow = '';
       document.body.classList.remove('modal-open');
     };
@@ -57,7 +55,6 @@
     id="disclaimer-modal" 
     class="modal-backdrop show" 
     role="presentation"
-    onclick={handleBackdropClick}
     transition:fade={{ duration: 300 }}
   >
     <div 
@@ -67,38 +64,32 @@
       aria-labelledby="disclaimer-title"
       transition:scale={{ duration: 300, start: 0.9 }}
     >
-      <h2 id="disclaimer-title">Welcome to the Resonite Modding Docs!</h2>
+      <h2 id="disclaimer-title">{strings.title}</h2>
       <div class="modal-body">
         <p>
-          This is an <strong>independent, community-driven project</strong> for the Resonite modding community. 
-          We are not affiliated with <a href="https://resonite.com/" target="_blank" rel="noopener">Resonite</a> or 
+          {strings.independence.split('Resonite')[0]}
+          <a href="https://resonite.com/" target="_blank" rel="noopener">Resonite</a>
+          {strings.independence.split('Resonite')[1].split('Yellow Dog Man Studios S.r.o.')[0]}
           <a href="https://yellowdogman.com/" target="_blank" rel="noopener">Yellow Dog Man Studios S.r.o.</a>
+          {strings.independence.split('Yellow Dog Man Studios S.r.o.')[1]}
         </p>
+        <p>{strings.goal}</p>
         <p>
-          Our goal is to provide comprehensive documentation, guides, and resources for those interested in 
-          extending and customizing their Resonite experience through mods. This documentation is maintained entirely 
-          by community volunteers who are passionate about Resonite and its modding ecosystem.
+          {strings.openSource.split('GitHub repository')[0]}
+          <a href="https://github.com/ResoniteModding/Docs" target="_blank" rel="noopener">GitHub repository</a>.
         </p>
-        <p>
-          This project is <strong>open source</strong> and we welcome contributions from everyone! 
-          Whether you want to fix a typo, add new guides, or improve existing documentation, 
-          you can contribute on our <a href="https://github.com/ResoniteModding/Docs" target="_blank" rel="noopener">GitHub repository</a>.
-        </p>
-        <p>
-          If you were looking for official Resonite information or landed here by mistake, 
-          you can visit the official website below.
-        </p>
+        <p>{strings.wrongPlace}</p>
       </div>
       <div class="modal-footer">
         <a href="https://resonite.com/" class="sl-link-button secondary" target="_blank" rel="noopener">
-          Visit Official Resonite Website
+          {strings.visitOfficial}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M19.33 10.18a1 1 0 0 1-.77 0 1 1 0 0 1-.62-.93l.01-1.83-8.2 8.2a1 1 0 0 1-1.41-1.42l8.2-8.2H14.7a1 1 0 0 1 0-2h4.25a1 1 0 0 1 1 1v4.25a1 1 0 0 1-.62.93Z"/>
             <path d="M11 4a1 1 0 1 1 0 2H7a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-4a1 1 0 1 1 2 0v4a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h4Z"/>
           </svg>
         </a>
         <button class="sl-link-button primary" onclick={dismissModal}>
-          Continue
+          {strings.continue}
         </button>
       </div>
     </div>
