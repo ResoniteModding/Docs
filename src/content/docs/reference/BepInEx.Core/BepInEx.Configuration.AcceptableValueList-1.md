@@ -4,7 +4,6 @@ slug: reference/bepinex.configuration.acceptablevaluelist-1
 sidebar:
   label: AcceptableValueList<T>
 ---
-
 ## Definition
 
 Specify the list of acceptable values for a setting.
@@ -15,7 +14,8 @@ public class AcceptableValueList<T> : AcceptableValueBase where T : IEquatable<T
 
 ### Type Parameters
 
-`T`
+`T`  
+
 
 Inheritance [object](https://learn.microsoft.com/dotnet/api/system.object/) → [AcceptableValueBase](../bepinex.configuration.acceptablevaluebase/)
 
@@ -31,7 +31,8 @@ public AcceptableValueList(params T[] acceptableValues)
 
 #### Parameters
 
-`acceptableValues` T[]
+`acceptableValues` T[]  
+
 
 ## Properties
 
@@ -55,7 +56,7 @@ public override object Clamp(object value)
 
 #### Parameters
 
-`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)
+`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 
 #### Returns
 
@@ -71,7 +72,7 @@ public override bool IsValid(object value)
 
 #### Parameters
 
-`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)
+`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 
 #### Returns
 

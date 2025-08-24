@@ -4,7 +4,6 @@ slug: reference/bepinex.configuration.configentrybase
 sidebar:
   label: ConfigEntryBase
 ---
-
 ## Definition
 
 Container for a single setting of a [ConfigFile](../bepinex.configuration.configfile/). Each config entry is linked to one config file.
@@ -27,15 +26,16 @@ protected ConfigEntryBase(ConfigFile configFile, ConfigDefinition definition, Ty
 
 #### Parameters
 
-`configFile` [ConfigFile](../bepinex.configuration.configfile/)
+`configFile` [ConfigFile](../bepinex.configuration.configfile/)  
 
-`definition` [ConfigDefinition](../bepinex.configuration.configdefinition/)
+`definition` [ConfigDefinition](../bepinex.configuration.configdefinition/)  
 
-`settingType` [Type](https://learn.microsoft.com/dotnet/api/system.type/)
+`settingType` [Type](https://learn.microsoft.com/dotnet/api/system.type/)  
 
-`defaultValue` [object](https://learn.microsoft.com/dotnet/api/system.object/)
+`defaultValue` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 
-`configDescription` [ConfigDescription](../bepinex.configuration.configdescription/)
+`configDescription` [ConfigDescription](../bepinex.configuration.configdescription/)  
+
 
 ## Properties
 
@@ -111,7 +111,8 @@ public void SetSerializedValue(string value)
 
 #### Parameters
 
-`value` [string](https://learn.microsoft.com/dotnet/api/system.string/)
+`value` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
+
 
 ### ClampValue<T>(T)
 
@@ -123,7 +124,7 @@ protected T ClampValue<T>(T value)
 
 #### Parameters
 
-`value` T
+`value` T  
 
 #### Returns
 
@@ -139,7 +140,8 @@ protected void OnSettingChanged(object sender)
 
 #### Parameters
 
-`sender` [object](https://learn.microsoft.com/dotnet/api/system.object/)
+`sender` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
+
 
 ### WriteDescription(StreamWriter)
 

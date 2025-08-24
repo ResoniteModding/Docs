@@ -4,7 +4,6 @@ slug: reference/bepinex.bepinprocess
 sidebar:
   label: BepInProcess
 ---
-
 ## Definition
 
 This attribute specifies which processes this plugin should be run for. Not specifying this attribute will load the plugin under every process.
@@ -28,6 +27,7 @@ public BepInProcess(string ProcessName)
 
 `ProcessName` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 The name of the process that this plugin will run under.
+
 
 ## Properties
 

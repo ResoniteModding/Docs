@@ -4,7 +4,6 @@ slug: reference/bepinex.plugininfo
 sidebar:
   label: PluginInfo
 ---
-
 ## Definition
 
 Data class that represents information about a loadable BepInEx plugin. Contains all metadata and additional info required for plugin loading by Chainloader.

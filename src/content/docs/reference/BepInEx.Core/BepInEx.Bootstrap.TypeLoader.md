@@ -4,7 +4,6 @@ slug: reference/bepinex.bootstrap.typeloader
 sidebar:
   label: TypeLoader
 ---
-
 ## Definition
 
 Provides methods for loading specified types from an assembly.
@@ -49,13 +48,13 @@ public static AssemblyDefinition CecilResolveOnFailure(object sender, AssemblyNa
 
 #### Parameters
 
-`sender` [object](https://learn.microsoft.com/dotnet/api/system.object/)
+`sender` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 
-`reference` [AssemblyNameReference](https://github.com/jbevain/cecil/blob/8c123e16bd0d693afc9932da85e1c9e740aa508c/mono.cecil/assemblynamereference.cs/)
+`reference` [AssemblyNameReference](https://github.com/jbevain/cecil/blob/main/mono.cecil/assemblynamereference.cs/)  
 
 #### Returns
 
-[AssemblyDefinition](https://github.com/jbevain/cecil/blob/8c123e16bd0d693afc9932da85e1c9e740aa508c/mono.cecil/assemblydefinition.cs/)
+[AssemblyDefinition](https://github.com/jbevain/cecil/blob/main/mono.cecil/assemblydefinition.cs/)
 
 ### FindPluginTypes<T>(string, Func<TypeDefinition, string, T>, Func<AssemblyDefinition, bool>, string)
 
@@ -121,6 +120,7 @@ List of plugin metadatas indexed by the path to the assembly that contains the t
 `hashes` [Dictionary\<string, string\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2/)  
 Hash values that can be used for checking similarity between cached and live assembly
 
+
 ### TypeLoadExceptionToString(ReflectionTypeLoadException)
 
 Converts TypeLoadException to a readable string.
@@ -151,4 +151,4 @@ public static event AssemblyResolveEventHandler AssemblyResolve
 
 #### Event Type
 
-[AssemblyResolveEventHandler](https://github.com/jbevain/cecil/blob/8c123e16bd0d693afc9932da85e1c9e740aa508c/mono.cecil/baseassemblyresolver.cs/)
+[AssemblyResolveEventHandler](https://github.com/jbevain/cecil/blob/main/mono.cecil/baseassemblyresolver.cs/)

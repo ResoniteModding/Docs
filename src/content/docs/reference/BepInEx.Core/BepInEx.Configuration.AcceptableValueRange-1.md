@@ -4,7 +4,6 @@ slug: reference/bepinex.configuration.acceptablevaluerange-1
 sidebar:
   label: AcceptableValueRange<T>
 ---
-
 ## Definition
 
 Specify the range of acceptable values for a setting.
@@ -15,7 +14,8 @@ public class AcceptableValueRange<T> : AcceptableValueBase where T : IComparable
 
 ### Type Parameters
 
-`T`
+`T`  
+
 
 Inheritance [object](https://learn.microsoft.com/dotnet/api/system.object/) → [AcceptableValueBase](../bepinex.configuration.acceptablevaluebase/)
 
@@ -34,6 +34,7 @@ Lowest acceptable value
 
 `maxValue` T  
 Highest acceptable value
+
 
 ## Properties
 
@@ -65,7 +66,7 @@ public override object Clamp(object value)
 
 #### Parameters
 
-`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)
+`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 
 #### Returns
 
@@ -81,7 +82,7 @@ public override bool IsValid(object value)
 
 #### Parameters
 
-`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)
+`value` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 
 #### Returns
 

@@ -4,7 +4,6 @@ slug: reference/bepinex.preloader.core.patching.targetassemblyattribute
 sidebar:
   label: TargetAssemblyAttribute
 ---
-
 ## Definition
 
 Defines an assembly that a patch method will target.
@@ -29,6 +28,7 @@ public TargetAssemblyAttribute(string targetAssembly)
 `targetAssembly` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 The short filename of the assembly. Use <xref href="BepInEx.Preloader.Core.Patching.TargetAssemblyAttribute.AllAssemblies" data-throw-if-not-resolved="false"></xref> to mark all possible
 assemblies as targets.
+
 
 ## Fields
 

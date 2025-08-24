@@ -4,7 +4,6 @@ slug: reference/bepinex.paths
 sidebar:
   label: Paths
 ---
-
 ## Definition
 
 Paths used by BepInEx
@@ -91,7 +90,7 @@ public static string PatcherPluginPath { get; }
 
 ### PluginPath
 
-The path to the plugin folder which resides in the BepInEx folder. <p> This is ONLY guaranteed to be set correctly when Chainloader has been initialized. </p>
+The path to the plugin folder which resides in the BepInEx folder. <p>     This is ONLY guaranteed to be set correctly when Chainloader has been initialized. </p>
 
 ```csharp title="C#"
 public static string PluginPath { get; }
@@ -123,12 +122,12 @@ public static void SetExecutablePath(string executablePath, string bepinRootPath
 
 #### Parameters
 
-`executablePath` [string](https://learn.microsoft.com/dotnet/api/system.string/)
+`executablePath` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 
-`bepinRootPath` [string](https://learn.microsoft.com/dotnet/api/system.string/)
+`bepinRootPath` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 
-`managedPath` [string](https://learn.microsoft.com/dotnet/api/system.string/)
+`managedPath` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 
-`gameDataRelativeToManaged` [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)
+`gameDataRelativeToManaged` [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)  
 
 `dllSearchPath` [string[]](https://learn.microsoft.com/dotnet/api/system.string/)

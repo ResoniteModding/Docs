@@ -4,7 +4,6 @@ slug: reference/bepinex.bepindependency
 sidebar:
   label: BepInDependency
 ---
-
 ## Definition
 
 This attribute specifies any dependencies that this plugin has on other plugins.
@@ -35,6 +34,7 @@ The GUID of the referenced plugin.
 
 `Flags` [BepInDependency.DependencyFlags](../bepinex.bepindependency/)  
 The flags associated with this dependency definition.
+
 
 ### BepInDependency(string, string)
 

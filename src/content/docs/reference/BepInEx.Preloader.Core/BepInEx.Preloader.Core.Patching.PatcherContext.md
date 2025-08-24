@@ -4,7 +4,6 @@ slug: reference/bepinex.preloader.core.patching.patchercontext
 sidebar:
   label: PatcherContext
 ---
-
 ## Definition
 
 Context provided to patcher plugins from the associated patcher engine.

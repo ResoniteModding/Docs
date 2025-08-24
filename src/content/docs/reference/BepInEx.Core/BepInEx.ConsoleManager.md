@@ -4,7 +4,6 @@ slug: reference/bepinex.consolemanager
 sidebar:
   label: ConsoleManager
 ---
-
 ## Definition
 
 ```csharp title="C#"
@@ -81,9 +80,10 @@ public static void Initialize(bool alreadyActive, bool useManagedEncoder)
 
 #### Parameters
 
-`alreadyActive` [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)
+`alreadyActive` [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)  
 
-`useManagedEncoder` [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)
+`useManagedEncoder` [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)  
+
 
 ### CreateConsole()
 
@@ -91,11 +91,13 @@ public static void Initialize(bool alreadyActive, bool useManagedEncoder)
 public static void CreateConsole()
 ```
 
+
 ### DetachConsole()
 
 ```csharp title="C#"
 public static void DetachConsole()
 ```
+
 
 ### SetConsoleTitle(string)
 
@@ -105,7 +107,8 @@ public static void SetConsoleTitle(string title)
 
 #### Parameters
 
-`title` [string](https://learn.microsoft.com/dotnet/api/system.string/)
+`title` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
+
 
 ### SetConsoleColor(ConsoleColor)
 

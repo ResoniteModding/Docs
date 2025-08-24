@@ -4,7 +4,6 @@ slug: reference/bepinex.configuration.configentry-1
 sidebar:
   label: ConfigEntry<T>
 ---
-
 ## Definition
 
 Provides access to a single setting inside of a [ConfigFile](../bepinex.configuration.configfile/).

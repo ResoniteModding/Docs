@@ -4,7 +4,6 @@ slug: reference/bepinex.bootstrap.cachedassembly-1
 sidebar:
   label: CachedAssembly<T>
 ---
-
 ## Definition
 
 A cached assembly.
@@ -15,7 +14,8 @@ public class CachedAssembly<T> where T : ICacheable
 
 ### Type Parameters
 
-`T`
+`T`  
+
 
 Inheritance [object](https://learn.microsoft.com/dotnet/api/system.object/)
 

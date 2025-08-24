@@ -4,7 +4,6 @@ slug: reference/bepinex.metadatahelper
 sidebar:
   label: MetadataHelper
 ---
-
 ## Definition
 
 Helper class to use for retrieving metadata about a plugin, defined as attributes.

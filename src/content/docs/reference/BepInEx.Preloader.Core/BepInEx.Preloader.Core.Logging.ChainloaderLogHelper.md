@@ -4,7 +4,6 @@ slug: reference/bepinex.preloader.core.logging.chainloaderloghelper
 sidebar:
   label: ChainloaderLogHelper
 ---
-
 ## Definition
 
 ```csharp title="C#"
@@ -23,7 +22,8 @@ public static void PrintLogInfo(ManualLogSource log)
 
 #### Parameters
 
-`log` [ManualLogSource](../bepinex.logging.manuallogsource/)
+`log` [ManualLogSource](../bepinex.logging.manuallogsource/)  
+
 
 ### RewritePreloaderLogs()
 

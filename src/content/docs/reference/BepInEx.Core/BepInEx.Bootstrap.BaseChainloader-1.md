@@ -4,7 +4,6 @@ slug: reference/bepinex.bootstrap.basechainloader-1
 sidebar:
   label: BaseChainloader<TPlugin>
 ---
-
 ## Definition
 
 ```csharp title="C#"
@@ -13,7 +12,8 @@ public abstract class BaseChainloader<TPlugin>
 
 ### Type Parameters
 
-`TPlugin`
+`TPlugin`  
+
 
 Inheritance [object](https://learn.microsoft.com/dotnet/api/system.object/)
 
@@ -67,7 +67,7 @@ public static PluginInfo ToPluginInfo(TypeDefinition type, string assemblyLocati
 
 #### Parameters
 
-`type` [TypeDefinition](https://github.com/jbevain/cecil/blob/8c123e16bd0d693afc9932da85e1c9e740aa508c/mono.cecil/typedefinition.cs/)  
+`type` [TypeDefinition](https://github.com/jbevain/cecil/blob/main/mono.cecil/typedefinition.cs/)  
 Type definition to analyze.
 
 `assemblyLocation` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
@@ -86,7 +86,7 @@ protected static bool HasBepinPlugins(AssemblyDefinition ass)
 
 #### Parameters
 
-`ass` [AssemblyDefinition](https://github.com/jbevain/cecil/blob/8c123e16bd0d693afc9932da85e1c9e740aa508c/mono.cecil/assemblydefinition.cs/)
+`ass` [AssemblyDefinition](https://github.com/jbevain/cecil/blob/main/mono.cecil/assemblydefinition.cs/)  
 
 #### Returns
 
@@ -100,7 +100,7 @@ protected static bool PluginTargetsWrongBepin(PluginInfo pluginInfo)
 
 #### Parameters
 
-`pluginInfo` [PluginInfo](../bepinex.plugininfo/)
+`pluginInfo` [PluginInfo](../bepinex.plugininfo/)  
 
 #### Returns
 
@@ -114,13 +114,15 @@ public virtual void Initialize(string gameExePath = null)
 
 #### Parameters
 
-`gameExePath` [string](https://learn.microsoft.com/dotnet/api/system.string/)
+`gameExePath` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
+
 
 ### InitializeLoggers()
 
 ```csharp title="C#"
 protected virtual void InitializeLoggers()
 ```
+
 
 ### DiscoverPluginsFrom(string, string)
 
@@ -142,7 +144,6 @@ Cache name to use. If null, results are not cached.
 
 [IList\<PluginInfo\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1/)  
 List of discovered plugins and their metadata.
-
 #### Remarks
 
 This is useful for discovering BepInEx plugin metadata.
@@ -177,7 +178,6 @@ Plugins to process.
 
 [IList\<PluginInfo\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1/)  
 List of plugins to load in the correct load order.
-
 #### Remarks
 
 Some plugins may be skipped if they cannot be loaded (wrong metadata, etc).
@@ -189,6 +189,7 @@ Run the chainloader and load all plugins from the plugins folder.
 ```csharp title="C#"
 public virtual void Execute()
 ```
+
 
 ### LoadPlugins(params string[])
 
@@ -207,7 +208,6 @@ Directories to search the plugins from.
 
 [IList\<PluginInfo\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1/)  
 List of loaded plugin infos.
-
 #### Remarks
 
 It is better to collect all paths at once and use a single call to LoadPlugins than multiple calls. This allows to run proper dependency resolving and to load all plugins in one go.
@@ -220,9 +220,9 @@ public abstract TPlugin LoadPlugin(PluginInfo pluginInfo, Assembly pluginAssembl
 
 #### Parameters
 
-`pluginInfo` [PluginInfo](../bepinex.plugininfo/)
+`pluginInfo` [PluginInfo](../bepinex.plugininfo/)  
 
-`pluginAssembly` [Assembly](https://learn.microsoft.com/dotnet/api/system.reflection.assembly/)
+`pluginAssembly` [Assembly](https://learn.microsoft.com/dotnet/api/system.reflection.assembly/)  
 
 #### Returns
 
@@ -241,7 +241,6 @@ public event Action<PluginInfo> PluginLoaded
 #### Event Type
 
 [Action\<PluginInfo\>](https://learn.microsoft.com/dotnet/api/system.action-1/)
-
 ### Finished
 
 Occurs after all plugins are loaded.

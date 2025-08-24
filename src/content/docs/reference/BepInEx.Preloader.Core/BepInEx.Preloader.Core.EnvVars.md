@@ -4,7 +4,6 @@ slug: reference/bepinex.preloader.core.envvars
 sidebar:
   label: EnvVars
 ---
-
 ## Definition
 
 Doorstop environment variables, passed into the BepInEx preloader. <p>https://github.com/NeighTools/UnityDoorstop/wiki#environment-variables</p>

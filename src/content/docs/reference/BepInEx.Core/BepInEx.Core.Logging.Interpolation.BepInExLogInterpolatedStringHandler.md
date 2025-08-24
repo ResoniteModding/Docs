@@ -4,7 +4,6 @@ slug: reference/bepinex.core.logging.interpolation.bepinexloginterpolatedstringh
 sidebar:
   label: BepInExLogInterpolatedStringHandler
 ---
-
 ## Definition
 
 Interpolated string handler for BepInEx [Logger](../bepinex.logging.logger/). This allows to conditionally skip logging certain messages and speed up logging in certain places.
@@ -14,7 +13,6 @@ public class BepInExLogInterpolatedStringHandler
 ```
 
 Inheritance [object](https://learn.microsoft.com/dotnet/api/system.object/)
-
 ## Remarks
 
 The class isn't meant to be constructed manually. Instead, use `BepInEx.Logging.ManualLogSource.Log(BepInEx.Logging.LogLevel%2cBepInEx.Core.Logging.Interpolation.BepInExLogInterpolatedStringHandler)` with string interpolation.
@@ -43,6 +41,7 @@ Log level the message belongs to.
 `isEnabled` [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)  
 Whether this string should be logged.
 
+
 ## Properties
 
 ### Enabled
@@ -68,6 +67,7 @@ public void AppendLiteral(string s)
 `s` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 String to append.
 
+
 ### AppendFormatted<T>(T)
 
 Appends a value to the interpolation.
@@ -80,6 +80,7 @@ public void AppendFormatted<T>(T t)
 
 `t` T  
 Value to append.
+
 
 ### AppendFormatted<T>(T, string)
 
@@ -97,6 +98,7 @@ Item to append.
 `format` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 Format to append with.
 
+
 ### AppendFormatted(nint, string)
 
 Append an IntPtr.
@@ -112,6 +114,7 @@ Item to append.
 
 `format` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 Format to append with.
+
 
 ### ToString()
 

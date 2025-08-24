@@ -4,7 +4,6 @@ slug: reference/bepinex.bepinplugin
 sidebar:
   label: BepInPlugin
 ---
-
 ## Definition
 
 This attribute denotes that a class is a plugin, and specifies the required metadata.
@@ -34,6 +33,7 @@ The user friendly name of the plugin. Is able to be changed between versions.
 
 `Version` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 The specific version of the plugin.
+
 
 ## Properties
 

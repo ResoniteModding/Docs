@@ -4,7 +4,6 @@ slug: reference/bepinex.preloader.runtimefixes.consolesetoutfix
 sidebar:
   label: ConsoleSetOutFix
 ---
-
 ## Definition
 
 ```csharp title="C#"

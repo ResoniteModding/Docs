@@ -4,7 +4,6 @@ slug: reference/bepinex.configuration.configfile
 sidebar:
   label: ConfigFile
 ---
-
 ## Definition
 
 A helper class to handle persistent data. All public methods are thread-safe.
@@ -35,6 +34,7 @@ Full path to a file that contains settings. The file will be created as needed.
 `saveOnInit` [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)  
 If the config file/directory doesn't exist, create it immediately.
 
+
 ### ConfigFile(string, bool, BepInPlugin)
 
 Create a new config file at the specified config path.
@@ -53,6 +53,7 @@ If the config file/directory doesn't exist, create it immediately.
 
 `ownerMetadata` [BepInPlugin](../bepinex.bepinplugin/)  
 Information about the plugin that owns this setting file.
+
 
 ## Properties
 
@@ -200,11 +201,11 @@ The key to locate in the <xref href="System.Collections.Generic.IDictionary%602"
 
 [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)  
 <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the [IDictionary\<TKey, TValue\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2/) contains an element with the key; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
-
 #### Exceptions
 
 [ArgumentNullException](https://learn.microsoft.com/dotnet/api/system.argumentnullexception/)  
 `key` is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+
 
 ### Add(ConfigDefinition, ConfigEntryBase)
 
@@ -233,6 +234,7 @@ An element with the same key already exists in the [IDictionary\<TKey, TValue\>]
 [NotSupportedException](https://learn.microsoft.com/dotnet/api/system.notsupportedexception/)  
 The [IDictionary\<TKey, TValue\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2/) is read-only.
 
+
 ### Remove(ConfigDefinition)
 
 Removes the element with the specified key from the [IDictionary\<TKey, TValue\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2/).
@@ -249,8 +251,7 @@ The key of the element to remove.
 #### Returns
 
 [bool](https://learn.microsoft.com/dotnet/api/system.boolean/)  
-<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the element is successfully removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if `key` was not found in the original [IDictionary\<TKey, TValue\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2/).
-
+<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the element is successfully removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.  This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if `key` was not found in the original [IDictionary\<TKey, TValue\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2/).
 #### Exceptions
 
 [ArgumentNullException](https://learn.microsoft.com/dotnet/api/system.argumentnullexception/)  
@@ -258,6 +259,7 @@ The key of the element to remove.
 
 [NotSupportedException](https://learn.microsoft.com/dotnet/api/system.notsupportedexception/)  
 The [IDictionary\<TKey, TValue\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2/) is read-only.
+
 
 ### Clear()
 
@@ -271,6 +273,7 @@ public void Clear()
 
 [NotSupportedException](https://learn.microsoft.com/dotnet/api/system.notsupportedexception/)  
 The [ICollection\<T\>](https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1/) is read-only.
+
 
 ### GetConfigEntries()
 
@@ -296,6 +299,7 @@ Reloads the config from disk. Unsaved changes are lost.
 public void Reload()
 ```
 
+
 ### Save()
 
 Writes the config to disk.
@@ -303,6 +307,7 @@ Writes the config to disk.
 ```csharp title="C#"
 public void Save()
 ```
+
 
 ### GetSetting<T>(ConfigDefinition)
 
@@ -568,13 +573,13 @@ public ConfigWrapper<T> Wrap<T>(string section, string key, string description =
 
 #### Parameters
 
-`section` [string](https://learn.microsoft.com/dotnet/api/system.string/)
+`section` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 
-`key` [string](https://learn.microsoft.com/dotnet/api/system.string/)
+`key` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 
-`description` [string](https://learn.microsoft.com/dotnet/api/system.string/)
+`description` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 
-`defaultValue` T
+`defaultValue` T  
 
 #### Returns
 
@@ -594,9 +599,9 @@ public ConfigWrapper<T> Wrap<T>(ConfigDefinition configDefinition, T defaultValu
 
 #### Parameters
 
-`configDefinition` [ConfigDefinition](../bepinex.configuration.configdefinition/)
+`configDefinition` [ConfigDefinition](../bepinex.configuration.configdefinition/)  
 
-`defaultValue` T
+`defaultValue` T  
 
 #### Returns
 
@@ -615,7 +620,6 @@ public event EventHandler ConfigReloaded
 #### Event Type
 
 [EventHandler](https://learn.microsoft.com/dotnet/api/system.eventhandler/)
-
 ### SettingChanged
 
 Fired when one of the settings is changed.

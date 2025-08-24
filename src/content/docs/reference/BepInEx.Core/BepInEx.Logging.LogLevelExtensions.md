@@ -4,7 +4,6 @@ slug: reference/bepinex.logging.loglevelextensions
 sidebar:
   label: LogLevelExtensions
 ---
-
 ## Definition
 
 Helper methods for log level handling.

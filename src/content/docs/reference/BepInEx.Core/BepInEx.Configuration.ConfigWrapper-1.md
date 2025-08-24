@@ -4,7 +4,6 @@ slug: reference/bepinex.configuration.configwrapper-1
 sidebar:
   label: ConfigWrapper<T>
 ---
-
 ## Definition
 
 :::caution[Obsolete]

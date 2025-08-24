@@ -4,7 +4,6 @@ slug: reference/bepinex.configuration.settingchangedeventargs
 sidebar:
   label: SettingChangedEventArgs
 ---
-
 ## Definition
 
 Arguments for events concerning a change of a setting.
@@ -25,7 +24,8 @@ public SettingChangedEventArgs(ConfigEntryBase changedSetting)
 
 #### Parameters
 
-`changedSetting` [ConfigEntryBase](../bepinex.configuration.configentrybase/)
+`changedSetting` [ConfigEntryBase](../bepinex.configuration.configentrybase/)  
+
 
 ## Properties
 

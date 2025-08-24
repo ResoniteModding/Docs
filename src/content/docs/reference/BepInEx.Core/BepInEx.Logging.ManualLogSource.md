@@ -4,7 +4,6 @@ slug: reference/bepinex.logging.manuallogsource
 sidebar:
   label: ManualLogSource
 ---
-
 ## Definition
 
 A generic, multi-purpose log source. Exposes simple API to manually emit logs.
@@ -32,6 +31,7 @@ public ManualLogSource(string sourceName)
 `sourceName` [string](https://learn.microsoft.com/dotnet/api/system.string/)  
 Name of the log source.
 
+
 ## Properties
 
 ### SourceName
@@ -52,6 +52,7 @@ Performs application-defined tasks associated with freeing, releasing, or resett
 public void Dispose()
 ```
 
+
 ### Log(LogLevel, object)
 
 Logs a message with the specified log level.
@@ -67,6 +68,7 @@ Log levels to attach to the message. Multiple can be used with bitwise ORing.
 
 `data` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 Data to log.
+
 
 ### Log(LogLevel, BepInExLogInterpolatedStringHandler)
 
@@ -84,6 +86,7 @@ Log levels to attach to the message. Multiple can be used with bitwise ORing.
 `logHandler` [BepInExLogInterpolatedStringHandler](../bepinex.core.logging.interpolation.bepinexloginterpolatedstringhandler/)  
 Handler for the interpolated string.
 
+
 ### LogFatal(object)
 
 Logs a message with [Fatal](../bepinex.logging.loglevel/#fatal/) level.
@@ -96,6 +99,7 @@ public void LogFatal(object data)
 
 `data` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 Data to log.
+
 
 ### LogFatal(BepInExFatalLogInterpolatedStringHandler)
 
@@ -110,6 +114,7 @@ public void LogFatal(BepInExFatalLogInterpolatedStringHandler logHandler)
 `logHandler` [BepInExFatalLogInterpolatedStringHandler](../bepinex.core.logging.interpolation.bepinexfatalloginterpolatedstringhandler/)  
 Handler for the interpolated string.
 
+
 ### LogError(object)
 
 Logs a message with [Error](../bepinex.logging.loglevel/#error/) level.
@@ -122,6 +127,7 @@ public void LogError(object data)
 
 `data` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 Data to log.
+
 
 ### LogError(BepInExErrorLogInterpolatedStringHandler)
 
@@ -136,6 +142,7 @@ public void LogError(BepInExErrorLogInterpolatedStringHandler logHandler)
 `logHandler` [BepInExErrorLogInterpolatedStringHandler](../bepinex.core.logging.interpolation.bepinexerrorloginterpolatedstringhandler/)  
 Handler for the interpolated string.
 
+
 ### LogWarning(object)
 
 Logs a message with [Warning](../bepinex.logging.loglevel/#warning/) level.
@@ -148,6 +155,7 @@ public void LogWarning(object data)
 
 `data` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 Data to log.
+
 
 ### LogWarning(BepInExWarningLogInterpolatedStringHandler)
 
@@ -162,6 +170,7 @@ public void LogWarning(BepInExWarningLogInterpolatedStringHandler logHandler)
 `logHandler` [BepInExWarningLogInterpolatedStringHandler](../bepinex.core.logging.interpolation.bepinexwarningloginterpolatedstringhandler/)  
 Handler for the interpolated string.
 
+
 ### LogMessage(object)
 
 Logs a message with [Message](../bepinex.logging.loglevel/#message/) level.
@@ -174,6 +183,7 @@ public void LogMessage(object data)
 
 `data` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 Data to log.
+
 
 ### LogMessage(BepInExMessageLogInterpolatedStringHandler)
 
@@ -188,6 +198,7 @@ public void LogMessage(BepInExMessageLogInterpolatedStringHandler logHandler)
 `logHandler` [BepInExMessageLogInterpolatedStringHandler](../bepinex.core.logging.interpolation.bepinexmessageloginterpolatedstringhandler/)  
 Handler for the interpolated string.
 
+
 ### LogInfo(object)
 
 Logs a message with [Info](../bepinex.logging.loglevel/#info/) level.
@@ -200,6 +211,7 @@ public void LogInfo(object data)
 
 `data` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 Data to log.
+
 
 ### LogInfo(BepInExInfoLogInterpolatedStringHandler)
 
@@ -214,6 +226,7 @@ public void LogInfo(BepInExInfoLogInterpolatedStringHandler logHandler)
 `logHandler` [BepInExInfoLogInterpolatedStringHandler](../bepinex.core.logging.interpolation.bepinexinfologinterpolatedstringhandler/)  
 Handler for the interpolated string.
 
+
 ### LogDebug(object)
 
 Logs a message with [Debug](../bepinex.logging.loglevel/#debug/) level.
@@ -227,6 +240,7 @@ public void LogDebug(object data)
 `data` [object](https://learn.microsoft.com/dotnet/api/system.object/)  
 Data to log.
 
+
 ### LogDebug(BepInExDebugLogInterpolatedStringHandler)
 
 Logs an interpolated string with [Debug](../bepinex.logging.loglevel/#debug/) level.
@@ -239,6 +253,7 @@ public void LogDebug(BepInExDebugLogInterpolatedStringHandler logHandler)
 
 `logHandler` [BepInExDebugLogInterpolatedStringHandler](../bepinex.core.logging.interpolation.bepinexdebugloginterpolatedstringhandler/)  
 Handler for the interpolated string.
+
 
 ## Events
 
