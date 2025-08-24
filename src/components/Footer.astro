@@ -1,12 +1,9 @@
 ---
 import StarlightFooter from '@astrojs/starlight/components/Footer.astro';
 import DisclaimerModal from './DisclaimerModal.svelte';
-import childProcess from "child_process";
- 
-const hash = childProcess
-  .execSync("git rev-parse --short HEAD")
-  .toString()
-  .trim();
+import childProcess from 'child_process';
+
+const hash = childProcess.execSync('git rev-parse --short HEAD').toString().trim();
 
 const t = Astro.locals.t;
 const disclaimerStrings = {
@@ -26,13 +23,24 @@ const disclaimerStrings = {
 	<div class="disclaimer">
 		<p>
 			{t('footer.independence')}
-			<a href="https://resonite.com/" class="link-styled" target="_blank" rel="noopener">{t('footer.resonite')}</a> {t('footer.or')}
-			<a href="https://yellowdogman.com/" class="link-styled" target="_blank" rel="noopener">{t('footer.yellowdog')}</a>
+			<a href="https://resonite.com/" class="link-styled" target="_blank" rel="noopener"
+				>{t('footer.resonite')}</a
+			>
+			{t('footer.or')}
+			<a href="https://yellowdogman.com/" class="link-styled" target="_blank" rel="noopener"
+				>{t('footer.yellowdog')}</a
+			>
 			{t('footer.learnMoreText')}
 			<a type="button" class="link-styled" id="learn-more-btn">{t('disclaimer.learnMore')}</a>
 		</p>
 		<p>
-			{t('footer.buildVersion')} <a href={`https://github.com/ResoniteModding/Docs/commit/${hash}`} class="link-styled" target="_blank" rel="noopener">{hash}</a>
+			{t('footer.buildVersion')}
+			<a
+				href={`https://github.com/ResoniteModding/Docs/commit/${hash}`}
+				class="link-styled"
+				target="_blank"
+				rel="noopener">{hash}</a
+			>
 		</p>
 	</div>
 </div>
@@ -55,7 +63,7 @@ const disclaimerStrings = {
 		align-items: center;
 		text-align: center;
 		border-top: 1px solid var(--sl-color-gray-5);
-    padding-top: 1.5rem;
+		padding-top: 1.5rem;
 	}
 
 	.disclaimer {
