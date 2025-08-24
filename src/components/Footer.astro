@@ -1,18 +1,68 @@
 ---
 import StarlightFooter from '@astrojs/starlight/components/Footer.astro';
+import DisclaimerModal from './DisclaimerModal.svelte';
+import childProcess from 'child_process';
+
+const hash = childProcess.execSync('git rev-parse --short HEAD').toString().trim();
+
+const t = Astro.locals.t;
+const disclaimerStrings = {
+	title: t('disclaimer.title'),
+	independence: {
+		prefix: t('disclaimer.independence.prefix'),
+		type: t('disclaimer.independence.type'),
+		suffix: t('disclaimer.independence.suffix'),
+	},
+	goal: t('disclaimer.goal'),
+	openSource: {
+		prefix: t('disclaimer.openSource.prefix'),
+		type: t('disclaimer.openSource.type'),
+		suffix: t('disclaimer.openSource.suffix'),
+	},
+	wrongPlace: t('disclaimer.wrongPlace'),
+	visitOfficial: t('disclaimer.visitOfficial'),
+	continue: t('disclaimer.continue'),
+};
 ---
 
 <StarlightFooter />
+<DisclaimerModal client:load strings={disclaimerStrings} />
 <div class="footer-bottom">
 	<div class="disclaimer">
 		<p>
-			We are an independent project and are not affiliated with
-			<a href="https://resonite.com/" class="link-styled">Resonite</a> or 
-			<a href="https://yellowdogman.com/" class="link-styled">Yellow Dog Man Studios</a>.
+			{t('footer.independence')}
+			<a href="https://resonite.com/" class="link-styled" target="_blank" rel="noopener"
+				>{t('footer.resonite')}</a
+			>
+			{t('footer.or')}
+			<a href="https://yellowdogman.com/" class="link-styled" target="_blank" rel="noopener"
+				>{t('footer.yellowdog')}</a
+			>
+			{t('footer.learnMoreText')}
+			<a type="button" class="link-styled" id="learn-more-btn">{t('disclaimer.learnMore')}</a>
+		</p>
+		<p>
+			{t('footer.buildVersion')}
+			<a
+				href={`https://github.com/ResoniteModding/Docs/commit/${hash}`}
+				class="link-styled"
+				target="_blank"
+				rel="noopener">{hash}</a
+			>
 		</p>
 	</div>
 </div>
-</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const learnMoreBtn = document.getElementById('learn-more-btn');
+		if (learnMoreBtn) {
+			learnMoreBtn.addEventListener('click', () => {
+				window.dispatchEvent(new CustomEvent('open-disclaimer-modal'));
+			});
+		}
+	});
+</script>
 
 <style>
 	.footer-bottom {
@@ -21,7 +71,7 @@ import StarlightFooter from '@astrojs/starlight/components/Footer.astro';
 		align-items: center;
 		text-align: center;
 		border-top: 1px solid var(--sl-color-gray-5);
-    padding-top: 1.5rem;
+		padding-top: 1.5rem;
 	}
 
 	.disclaimer {
@@ -29,7 +79,6 @@ import StarlightFooter from '@astrojs/starlight/components/Footer.astro';
 	}
 
 	.disclaimer p {
-		margin: 0.25rem 0;
 		font-size: var(--sl-text-sm);
 		color: var(--sl-color-gray-3);
 	}
@@ -39,6 +88,7 @@ import StarlightFooter from '@astrojs/starlight/components/Footer.astro';
 		text-decoration: none;
 		transition: all 0.2s ease;
 		border-bottom: 1px solid transparent;
+		cursor: pointer;
 	}
 
 	.link-styled:hover {

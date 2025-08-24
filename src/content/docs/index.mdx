@@ -14,10 +14,12 @@ hero:
     - text: View on GitHub
       link: https://github.com/ResoniteModding
       icon: external
+      variant: secondary
 ---
 
 import { CardGrid, LinkButton, Badge, Tabs, TabItem } from '@astrojs/starlight/components';
 import Card from '@components/Card.astro';
+import { Icon } from '@astrojs/starlight/components';
 
 ## Quick Start
 
@@ -47,14 +49,20 @@ import Card from '@components/Card.astro';
 <CardGrid stagger>
   <Card title="Mod Repository" icon="external">
     <p>Browse and download existing mods</p>
-    <LinkButton href="https://thunderstore.io/c/resonite/">Visit Thunderstore</LinkButton>
+    <LinkButton href="https://thunderstore.io/c/resonite/" variant="secondary" icon="external">
+      Visit Thunderstore
+    </LinkButton>
   </Card>
   <Card title="BepisLoader Source Code" icon="github">
     <p>Contribute to BepisLoader development</p>
-    <LinkButton href="https://github.com/art0007i/BepisLoader">View on GitHub</LinkButton>
+    <LinkButton href="https://github.com/art0007i/BepisLoader" variant="secondary" icon="external">
+      View on GitHub
+    </LinkButton>
   </Card>
   <Card title="Discord Server" icon="discord">
     <p>Get help from the community</p>
-    <LinkButton href="https://discord.gg/vCDJK9xyvm">Join Discord</LinkButton>
+    <LinkButton href="https://discord.gg/vCDJK9xyvm" variant="secondary" icon="external">
+      Join Discord
+    </LinkButton>
   </Card>
 </CardGrid>
