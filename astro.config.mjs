@@ -16,7 +16,7 @@ export default defineConfig({
 				en: 'Resonite Modding',
 			},
 			logo: {
-				src: './public/favicon.svg',
+				src: './public/assets/favicon.svg',
 				alt: 'Resonite Modding Logo',
 			},
 			editLink: {
