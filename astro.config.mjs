@@ -12,6 +12,7 @@ export default defineConfig({
 		starlight({
 			prerender: true,
 			lastUpdated: true,
+			favicon: './assets/favicon.svg',
 			title: {
 				en: 'Resonite Modding',
 			},
