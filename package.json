@@ -14,6 +14,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",
     "@astrojs/starlight": "^0.35.2",
+    "@astrojs/starlight-docsearch": "^0.6.0",
     "@astrojs/svelte": "^7.1.0",
     "astro": "^5.6.1",
     "sharp": "^0.34.2",
@@ -25,6 +26,7 @@
     "oxlint": "^1.12.0",
     "oxlint-tsgolint": "^0.0.4",
     "prettier": "3.6.2",
-    "prettier-plugin-astro": "0.14.1"
+    "prettier-plugin-astro": "0.14.1",
+    "vite": "^7.1.3"
   }
 }

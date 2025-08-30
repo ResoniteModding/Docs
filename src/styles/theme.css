@@ -59,3 +59,21 @@ body {
 	background-attachment: fixed;
 	background-size: 100% 100%;
 }
+
+sl-doc-search {
+	@media (min-width: 50rem) {
+		display: contents;
+	}
+
+	@media (min-width: 50rem) {
+		div:has(> &) {
+			justify-content: center;
+		}
+	}
+
+	@media (min-width: 72rem) {
+		div:has(> &) {
+			max-width: calc(var(--sl-content-width));
+		}
+	}
+}
