@@ -1,19 +1,19 @@
 ---
 title: Welcome to Resonite Modding
-description: Your comprehensive guide to modding Resonite with BepInEx
+description: Your comprehensive guide to using and creating mods for Resonite
 template: splash
 hero:
-  tagline: Learn how to create, install, and manage mods for Resonite using BepInEx and BepisLoader
+  tagline: The complete resource for mod users and developers - Install mods to enhance your experience or create your own
   image:
     file: ../../../public/assets/favicon.svg
   actions:
-    - text: Get Started
+    - text: I Want to Use Mods
       link: /getting-started/installation/
-      icon: right-arrow
+      icon: rocket
       variant: primary
-    - text: View on GitHub
-      link: https://github.com/ResoniteModding
-      icon: external
+    - text: I Want to Create Mods
+      link: /creating-a-mod/initial-setup/
+      icon: pencil
       variant: secondary
 ---
 
@@ -21,26 +21,55 @@ import { CardGrid, LinkButton, Badge, Tabs, TabItem } from '@astrojs/starlight/c
 import Card from '@components/Card.astro';
 import { Icon } from '@astrojs/starlight/components';
 
-## Quick Start
+## For Mod Users
 
 <CardGrid stagger>
-  <Card title="Installation Guide" icon="rocket">
-    <p>Set up your Resonite modding environment with BepisLoader and BepInEx.</p>
+  <Card title="Install BepisLoader" icon="rocket">
+    <p>Set up the mod loader to run community mods in Resonite.</p>
     <LinkButton href="/getting-started/installation/" variant="primary">
-      Get Started
+      Installation Guide
     </LinkButton>
   </Card>
-  <Card title="First Mod" icon="pencil">
-    <p>Create your first Resonite mod with our step-by-step tutorial.</p>
-    <LinkButton>Learn More (WIP)</LinkButton>
+  <Card title="Using Mods" icon="setting">
+    <p>Find, install, configure, and manage your mods.</p>
+    <LinkButton href="/getting-started/using-mods/" variant="primary">
+      Complete Guide
+    </LinkButton>
   </Card>
-  <Card title="Common Recipes" icon="open-book">
-    <p>Find code snippets and patterns for common modding tasks.</p>
-    <LinkButton>Browse Recipes (WIP)</LinkButton>
+  <Card title="Browse Mods" icon="magnifier">
+    <p>Explore community-created mods on Thunderstore.</p>
+    <LinkButton href="https://thunderstore.io/c/resonite/" variant="primary" icon="external">
+      Visit Thunderstore
+    </LinkButton>
   </Card>
-  <Card title="API Reference" icon="seti:json">
-    <p>BepInEx documentation.</p>
-    <LinkButton href="/reference/">Browse Docs</LinkButton>
+  <Card title="Troubleshooting" icon="warning">
+    <p>Fix common issues with mod installation and usage.</p>
+    <LinkButton href="/getting-started/troubleshooting/" variant="primary">
+      Get Help
+    </LinkButton>
+  </Card>
+</CardGrid>
+
+## For Mod Developers
+
+<CardGrid stagger>
+  <Card title="Development Setup" icon="laptop">
+    <p>Configure your development environment for creating mods.</p>
+    <LinkButton href="/creating-a-mod/initial-setup/" variant="secondary">
+      Setup Guide
+    </LinkButton>
+  </Card>
+  <Card title="Create Your First Mod" icon="pencil">
+    <p>Step-by-step tutorial to build your first Resonite mod.</p>
+    <LinkButton href="/creating-a-mod/creating-a-project/" variant="secondary">
+      Start Coding
+    </LinkButton>
+  </Card>
+  <Card title="Publish Your Mod" icon="external">
+    <p>Share your creation with the Resonite community.</p>
+    <LinkButton href="/creating-a-mod/packaging-and-publishing/" variant="secondary">
+      Publishing Guide
+    </LinkButton>
   </Card>
 </CardGrid>
 
@@ -55,7 +84,7 @@ import { Icon } from '@astrojs/starlight/components';
   </Card>
   <Card title="BepisLoader Source Code" icon="github">
     <p>Contribute to BepisLoader development</p>
-    <LinkButton href="https://github.com/art0007i/BepisLoader" variant="secondary" icon="external">
+    <LinkButton href="https://github.com/ResoniteModding/BepisLoader" variant="secondary" icon="external">
       View on GitHub
     </LinkButton>
   </Card>

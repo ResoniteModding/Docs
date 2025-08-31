@@ -43,25 +43,22 @@ export default defineConfig({
 				{
 					label: 'Getting Started',
 					translations: { en: 'Getting Started' },
-					items: [
-						{ translations: { en: 'Introduction' }, slug: 'index' },
-						{ translations: { en: 'Installation' }, slug: 'getting-started/installation' },
-						{ translations: { en: 'Your First Mod' }, slug: 'getting-started/first-mod' },
-						{ translations: { en: 'Troubleshooting' }, slug: 'getting-started/troubleshooting' },
-					],
+					autogenerate: { directory: 'getting-started' },
+				},
+				{
+					label: 'Creating a Mod',
+					translations: { en: 'Creating a Mod' },
+					autogenerate: { directory: 'creating-a-mod' },
 				},
 				{
 					label: 'Guides',
 					translations: { en: 'Guides' },
-					items: [
-						{ translations: { en: 'Mod Development Basics' }, slug: 'guides/mod-basics' },
-						{ translations: { en: 'Debugging Mods' }, slug: 'guides/debugging' },
-					],
+					autogenerate: { directory: 'guides' },
 				},
 				{
 					label: 'Recipes',
 					translations: { en: 'Recipes' },
-					items: [],
+					autogenerate: { directory: 'recipes' },
 				},
 				{
 					label: 'Reference',
@@ -72,10 +69,7 @@ export default defineConfig({
 				{
 					label: 'Resources',
 					translations: { en: 'Resources' },
-					items: [
-						{ translations: { en: 'Tools & Utilities' }, slug: 'resources/tools' },
-						{ translations: { en: 'Links & Community' }, slug: 'resources/links' },
-					],
+					autogenerate: { directory: 'resources' },
 				},
 			],
 			components: {

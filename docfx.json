@@ -6,7 +6,9 @@
         {
           "files": [
             "BepInEx.Preloader.Core/BepInEx.Preloader.Core.csproj",
-            "BepInEx.Core/BepInEx.Core.csproj"
+            "BepInEx.Core/BepInEx.Core.csproj",
+            "Runtimes/NET/BepInEx.NET.Common/BepInEx.NET.Common.csproj",
+            "Runtimes/NET/BepInEx.NET.CoreCLR/BepInEx.NET.CoreCLR.csproj"
           ],
           "exclude": ["**/bin/**", "**/obj/**"]
         }
@@ -15,8 +17,8 @@
       "shouldSkipMarkup": false,
       "disableGitFeatures": false,
       "disableDefaultFilter": false,
-      "categoryLayout": "flattened",
-      "namespaceLayout": "flattened",
+      "categoryLayout": "nested",
+      "namespaceLayout": "nested",
       "memberLayout": "separatePages",
       "properties": {
         "TargetFramework": "net9.0"

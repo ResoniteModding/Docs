@@ -1,0 +1,102 @@
+---
+title: Writing Code
+description: Step 2 of making a mod is coding it!
+sidebar:
+  order: 2
+---
+
+import { LinkCard, LinkButton, FileTree } from '@astrojs/starlight/components';
+
+:::note
+Make sure you have [created a project](/creating-a-mod/creating-a-project). Once you have a project, you can start coding!
+:::
+
+You should have a project that looks like this:
+
+<FileTree>
+- .gitignore
+- CHANGELOG.md
+- Directory.Build.targets
+- icon.png
+- LICENSE
+- README.md
+- ResoniteMod.sln
+- thunderstore.toml
+- .config/
+  - dotnet-tools.json
+- src/
+  - ResoniteMod/
+    - Plugin.cs
+    - ResoniteMod.csproj
+</FileTree>
+
+:::tip
+The `Plugin.cs` file contains your code while the `csproj` files are for build configuration. You can look inside all of the files and look for comments that explain what everything does.
+:::
+
+Open the project in your IDE of choice where the `.sln` file is, and then open the `Plugin.cs` file. It should look something like this:
+
+```cs title="Plugin.cs"
+using BepInEx;
+using BepInEx.Logging;
+using BepInEx.NET.Common;
+using BepInExResoniteShim;
+
+namespace ResoniteMod;
+
+[ResonitePlugin(PluginMetadata.GUID, PluginMetadata.NAME, PluginMetadata.VERSION, PluginMetadata.AUTHORS, PluginMetadata.REPOSITORY_URL)]
+[BepInDependency(BepInExResoniteShim.PluginMetadata.GUID, BepInDependency.DependencyFlags.HardDependency)]
+public class Plugin : BasePlugin
+{
+    internal static new ManualLogSource? Log;
+
+    public override void Load()
+    {
+        // Plugin startup logic
+        Log = base.Log;
+        Log.LogInfo($"Plugin {PluginMetadata.GUID} is loaded!");
+    }
+}
+
+```
+
+This is a very basic BepInEx 6 plugin. 
+
+Work in progress documentation, more will be added. For now, for more info, see BepInEx's own documentation:
+
+<LinkButton
+  href="https://docs.bepinex.dev/articles/dev_guide/plugin_tutorial/2_plugin_start.html#plugin-structure"
+  variant="minimal"
+  icon="external">
+  Creating a new plugin project—Plugin structure
+</LinkButton>
+
+You can also follow the links to learn more about each thing mentioned:
+
+<LinkButton href="https://lethal.wiki/dev/fundamentals/logging" variant="minimal" icon="external">
+  Logging: lethal.wiki
+</LinkButton>
+<LinkButton href="https://lethal.wiki/dev/intermediate/custom-configs" variant="minimal" icon="external">
+  Custom Configs: lethal.wiki
+</LinkButton>
+<LinkButton href="https://lethal.wiki/dev/fundamentals/patching-code" variant="minimal" icon="external">
+  Patching Code: lethal.wiki
+</LinkButton>
+
+For patching/hooking methods, you can use [MonoMod](<https://github.com/MonoMod/MonoMod>) or [HarmonyX](<https://github.com/BepInEx/HarmonyX>). See [lethal.wiki](<https://lethal.wiki/dev/fundamentals/patching-code>) for more in-depth introductions on using them.
+
+:::note
+[MonoDetour](<https://github.com/MonoDetour/MonoDetour>) is also an option for hooking, but it's in pre-release state and therefore is not fit for production usage yet. You can find its documentation at https://monodetour.github.io/
+:::
+
+All of these libraries are compatible with each other as HarmonyX and MonoDetour simply use MonoMod.RuntimeDetour under the hood.
+
+## Writing Your First Patch
+
+TODO
+
+<LinkCard
+  title="Publishing Your Mod"
+  href="/creating-a-mod/packaging-and-publishing"
+  description="Upload your mod for everyone to download!"
+/>

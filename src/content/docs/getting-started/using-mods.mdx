@@ -1,0 +1,138 @@
+---
+title: Using Mods
+description: Find, install, and manage mods for Resonite
+sidebar:
+  order: 2
+---
+
+import { LinkCard, CardGrid, Tabs, TabItem } from '@astrojs/starlight/components';
+import { LinkButton } from '@astrojs/starlight/components';
+
+This guide covers everything you need to know about using mods in Resonite after you've [installed BepisLoader](/getting-started/installation/).
+
+## Finding Mods
+
+### Thunderstore Repository
+
+Resonite mods are hosted on Thunderstore, a community mod repository:
+
+<LinkButton href="https://thunderstore.io/c/resonite/" variant="primary" icon="external">
+  Browse Resonite Mods on Thunderstore
+</LinkButton>
+
+### Evaluating Mods
+
+Before installing, check:
+- **Last Updated** - Is it actively maintained?
+- **Downloads & Likes** - Popular mods are usually well-tested
+- **Dependencies** - What other mods are required?
+
+## Installing Mods
+
+<Tabs>
+<TabItem label="With Mod Manager (Recommended)">
+
+If you're using Gale or r2modmanPlus:
+
+1. **Browse** the mod list in your manager
+2. **Click Install** on the mods you want
+3. **Dependencies** are handled automatically
+4. **Launch Resonite** through the manager
+
+</TabItem>
+<TabItem label="Manual Installation">
+
+For manual installation:
+
+1. **Download** the mod from Thunderstore
+2. **Extract** the ZIP file
+3. **Copy files** to your Resonite installation:
+   - Most mods → `BepInEx/plugins/`
+   - Preloader patches → `BepInEx/patchers/`
+4. **Install dependencies** manually if needed
+
+</TabItem>
+</Tabs>
+
+## Managing Your Mods
+
+### Mod Locations
+
+```
+Resonite/
+├── BepInEx/
+│   ├── plugins/       # Most mods go here
+│   ├── patchers/      # Preloader patches
+│   └── config/        # Mod configuration files
+```
+
+### Configuring Mods
+
+Many mods have configuration options in `BepInEx/config/`:
+
+1. **Open** the `.cfg` file in a text editor
+2. **Modify settings** as needed
+3. **Save** the file
+4. **Restart Resonite** if needed (some mods can reload configs dynamically)
+
+:::tip
+Some mods automatically reload when their config changes - no restart needed!
+:::
+
+### Updating Mods
+
+<Tabs>
+<TabItem label="With Mod Manager">
+
+- Click **Check for Updates** in your manager
+- **Update all** or select specific mods
+- Manager handles everything automatically
+
+</TabItem>
+<TabItem label="Manual">
+
+1. Check for updates:
+   - Mod's Thunderstore page
+   - Check `#resonite-mod-releases` channel in [FrooxEngine Modding Discord](https://discord.gg/vCDJK9xyvm)
+   - GitHub releases page
+   - Other distribution platforms
+2. Download the new version
+3. Replace old files in `BepInEx/plugins/`
+4. Update any dependencies if needed
+
+</TabItem>
+</Tabs>
+
+### Disabling/Removing Mods
+
+**To disable temporarily:**
+- In mod manager: Toggle the mod off
+- Manual: Move the mod file out of `BepInEx/plugins/`
+
+**To remove completely:**
+- In mod manager: Uninstall the mod
+- Manual: Delete from `BepInEx/plugins/` and optionally from `BepInEx/config/`
+
+## Using Profiles
+
+Mod managers allow you to create different profiles for different mod setups. You can switch between profiles to quickly change your entire mod configuration - useful for testing, different situations like being in VR or Desktop, or keeping a clean vanilla setup.
+
+## Having Issues?
+
+If you're experiencing problems with your mods, check out our [Troubleshooting Guide](/getting-started/troubleshooting/) for solutions to common issues.
+
+## Next Steps
+
+<CardGrid>
+<LinkCard
+  title="Popular Mods"
+  href="https://thunderstore.io/c/resonite/?section=most-downloaded"
+  description="See what mods the community loves"
+/>
+
+<LinkCard
+  title="Create Your Own Mod"
+  href="/creating-a-mod/initial-setup/"
+  description="Learn to develop mods for Resonite"
+/>
+</CardGrid>

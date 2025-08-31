@@ -1,0 +1,69 @@
+---
+title: Initial Setup
+description: Learn to set up your environment to get started with making Resonite mods!
+sidebar:
+  order: 0
+---
+
+import { LinkCard, Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+Modding might sound complicated, but it's much easier if you start with the right mindset and a simple mod.
+
+## Install the Requirements
+
+Before you can start modding Resonite, you'll need to install two essential tools:
+
+- **.NET SDK 9.0** – *This is needed so you can compile C# code.*
+  - [Download .NET here](https://dotnet.microsoft.com/en-us/download)
+- **IDE** – *This is where you'll write and build your code. Choosing one can depend on your preferences and system.*
+  - [Visual Studio Code](https://code.visualstudio.com) (A lightweight, fast, and highly customizable editor with a wide range of extensions.)
+  - [Visual Studio](https://visualstudio.microsoft.com/vs/community/) (A powerful, feature-rich IDE widely used for C# and .NET development.)
+  - [Rider](https://www.jetbrains.com/rider/#) (A full-featured, IDE optimized for C# and .NET development.)
+
+Now that you have .NET and an IDE, we can move on to creating your first mod.
+
+:::caution
+This guide will not cover setting up your IDE. If you're stuck at this point, try watching a video tutorial.
+:::
+
+## Installing BepInEx
+
+You'll need BepInEx (via BepisLoader) installed to develop mods. Follow our [installation guide](/getting-started/installation/) to set it up using either:
+- **Mod Manager** (recommended) - Easy automatic installation
+- **Manual installation** - For custom configurations
+
+:::note[Console Window]
+If you've used BepInEx before, you may notice the console window doesn't appear — this is disabled by default in BepisLoader.
+
+You can enable the console by opening `BepInEx/config/BepInEx.cfg` and in the `[Logging.Console]` section, setting `Enabled = true`
+:::
+
+## Installing a Decompiler
+
+:::note
+This step is optional but highly recommended if you want to understand or debug Resonite's code.
+:::
+
+A decompiler allows you to inspect the game’s internal code. This helps you discover useful classes and methods that can be modified using Harmony.
+
+You only need one decompiler. Recommended options:
+
+- [ILSpy](https://github.com/icsharpcode/ILSpy) (best decompilation)
+  - [ILSpyCmd](https://github.com/icsharpcode/ILSpy/tree/master/ICSharpCode.ILSpyCmd) (CLI option)
+  - [ilspy-vscode](https://github.com/icsharpcode/ilspy-vscode) (Visual Studio Code extension)
+- [dnSpy](https://github.com/dnSpyEx/dnSpy)
+- [dotPeek](https://www.jetbrains.com/decompiler/#)
+
+:::caution
+Many of these options are not natively supported on Linux. [ILSpyCmd](https://github.com/icsharpcode/ILSpy/tree/master/ICSharpCode.ILSpyCmd) is recommended in this case as it can output a full C# project which can be viewed in any IDE, which for pure C# viewing can be a better experience than any other option. If you are using Visual Studio Code, [ilspy-vscode](https://github.com/icsharpcode/ilspy-vscode) can be used for viewing IL, although a standalone app would be better for this.
+
+An [ILSpy Avalonia frontend](https://github.com/icsharpcode/AvaloniaILSpy) also exists that supports Linux, however it doesn't seem to be maintained as of writing and is buggy.
+:::
+
+You’re now ready to move on:
+
+<LinkCard
+  title="Creating a Project"
+  href="/creating-a-mod/creating-a-project/"
+  description="Create a new C# BepInEx 6 project based on a template made for Resonite modding"
+/>
