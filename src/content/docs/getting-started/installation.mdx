@@ -5,7 +5,9 @@ sidebar:
   order: 1
 ---
 
-import { Card, CardGrid, LinkButton, Tabs, TabItem } from '@astrojs/starlight/components';
+import { LinkButton, Tabs, TabItem } from '@astrojs/starlight/components';
+import Card from '@components/Card.astro';
+import CardGrid from '@components/CardGrid.astro';
 
 Get started with Resonite modding by installing a mod loader. **BepisLoader** is the recommended and most widely supported option - it will be installed automatically when you use a mod manager.
 
@@ -66,6 +68,7 @@ If you need manual control:
 4. **Launch Resonite** - BepInEx will generate configuration files on first run
 
 **Find your Resonite folder:**
+
 - Via Steam: `Steam > Library > Resonite > Manage > Browse local files`
 - **Windows**: `C:\Program Files (x86)\Steam\steamapps\common\Resonite`
 - **Linux**: `~/.steam/steam/steamapps/common/Resonite`
@@ -78,7 +81,8 @@ While BepisLoader is the recommended option (and the only one supported on Thund
 <TabItem label="BepisLoader (Recommended)">
 
 **BepisLoader** - Lightweight and modular loader
-- Based on mature BepInEx 6 framework (used by many games)
+
+- Based on mature BepInEx framework (used by many games)
 - Full Thunderstore support (massive modding repository)
 - Windows: Uses [HookFxr](https://github.com/ResoniteModding/hookfxr) to inject
 - Linux: Modifies LinuxBootstrap.sh to load BepisLoader.dll
@@ -93,6 +97,7 @@ While BepisLoader is the recommended option (and the only one supported on Thund
 <TabItem label="ResoniteModLoader">
 
 **ResoniteModLoader (RML)** - The original basic mod loader
+
 - Fork of [NeosModLoader](https://github.com/neos-modding-group/NeosModLoader) from NeosVR days
 - Oldest and most established in the Resonite community
 - Largest existing mod ecosystem for Resonite
@@ -109,6 +114,7 @@ Installation: Place DLL in Libraries folder and add launch option
 <TabItem label="MonkeyLoader">
 
 **MonkeyLoader** - Feature-heavy all-in-one loader
+
 - Everything built-in: hot reloading, localization, pre-patching
 - Windows: Uses [HookFxr](https://github.com/ResoniteModding/hookfxr) to inject
 - Linux: Modifies LinuxBootstrap.sh to load MonkeyLoader
@@ -126,29 +132,30 @@ Installation: Download MonkeyLoader and Resonite GamePack ZIP, extract to Resoni
 
 ## Mod Loader Comparison
 
-| Feature | BepisLoader | ResoniteModLoader | MonkeyLoader |
-|---------|------------|-------------------|--------------|
-| **Philosophy** | Lightweight & modular | Basic & minimal | Feature-heavy all-in-one |
-| **Release Status** | Newest | Oldest | Recent |
-| **Ecosystem Size** | Growing rapidly | Large | Small |
-| **Thunderstore Support** | ✅ Full | ❌ None | ❌ None |
-| **Mod Distribution** | Thunderstore, Manual | JSON manifest, Manual | ~~NuGet~~ (Planned), Manual |
-| **Windows Hooking** | HookFxr | `-LoadAssembly` | HookFxr |
-| **Linux Hooking** | Bootstrap script | `-LoadAssembly` | Bootstrap script |
-| **Installation Method** | Mod managers/Manual | Manual (DLL + launch flag) | Manual (extract ZIP) |
-| **Side-by-side Usage** | ✅ Works with RML | ✅ Works with Bepis | ❌ Exclusive |
-| **Mod Manager** | ✅ r2modman/Gale | ✅ Resolute | ❌ |
-| **In-game Config UI** | ✅ Via libraries | ✅ Via libraries | ✅ Built-in |
-| **Harmony Patching** | ✅ | ✅ | ✅ |
-| **Pre-patching** | ✅ | ❌ | ✅ Built-in |
-| **Hot Reloading** | ❌ Planned | ✅ Via libraries | ✅ Built-in |
-| **Localization** | ✅ Via libraries | ❌ | ✅ Built-in |
-| **Dependency Management** | ✅ Via Thunderstore | ✅ Via Resolute | ❌ Manual |
-| **Developer Experience** | Simple & flexible | Very basic | Complex & opinionated |
-| **Learning Curve** | Easy | Easy | Steep |
+| Feature                   | BepisLoader           | ResoniteModLoader     | MonkeyLoader                |
+| ------------------------- | --------------------- | --------------------- | --------------------------- |
+| **Philosophy**            | Lightweight & modular | Basic & minimal       | Feature-heavy all-in-one    |
+| **Release Status**        | Newest                | Oldest                | Recent                      |
+| **Ecosystem Size**        | Growing rapidly       | Large                 | Small                       |
+| **Thunderstore Support**  | ✅                    | ❌                    | ❌                          |
+| **Mod Distribution**      | Thunderstore, Manual  | JSON manifest, Manual | ~~NuGet~~ (Planned), Manual |
+| **Windows Hooking**       | HookFxr               | `-LoadAssembly`       | HookFxr                     |
+| **Linux Hooking**         | Bootstrap script      | `-LoadAssembly`       | Bootstrap script            |
+| **Installation Method**   | Mod managers, Manual  | Manual                | Manual                      |
+| **Side-by-side Usage**    | ✅ Works with RML     | ✅ Works with Bepis   | ❌ Exclusive                |
+| **Mod Manager**           | ✅ r2modman, Gale     | ✅ Resolute           | ❌                          |
+| **In-game Config UI**     | ✅ Via libraries      | ✅ Via libraries      | ✅ Built-in                 |
+| **Harmony Patching**      | ✅                    | ✅                    | ✅                          |
+| **Pre-patching**          | ✅                    | ❌                    | ✅ Built-in                 |
+| **Hot Reloading**         | ❌ Planned            | ✅ Via libraries      | ✅ Built-in                 |
+| **Localization**          | ✅ Via libraries      | ❌                    | ✅ Built-in                 |
+| **Dependency Management** | ✅ Via Thunderstore   | ✅ Via Resolute       | ❌ Manual                   |
+| **Developer Experience**  | Simple & flexible     | Very basic            | Complex & opinionated       |
+| **Learning Curve**        | Easy                  | Easy                  | Steep                       |
 
 :::tip[Why BepisLoader?]
 BepisLoader is recommended for new users because:
+
 - **Thunderstore integration** - Access to a massive, established mod repository
 - **Mod manager support** - Easy installation and updates with r2modman/Gale
 - **BepInEx foundation** - Built on proven technology used across many games

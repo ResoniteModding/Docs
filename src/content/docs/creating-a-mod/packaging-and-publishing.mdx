@@ -11,19 +11,20 @@ The most preferred way to publish Resonite mods is through [Thunderstore](https:
 
 Before uploading your mod, you need to have built it into a `.dll`.
 
-
 ## Packaging With TCLI
 
-The [Resonite BepInEx Template](<https://github.com/ResoniteModding/BepInEx.Templates>) comes with Thunderstore packaging built-in, using [TCLI](<https://github.com/thunderstore-io/thunderstore-cli>).
+The [Resonite BepInEx Template](https://github.com/ResoniteModding/BepInEx.Templates) comes with Thunderstore packaging built-in, using [TCLI](https://github.com/thunderstore-io/thunderstore-cli).
 
 If you used the template, you have two options for building packages:
 
 ### Using TCLI directly
+
 ```bash
 dotnet tcli build
 ```
 
 ### Using the PackTS target
+
 ```bash
 dotnet build -c Release -t:PackTS -v d
 ```
@@ -44,7 +45,7 @@ The PublishTS property will build, package, and publish to Thunderstore all in o
 export TCLI_AUTH_TOKEN="YOUR_API_TOKEN"  # Linux/Mac
 # or
 set TCLI_AUTH_TOKEN=YOUR_API_TOKEN      # Windows CMD
-# or 
+# or
 $env:TCLI_AUTH_TOKEN="YOUR_API_TOKEN"   # PowerShell
 
 # Then run the build
@@ -56,6 +57,7 @@ When using the PackTS target with PublishTS, authentication only works via envir
 :::
 
 ### Publishing with TCLI directly
+
 ```bash
 # Using --token flag
 dotnet tcli publish --token YOUR_API_TOKEN
@@ -124,6 +126,7 @@ The manifest is fragile. Use this tool to validate it:
 [Thunderstore Manifest Validator](https://thunderstore.io/tools/manifest-v1-validator/)
 
 **Notes:**
+
 - Underscores in `name` will appear as spaces on the site.
 - `version_number` must increase with every release.
 - `website_url` is optional, but linking your source page is recommended. (e.g. Github)
@@ -190,6 +193,7 @@ Now zip up your contents.
 Instead, select all files inside and compress them.
 
 On Windows:
+
 - Select all files
 - Right-click → Send to → Compressed (zipped) folder
 
@@ -225,6 +229,7 @@ If it's rejected by moderation, visit the `#rejected-uploads` channel in the Dis
 Want that shiny **Mod Developer** role in the [FrooxEngine Modding Discord](https://discord.gg/vCDJK9xyvm)?
 
 Here's how to get it:
+
 1. Join the server
 2. Go to `#mod-development` channel
 3. Mention that you want the Mod Developer role and link your published mod

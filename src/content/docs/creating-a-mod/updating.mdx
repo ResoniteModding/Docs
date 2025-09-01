@@ -11,7 +11,7 @@ To update your mod, you need to simply change the version number in the Thunders
 
 ## Updating Version (TCLI)
 
-If you used the [Resonite Modding BepInEx Template](<https://github.com/ResoniteModding/BepInEx.Templates>), you can update the `Version` property in your `csproj` file:
+If you used the [Resonite Modding BepInEx Template](https://github.com/ResoniteModding/BepInEx.Templates), you can update the `Version` property in your `csproj` file:
 
 ```xml title="csproj" {7} del="1.0.0" ins="1.1.0"
 <Project Sdk="Microsoft.NET.Sdk">
@@ -27,7 +27,7 @@ If you used the [Resonite Modding BepInEx Template](<https://github.com/Resonite
 
 ```
 
-This property is used in the template when calling [TCLI](<https://github.com/thunderstore-io/thunderstore-cli>) to build or publish the package so the package always gets the correct version:
+This property is used in the template when calling [TCLI](https://github.com/thunderstore-io/thunderstore-cli) to build or publish the package so the package always gets the correct version:
 
 ```xml title="Directory.Build.targets" "Version"
 <Project>

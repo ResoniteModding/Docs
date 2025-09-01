@@ -1,12 +1,10 @@
 ---
 import { Icon } from '@astrojs/starlight/components';
 import type { StarlightIcon } from '@astrojs/starlight/types';
-
 interface Props {
 	icon?: StarlightIcon;
 	title: string;
 }
-
 const { icon, title } = Astro.props;
 ---
 
@@ -17,7 +15,6 @@ const { icon, title } = Astro.props;
 	</p>
 	<div class="body"><slot /></div>
 </article>
-
 <style>
 	@layer starlight.components {
 		.card {
@@ -33,6 +30,7 @@ const { icon, title } = Astro.props;
 			gap: clamp(0.5rem, calc(0.125rem + 1vw), 1rem);
 			position: relative;
 			overflow: hidden;
+			height: 100%; /* Fill the grid container height */
 		}
 		:root[data-theme='light'] .card {
 			--card-bg: rgba(255, 255, 255, 0.8);
@@ -92,6 +90,13 @@ const { icon, title } = Astro.props;
 		.card .body {
 			margin: 0;
 			font-size: clamp(var(--sl-text-sm), calc(0.5rem + 1vw), var(--sl-text-body));
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		.card .body > :global(*:last-child) {
+			align-self: flex-start;
 		}
 	}
 </style>

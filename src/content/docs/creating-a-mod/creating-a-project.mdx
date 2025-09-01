@@ -15,7 +15,11 @@ Creating a mod for Resonite is simple using the official BepInEx template. This 
 
 Once you have the template installed, you don't need to install it again, through it's a good idea to update it if there are updates.
 
-<LinkButton href="https://github.com/ResoniteModding/BepInEx.Templates" variant="minimal" icon="external">
+<LinkButton
+  href="https://github.com/ResoniteModding/BepInEx.Templates"
+  variant="minimal"
+  icon="external"
+>
   See the BepInEx Template repository
 </LinkButton>
 
@@ -35,7 +39,7 @@ dotnet new install BepInEx.Templates::2.0.0-be.* --nuget-source https://nuget-mo
 
 If you're contributing to the template or prefer manual installation:
 
-1. Clone or download [this repository](<https://github.com/ResoniteModding/BepInEx.Templates>)
+1. Clone or download [this repository](https://github.com/ResoniteModding/BepInEx.Templates)
 2. Navigate to the `BepInEx.Templates` folder
 3. Run:
 
@@ -82,7 +86,7 @@ This will create a new folder called `MyPluginName` with your mod's project.
 You can customize your project with these options:
 
 - `-ve|--version` - Plugin version (default: 1.0.0)
-- `-au|--authors` - Comma-separated list of plugin authors (default: YourName) 
+- `-au|--authors` - Comma-separated list of plugin authors (default: YourName)
 - `-r|--repositoryUrl` - Repository URL (auto-generated as `https://github.com/[FirstAuthor]/[ProjectName]` if empty)
 - `-p|--packageId` - Package ID (auto-generated as `[FirstAuthor].[ProjectName]` if empty)
 - `-g|--gitInit` - Initialize a git repository (default: true)
@@ -145,6 +149,7 @@ After creating your project, the template provides helpful instructions:
 ### Automatic Game Path Detection
 
 The template automatically finds your Resonite installation:
+
 1. First checks the `ResonitePath` environment variable
 2. Falls back to Steam installation paths
 3. Uses NuGet package for game references if local install not found
@@ -152,6 +157,7 @@ The template automatically finds your Resonite installation:
 ### Build Configuration
 
 Your plugin metadata is automatically generated from `.csproj` properties:
+
 - `PackageID` → Plugin GUID
 - `Product` → Plugin Name
 - `Version` → Plugin Version
@@ -161,6 +167,7 @@ Your plugin metadata is automatically generated from `.csproj` properties:
 ### Thunderstore Packaging
 
 The template includes built-in Thunderstore packaging support. Your project comes with:
+
 - `thunderstore.toml` - Package configuration
 - `icon.png` - Your mod's icon (replace with your own 256x256 image)
 - Build targets for creating and publishing packages

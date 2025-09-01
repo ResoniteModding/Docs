@@ -5,7 +5,8 @@ sidebar:
   order: 0
 ---
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { LinkCard } from '@astrojs/starlight/components';
+import CardGrid from '@components/CardGrid.astro';
 import { LinkButton } from '@astrojs/starlight/components';
 
 Welcome to the Resonite Modding Wiki! Whether you want to **use mods** to enhance your Resonite experience or **create your own mods**, this wiki has you covered.
@@ -15,23 +16,21 @@ Welcome to the Resonite Modding Wiki! Whether you want to **use mods** to enhanc
 If you're looking to install and use mods created by the community:
 
 <CardGrid>
-<LinkCard
-  title="Install BepisLoader"
-  href="/getting-started/installation/"
-  description="Set up the mod loader to run mods in Resonite"
-/>
-
-<LinkCard
-  title="Using Mods"
-  href="/getting-started/using-mods/"
-  description="Find, install, and manage mods from the community"
-/>
-
-<LinkCard
-  title="Troubleshooting"
-  href="/getting-started/troubleshooting/"
-  description="Fix common issues with mod installation and usage"
-/>
+  <LinkCard
+    title="Install BepisLoader"
+    href="/getting-started/installation/"
+    description="Set up the mod loader to run mods in Resonite"
+  />
+  <LinkCard
+    title="Using Mods"
+    href="/getting-started/using-mods/"
+    description="Find, install, and manage mods from the community"
+  />
+  <LinkCard
+    title="Troubleshooting"
+    href="/getting-started/troubleshooting/"
+    description="Fix common issues with mod installation and usage"
+  />
 </CardGrid>
 
 ## I want to create mods

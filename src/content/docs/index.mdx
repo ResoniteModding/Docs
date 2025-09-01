@@ -17,8 +17,9 @@ hero:
       variant: secondary
 ---
 
-import { CardGrid, LinkButton, Badge, Tabs, TabItem } from '@astrojs/starlight/components';
+import { LinkButton, Badge, Tabs, TabItem } from '@astrojs/starlight/components';
 import Card from '@components/Card.astro';
+import CardGrid from '@components/CardGrid.astro';
 import { Icon } from '@astrojs/starlight/components';
 
 ## For Mod Users
@@ -84,7 +85,11 @@ import { Icon } from '@astrojs/starlight/components';
   </Card>
   <Card title="BepisLoader Source Code" icon="github">
     <p>Contribute to BepisLoader development</p>
-    <LinkButton href="https://github.com/ResoniteModding/BepisLoader" variant="secondary" icon="external">
+    <LinkButton
+      href="https://github.com/ResoniteModding/BepisLoader"
+      variant="secondary"
+      icon="external"
+    >
       View on GitHub
     </LinkButton>
   </Card>
