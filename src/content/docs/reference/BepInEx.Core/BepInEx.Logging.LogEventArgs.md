@@ -79,7 +79,7 @@ A string that represents the current object.
 
 ### ToStringLine()
 
-Like [ToString()](../bepinex.logging.logeventargs.tostring/#tostring/) but appends newline at the end.
+Like [ToString()](../bepinex.logging.logeventargs/#tostring/) but appends newline at the end.
 
 ```csharp title="C#"
 public string ToStringLine()
@@ -88,4 +88,4 @@ public string ToStringLine()
 #### Returns
 
 [string](https://learn.microsoft.com/dotnet/api/system.string/)  
-Same output as [ToString()](../bepinex.logging.logeventargs.tostring/#tostring/) but with new line.
+Same output as [ToString()](../bepinex.logging.logeventargs/#tostring/) but with new line.

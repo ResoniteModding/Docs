@@ -44,7 +44,7 @@ public static ICollection<ILogSource> Sources { get; }
 
 ### CreateLogSource(string)
 
-Creates a new log source with a name and attaches it to [Sources](../bepinex.logging.logger.sources/#sources/).
+Creates a new log source with a name and attaches it to [Sources](../bepinex.logging.logger/#sources/).
 
 ```csharp title="C#"
 public static ManualLogSource CreateLogSource(string sourceName)

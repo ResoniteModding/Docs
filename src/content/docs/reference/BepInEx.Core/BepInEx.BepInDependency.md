@@ -21,7 +21,7 @@ Implements [ICacheable](../bepinex.bootstrap.icacheable/)
 
 ### BepInDependency(string, DependencyFlags)
 
-Marks this BaseUnityPlugin as dependent on another plugin. The other plugin will be loaded before this one. If the other plugin doesn't exist, what happens depends on the [Flags](../bepinex.bepindependency.flags/#flags/) parameter.
+Marks this BaseUnityPlugin as dependent on another plugin. The other plugin will be loaded before this one. If the other plugin doesn't exist, what happens depends on the [Flags](../bepinex.bepindependency/#flags/) parameter.
 
 ```csharp title="C#"
 public BepInDependency(string DependencyGUID, BepInDependency.DependencyFlags Flags = DependencyFlags.HardDependency)
@@ -38,7 +38,7 @@ The flags associated with this dependency definition.
 
 ### BepInDependency(string, string)
 
-Marks this BaseUnityPlugin as dependent on another plugin. The other plugin will be loaded before this one. If the other plugin doesn't exist or is of a version not satisfying [VersionRange](../bepinex.bepindependency.versionrange/#versionrange/), this plugin will not load and an error will be logged instead.
+Marks this BaseUnityPlugin as dependent on another plugin. The other plugin will be loaded before this one. If the other plugin doesn't exist or is of a version not satisfying [VersionRange](../bepinex.bepindependency/#versionrange/), this plugin will not load and an error will be logged instead.
 
 ```csharp title="C#"
 public BepInDependency(string guid, string version)

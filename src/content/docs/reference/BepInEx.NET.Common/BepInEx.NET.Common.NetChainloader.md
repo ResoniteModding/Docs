@@ -10,7 +10,7 @@ sidebar:
 public class NetChainloader : BaseChainloader<BasePlugin>
 ```
 
-Inheritance [object](https://learn.microsoft.com/dotnet/api/system.object/) → [BaseChainloader\<BasePlugin\>](../bepinex.bootstrap.basechainloader-1/)
+Inheritance [object](https://learn.microsoft.com/dotnet/api/system.object/) → [BaseChainloader\<BasePlugin\>](../bepinex.net.common.baseplugin/)
 
 ## Properties
 

@@ -51,7 +51,7 @@ sidebar:
 
 | | |
 | --- | --- |
-| [ICacheable](../bepinex.bootstrap.icacheable/) | A cacheable metadata item. Can be used with [LoadAssemblyCache\<T\>(string)](../bepinex.bootstrap.typeloader.loadassemblycache/#/) and `BepInEx.Bootstrap.TypeLoader.SaveAssemblyCache``1(System.String%2cSystem.Collections.Generic.Dictionary%7bSystem.String%2cSystem.Collections.Generic.List%7b``0%7d%7d%2cSystem.Collections.Generic.Dictionary%7bSystem.String%2cSystem.String%7d)` to cache plugin metadata. |
+| [ICacheable](../bepinex.bootstrap.icacheable/) | A cacheable metadata item. Can be used with [LoadAssemblyCache\<T\>(string)](../bepinex.bootstrap.typeloader/#/) and `BepInEx.Bootstrap.TypeLoader.SaveAssemblyCache``1(System.String%2cSystem.Collections.Generic.Dictionary%7bSystem.String%2cSystem.Collections.Generic.List%7b``0%7d%7d%2cSystem.Collections.Generic.Dictionary%7bSystem.String%2cSystem.String%7d)` to cache plugin metadata. |
 | [ILogListener](../bepinex.logging.iloglistener/) | A generic log listener that receives log events and can route them to some output (e.g. file, console, socket). |
 | [ILogSource](../bepinex.logging.ilogsource/) | Log source that can output log messages. |
 ## Enums

@@ -85,7 +85,7 @@ public ReadOnlyCollection<ConfigDefinition> ConfigDefinitions { get; }
 
 ### ConfigFilePath
 
-Full path to the config file. The file might not exist until a setting is added and changed, or [Save()](../bepinex.configuration.configfile.save/#save/) is called.
+Full path to the config file. The file might not exist until a setting is added and changed, or [Save()](../bepinex.configuration.configfile/#save/) is called.
 
 ```csharp title="C#"
 public string ConfigFilePath { get; }
@@ -93,7 +93,7 @@ public string ConfigFilePath { get; }
 
 ### SaveOnConfigSet
 
-If enabled, writes the config to disk every time a value is set. If disabled, you have to manually use [Save()](../bepinex.configuration.configfile.save/#save/) or the changes will be lost!
+If enabled, writes the config to disk every time a value is set. If disabled, you have to manually use [Save()](../bepinex.configuration.configfile/#save/) or the changes will be lost!
 
 ```csharp title="C#"
 public bool SaveOnConfigSet { get; set; }

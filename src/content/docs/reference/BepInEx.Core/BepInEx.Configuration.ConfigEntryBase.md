@@ -65,7 +65,7 @@ public ConfigDescription Description { get; }
 
 ### SettingType
 
-Type of the [BoxedValue](../bepinex.configuration.configentrybase.boxedvalue/#boxedvalue/) that this setting holds.
+Type of the [BoxedValue](../bepinex.configuration.configentrybase/#boxedvalue/) that this setting holds.
 
 ```csharp title="C#"
 public Type SettingType { get; }

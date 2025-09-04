@@ -35,7 +35,7 @@ public ManualLogSource Log { get; }
 
 ### Config
 
-A configuration file binding created with the [GUID](../bepinex.preloader.core.patching.patcherplugininfoattribute.guid/#guid/) of this plugin as the filename.
+A configuration file binding created with the [GUID](../bepinex.preloader.core.patching.patcherplugininfoattribute/#guid/) of this plugin as the filename.
 
 ```csharp title="C#"
 public ConfigFile Config { get; }
