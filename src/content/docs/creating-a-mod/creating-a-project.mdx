@@ -1,0 +1,187 @@
+---
+title: Creating a Project
+description: Set up a new Resonite BepInEx mod project using the official template.
+sidebar:
+  order: 1
+---
+
+import { LinkCard, LinkButton, FileTree } from '@astrojs/starlight/components';
+
+Creating a mod for Resonite is simple using the official BepInEx template. This guide covers installing the template, generating a project, and configuring it for development.
+
+## Installing
+
+.NET templates must be installed before they can be used. This means that when you install the template, it doesn't create a new project for you, but you will get the ability to do that.
+
+Once you have the template installed, you don't need to install it again, through it's a good idea to update it if there are updates.
+
+<LinkButton
+  href="https://github.com/ResoniteModding/BepInEx.Templates"
+  variant="minimal"
+  icon="external"
+>
+  See the BepInEx Template repository
+</LinkButton>
+
+:::caution
+You must use .NET SDK 9 or newer. Older versions are unsupported.
+:::
+
+### From NuGet (Recommended)
+
+Install the template from the Resonite modding NuGet feed:
+
+```bash
+dotnet new install BepInEx.Templates::2.0.0-be.* --nuget-source https://nuget-modding.resonite.net/v3/index.json
+```
+
+### Manual Install
+
+If you're contributing to the template or prefer manual installation:
+
+1. Clone or download [this repository](https://github.com/ResoniteModding/BepInEx.Templates)
+2. Navigate to the `BepInEx.Templates` folder
+3. Run:
+
+```bash
+cd BepInEx.Templates
+dotnet new install .
+```
+
+To update:
+
+```bash
+git pull
+dotnet new install . --force
+```
+
+To uninstall:
+
+```bash
+dotnet new uninstall .
+```
+
+Once installed, the template will be available as `BepInEx 6 Resonite Plugin` with the short name `bep6resonite`.
+
+## Creating a New Mod
+
+Run the following command in your Resonite modding directory:
+
+:::note
+By default, the first value in `--authors` is used as your Thunderstore team name. If this doesn't match your actual Thunderstore team, you'll need to manually update the `namespace` field in `thunderstore.toml`.
+
+A Thunderstore "team" is simply the author name your mods are published under - it can be just your username.
+
+Create your Thunderstore team here: https://thunderstore.io/settings/teams/create/
+:::
+
+```bash
+dotnet new bep6resonite --name MyPluginName --authors "MyName" --packageId net.myname.mypluginmame --repositoryUrl "https://github.com/myuser/mymod"
+```
+
+This will create a new folder called `MyPluginName` with your mod's project.
+
+### Template Options
+
+You can customize your project with these options:
+
+- `-ve|--version` - Plugin version (default: 1.0.0)
+- `-au|--authors` - Comma-separated list of plugin authors (default: YourName)
+- `-r|--repositoryUrl` - Repository URL (auto-generated as `https://github.com/[FirstAuthor]/[ProjectName]` if empty)
+- `-p|--packageId` - Package ID (auto-generated as `[FirstAuthor].[ProjectName]` if empty)
+- `-g|--gitInit` - Initialize a git repository (default: true)
+
+:::tip
+Use `dotnet new bep6resonite --help` to see all available options.
+:::
+
+## Project Structure
+
+This example demonstrates creating a project with the template:
+
+```bash
+~/Workspace/Resonite$ dotnet new bep6resonite -n ResoniteMod
+The template "BepInEx 6 Resonite Plugin (.NET 9, Thunderstore Ready)" was created successfully.
+```
+
+After creation, you'll see helpful next steps instructions. Now let's look at the project structure:
+
+```bash
+~/Workspace/Resonite$ cd ResoniteMod/
+```
+
+The file structure in `ResoniteMod/` should look like this:
+
+<FileTree>
+- .gitignore
+- CHANGELOG.md
+- Directory.Build.targets
+- icon.png
+- LICENSE
+- README.md
+- ResoniteMod.sln
+- thunderstore.toml
+- .config/
+  - dotnet-tools.json
+- src/
+  - ResoniteMod/
+    - Plugin.cs
+    - ResoniteMod.csproj
+</FileTree>
+
+Key points:
+
+- Your mod code is in `./src/<project-name>/`
+- `Directory.Build.targets` file defines `PackTS` target, see the [Packaging and Publishing](/creating-a-mod/packaging-and-publishing) guide
+- `<project-name>.sln` is your project solution
+
+The project is configured so that it's easy to add new projects into your project solution. Even if you don't need that, it's good to follow this standard project structure.
+
+### Post-Creation Setup
+
+After creating your project, the template provides helpful instructions:
+
+1. **Set up game path**: Either set `ResonitePath` environment variable or update `GamePath` in the .csproj
+2. **Review metadata**: Update project metadata in the .csproj file (Version, Authors, etc.)
+3. **Replace TODOs**: Search for `TODO` comments in the generated template and replace them with your actual values
+4. **Build**: Run `dotnet build` - this automatically copies the plugin to BepInEx/plugins folder
+
+### Automatic Game Path Detection
+
+The template automatically finds your Resonite installation:
+
+1. First checks the `ResonitePath` environment variable
+2. Falls back to Steam installation paths
+3. Uses NuGet package for game references if local install not found
+
+### Build Configuration
+
+Your plugin metadata is automatically generated from `.csproj` properties:
+
+- `PackageID` → Plugin GUID
+- `Product` → Plugin Name
+- `Version` → Plugin Version
+- `Authors` → Plugin Authors
+- `RepositoryUrl` → Repository URL
+
+### Thunderstore Packaging
+
+The template includes built-in Thunderstore packaging support. Your project comes with:
+
+- `thunderstore.toml` - Package configuration
+- `icon.png` - Your mod's icon (replace with your own 256x256 image)
+- Build targets for creating and publishing packages
+
+For detailed packaging and publishing instructions, see the [Packaging and Publishing](/creating-a-mod/packaging-and-publishing) guide.
+
+<LinkCard
+  title="Writing Code"
+  href="/creating-a-mod/writing-code"
+  description="Write your first lines of code in your new mod project"
+/>
+
+<LinkCard
+  title="Publishing Your Mod"
+  href="/creating-a-mod/packaging-and-publishing"
+  description="Upload your mod for everyone to download!"
+/>

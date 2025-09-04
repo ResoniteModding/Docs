@@ -1,11 +1,15 @@
 ---
-title: Installation Guide
+title: Installation
 description: Get started with Resonite modding using mod managers
+sidebar:
+  order: 1
 ---
 
-import { Card, CardGrid, LinkButton } from '@astrojs/starlight/components';
+import { LinkButton, Tabs, TabItem } from '@astrojs/starlight/components';
+import Card from '@components/Card.astro';
+import CardGrid from '@components/CardGrid.astro';
 
-Get started with Resonite modding by installing a mod manager. BepisLoader will be installed automatically as a dependency when you install your first mod.
+Get started with Resonite modding by installing a mod loader. **BepisLoader** is the recommended and most widely supported option - it will be installed automatically when you use a mod manager.
 
 ## Using a Mod Manager (Recommended)
 
@@ -58,18 +62,111 @@ Only use manual installation if you need custom configurations or are developing
 
 If you need manual control:
 
-1. **Download** [BepisLoader-full.zip](https://github.com/art0007i/BepisLoader/releases/latest)
-2. **Extract** directly into your Resonite folder (next to `Resonite.exe`)
-3. **Launch Resonite** - you should see BepInEx logs in the console
+1. **Download** BepisLoader from [Thunderstore](https://thunderstore.io/c/resonite/p/ResoniteModding/BepisLoader/) or [GitHub releases](https://github.com/ResoniteModding/BepisLoader/releases/latest)
+2. **Extract** the ZIP file
+3. **Copy** the contents of the `BepInExPack` folder to your Resonite installation root directory
+4. **Launch Resonite** - BepInEx will generate configuration files on first run
 
-**File locations:** (it may vary based on your Steam library location)
+**Find your Resonite folder:**
 
+- Via Steam: `Steam > Library > Resonite > Manage > Browse local files`
 - **Windows**: `C:\Program Files (x86)\Steam\steamapps\common\Resonite`
-- **Linux**: `~/.local/share/Steam/steamapps/common/Resonite`
+- **Linux**: `~/.steam/steam/steamapps/common/Resonite`
+
+## Alternative Mod Loaders
+
+While BepisLoader is the recommended option (and the only one supported on Thunderstore), there are other mod loaders available for Resonite:
+
+<Tabs>
+<TabItem label="BepisLoader (Recommended)">
+
+**BepisLoader** - Lightweight and modular loader
+
+- Based on mature BepInEx framework (used by many games)
+- Full Thunderstore support (massive modding repository)
+- Windows: Uses [HookFxr](https://github.com/ResoniteModding/hookfxr) to inject
+- Linux: Modifies LinuxBootstrap.sh to load BepisLoader.dll
+- Lightweight core with features added via libraries:
+  - [BepisLocaleLoader](https://github.com/ResoniteModding/BepisLocaleLoader) for localization
+  - [BepisModSettings](https://github.com/ResoniteModding/BepisModSettings) for in-game config UI
+- Simple and flexible for developers
+
+[GitHub Repository](https://github.com/ResoniteModding/BepisLoader)
+
+</TabItem>
+<TabItem label="ResoniteModLoader">
+
+**ResoniteModLoader (RML)** - The original basic mod loader
+
+- Fork of [NeosModLoader](https://github.com/neos-modding-group/NeosModLoader) from NeosVR days
+- Oldest and most established in the Resonite community
+- Largest existing mod ecosystem for Resonite
+- Very basic - no advanced features
+- Uses Resonite's official `-LoadAssembly` plugin loader (no injection)
+- JSON manifest system for mod discovery
+- Supported by Resolute mod manager
+
+Installation: Place DLL in Libraries folder and add launch option
+
+[GitHub Repository](https://github.com/resonite-modding-group/ResoniteModLoader) | [Resolute Manager](https://github.com/Gawdl3y/Resolute)
+
+</TabItem>
+<TabItem label="MonkeyLoader">
+
+**MonkeyLoader** - Feature-heavy all-in-one loader
+
+- Everything built-in: hot reloading, localization, pre-patching
+- Windows: Uses [HookFxr](https://github.com/ResoniteModding/hookfxr) to inject
+- Linux: Modifies LinuxBootstrap.sh to load MonkeyLoader
+- Opinionated development workflow
+- Requires NuGet registry for distribution (still WIP)
+- GamePack system for extensibility
+- More complex setup and development
+
+Installation: Download MonkeyLoader and Resonite GamePack ZIP, extract to Resonite folder
+
+[GitHub Repository](https://github.com/MonkeyModdingTroop/MonkeyLoader)
+
+</TabItem>
+</Tabs>
+
+## Mod Loader Comparison
+
+| Feature                   | BepisLoader           | ResoniteModLoader     | MonkeyLoader                |
+| ------------------------- | --------------------- | --------------------- | --------------------------- |
+| **Philosophy**            | Lightweight & modular | Basic & minimal       | Feature-heavy all-in-one    |
+| **Release Status**        | Newest                | Oldest                | Recent                      |
+| **Ecosystem Size**        | Growing rapidly       | Large                 | Small                       |
+| **Thunderstore Support**  | ✅                    | ❌                    | ❌                          |
+| **Mod Distribution**      | Thunderstore, Manual  | JSON manifest, Manual | ~~NuGet~~ (Planned), Manual |
+| **Windows Hooking**       | HookFxr               | `-LoadAssembly`       | HookFxr                     |
+| **Linux Hooking**         | Bootstrap script      | `-LoadAssembly`       | Bootstrap script            |
+| **Installation Method**   | Mod managers, Manual  | Manual                | Manual                      |
+| **Mod Manager**           | ✅ r2modman, Gale     | ✅ Resolute           | ❌                          |
+| **In-game Config UI**     | ✅ Via libraries      | ✅ Via libraries      | ✅ Built-in                 |
+| **Harmony Patching**      | ✅                    | ✅                    | ✅                          |
+| **Pre-patching**          | ✅                    | ❌                    | ✅                          |
+| **Hot Reloading**         | ❌ Planned            | ✅ Via libraries      | ✅ Built-in                 |
+| **Localization**          | ✅ Via libraries      | ❌                    | ✅ Built-in                 |
+| **Dependency Management** | ✅ Via Thunderstore   | ✅ Via Resolute       | ❌ Manual                   |
+| **Developer Experience**  | Simple & flexible     | Very basic            | Complex & opinionated       |
+| **Learning Curve**        | Easy                  | Easy                  | Steep                       |
+
+:::tip[Why BepisLoader?]
+BepisLoader is recommended for new users because:
+
+- **Thunderstore integration** - Access to a massive, established mod repository
+- **Mod manager support** - Easy installation and updates with r2modman/Gale
+- **BepInEx foundation** - Built on proven technology used across many games
+- **Works alongside RML** - Can use both BepisLoader and RML mods together
+
+Note: BepisLoader and ResoniteModLoader can be used side-by-side! This gives you access to both Thunderstore mods (via BepisLoader) and the existing RML mod ecosystem. Only BepisLoader mods are managed through Thunderstore mod managers.
+:::
 
 ## Next Steps
 
-Now that you have a mod manager installed:
+Now that you have a mod loader installed:
 
-- [Create your first mod](/getting-started/first-mod/) to start coding
+- [Use mods](/getting-started/using-mods/) from the community
+- [Create your first mod](/creating-a-mod/initial-setup/) to start developing
 - [Browse mods on Thunderstore](https://thunderstore.io/c/resonite/) to find existing mods

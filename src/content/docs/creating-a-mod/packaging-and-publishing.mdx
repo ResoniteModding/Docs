@@ -1,0 +1,244 @@
+---
+title: Packaging and Publishing
+description: Step 3 of making a mod is publishing it!
+sidebar:
+  order: 3
+---
+
+import { LinkCard, FileTree } from '@astrojs/starlight/components';
+
+The most preferred way to publish Resonite mods is through [Thunderstore](https://thunderstore.io/c/resonite/).
+
+Before uploading your mod, you need to have built it into a `.dll`.
+
+## Packaging With TCLI
+
+The [Resonite BepInEx Template](https://github.com/ResoniteModding/BepInEx.Templates) comes with Thunderstore packaging built-in, using [TCLI](https://github.com/thunderstore-io/thunderstore-cli).
+
+If you used the template, you have two options for building packages:
+
+### Using TCLI directly
+
+```bash
+dotnet tcli build
+```
+
+### Using the PackTS target
+
+```bash
+dotnet build -c Release -t:PackTS -v d
+```
+
+The PackTS target will automatically build your mod and create a Thunderstore package in one step. The built package will be found at `./build/`.
+
+:::note
+You can learn about different build options with `dotnet build --help`.  
+`-c` is short for `--configuration`, `-t` is short for `--target`, and `-v d` is `--verbosity detailed`.
+:::
+
+### Publishing with PackTS target
+
+The PublishTS property will build, package, and publish to Thunderstore all in one command:
+
+```bash
+# Set environment variable first
+export TCLI_AUTH_TOKEN="YOUR_API_TOKEN"  # Linux/Mac
+# or
+set TCLI_AUTH_TOKEN=YOUR_API_TOKEN      # Windows CMD
+# or
+$env:TCLI_AUTH_TOKEN="YOUR_API_TOKEN"   # PowerShell
+
+# Then run the build
+dotnet build -c Release -t:PackTS -p:PublishTS=true
+```
+
+:::note
+When using the PackTS target with PublishTS, authentication only works via environment variable. The `--token` flag is not supported with this method. There's an [open issue](https://github.com/thunderstore-io/thunderstore-cli/issues/105) to add `.env` file support for easier token management.
+:::
+
+### Publishing with TCLI directly
+
+```bash
+# Using --token flag
+dotnet tcli publish --token YOUR_API_TOKEN
+
+# Or use environment variable (see above)
+dotnet tcli publish
+```
+
+### Authentication
+
+A Thunderstore API token is required to publish packages with TCLI. To acquire an API token:
+
+1. Log in to [thunderstore.io](https://thunderstore.io)
+2. Navigate to your team page: Settings → Teams → [Your team name]
+3. From the left sidebar, select **Service Accounts**
+4. Select **Add service account** and fill the name of the account into the form
+5. The API token is shown on the following confirmation page
+
+:::caution
+Save your API token immediately - it's only shown once! Keep it secret and never commit it to version control.
+:::
+
+An API token is required only for the publish command. There's two ways to configure it:
+
+1. Set it as `TCLI_AUTH_TOKEN` environment variable (e.g. for GitHub Actions)
+2. Pass it as a parameter to the command: `tcli publish --token tss_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
+
+If both methods are used, the command parameter takes precedence.
+
+Once you have the ZIP package, you can jump straight into [Uploading to Thunderstore](#uploading-to-thunderstore)!
+
+## Manual Packaging
+
+Create a new folder. Here we want to create a few files and one folder.  
+Your new mod folder should look like this:
+
+<FileTree>
+- LICENSE (optional)
+- manifest.json
+- README.md
+- CHANGELOG.md (optional)
+- icon.png
+- plugins
+  - YourMod
+    - YourMod.dll
+    - YourMod.pdb (optional)
+</FileTree>
+
+### `manifest.json`
+
+Your manifest is crucial — without it, your mod won't work on Thunderstore.
+
+Here’s an example of what it should look like:
+
+```json title="manifest.json"
+{
+  "name": "Your_mod_name",
+  "version_number": "1.0.0",
+  "website_url": "https://resonitemodding.github.io",
+  "description": "A mod description",
+  "dependencies": ["ResoniteModding-BepisLoader-1.3.1"]
+}
+```
+
+The manifest is fragile. Use this tool to validate it:  
+[Thunderstore Manifest Validator](https://thunderstore.io/tools/manifest-v1-validator/)
+
+**Notes:**
+
+- Underscores in `name` will appear as spaces on the site.
+- `version_number` must increase with every release.
+- `website_url` is optional, but linking your source page is recommended. (e.g. Github)
+- You can include any number of dependencies.
+
+**Example with dependencies:**
+
+```json title="manifest.json"
+{
+  ...
+  "dependencies": [
+    "ResoniteModding-BepisLoader-1.3.1",
+    "ResoniteModding-BepisLocaleLoader-1.0.0"
+  ]
+}
+```
+
+Dependency strings can be found on the individual mod’s page on Thunderstore.
+
+### `README.md` & `CHANGELOG.md`
+
+- `README.md` becomes your mod’s description on Thunderstore.
+- `CHANGELOG.md` is optional, but useful for showing update history.
+
+Both files support Markdown formatting. Helpful resource: [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+
+### `icon.png`
+
+Your icon must be exactly **256x256** pixels.
+
+Transparency is supported, although if used, it is recommended the icon has clear borders that work with any background color as icons might be displayed in a variety of themes (e.g. with 3rd party mod managers).
+
+APNG is technically valid, but only the first frame will currently be displayed on the site.
+
+### LICENSE
+
+Choosing a license can feel overwhelming, but here’s a simple guide:
+
+1. **Do you want others to use your code in their mods?**
+2. **Do you want credit for your work?**
+3. **Do you care if others use it in commercial/closed-source projects?**
+
+Common license options:
+
+- **MIT License** — Very permissive. Others can reuse your code with attribution, even commercially.
+- **GPL-3.0** — Requires others to also open-source their projects if they use your code.
+- **CC0 / Unlicense** — No rights reserved. Anyone can use your code however they want, no credit needed.
+
+Generate one here: [choosealicense.com](https://choosealicense.com/)
+
+:::tip
+If you're unsure, **MIT** is a safe and popular choice for mods.
+:::
+
+:::danger
+Not including a LICENSE file means your mod defaults to **All Rights Reserved** — others cannot legally use, share, or remix it.
+:::
+
+### Making a ZIP
+
+Now zip up your contents.
+
+**Do NOT zip the folder itself.**  
+Instead, select all files inside and compress them.
+
+On Windows:
+
+- Select all files
+- Right-click → Send to → Compressed (zipped) folder
+
+## Uploading to Thunderstore
+
+To upload a mod, first create a Thunderstore team by logging in and going here:  
+https://thunderstore.io/settings/teams/create/
+
+:::tip
+Once a mod is uploaded, your Thunderstore team **cannot** be deleted or renamed — choose carefully!
+:::
+
+Then go to: [Thunderstore Upload Page](https://thunderstore.io/c/resonite/create/)
+
+- Upload your `.zip`
+- Select your team
+- Choose **Resonite** as the community
+- Select relevant categories
+- Submit!
+
+If your mod is NSFW, make sure to mark it.
+
+:::caution
+Uploaded packages can not be deleted, but they can be deprecated which will hide the package. To fully delete a package, you must reach out to Thunderstore staff.
+:::
+:::danger
+Skipping steps can cause your mod upload to fail.  
+If it's rejected by moderation, visit the `#rejected-uploads` channel in the Discord server to appeal.
+:::
+
+## Discord Mod Releases
+
+Want that shiny **Mod Developer** role in the [FrooxEngine Modding Discord](https://discord.gg/vCDJK9xyvm)?
+
+Here's how to get it:
+
+1. Join the server
+2. Go to `#mod-development` channel
+3. Mention that you want the Mod Developer role and link your published mod
+4. Wait for the role to be assigned
+
+Once you have the Mod Developer role, you can advertise your mod in the `#resonite-mod-releases` channel to let the community know about your creation!
+
+<LinkCard
+  title="Updating"
+  href="/creating-a-mod/updating/"
+  description="Update your mod instead of creating a new one"
+/>

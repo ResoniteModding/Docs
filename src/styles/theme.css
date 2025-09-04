@@ -77,3 +77,63 @@ sl-doc-search {
 		}
 	}
 }
+
+/* table scrolling */
+.sl-markdown-content {
+	table {
+		display: block;
+		overflow-x: auto;
+		width: 100%;
+		border-collapse: collapse;
+		border-spacing: 0;
+		-webkit-overflow-scrolling: touch;
+		touch-action: pan-x pan-y;
+
+		& thead,
+		& tbody {
+			min-width: 100%;
+		}
+
+		& th,
+		& td {
+			white-space: nowrap;
+			padding: 0.5rem 0.75rem;
+			vertical-align: top;
+			border-bottom: 1px solid var(--sl-color-gray-5);
+			text-align: left;
+		}
+
+		& th {
+			background: var(--sl-color-gray-6);
+			font-weight: 600;
+			border-bottom: 2px solid var(--sl-color-gray-4);
+			position: sticky;
+			top: 0;
+			z-index: 1;
+		}
+
+		& .wrap,
+		& .text-wrap {
+			white-space: normal;
+			word-break: break-word;
+			min-width: 150px;
+		}
+
+		@media (max-width: 768px) {
+			& th,
+			& td {
+				padding: 0.375rem 0.5rem;
+				font-size: 0.875rem;
+			}
+		}
+
+		@media (max-width: 480px) {
+			& th,
+			& td {
+				padding: 0.25rem 0.375rem;
+				font-size: 0.8rem;
+				min-width: 60px;
+			}
+		}
+	}
+}
