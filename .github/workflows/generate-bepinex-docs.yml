@@ -19,9 +19,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Clone BepInEx repository
+      - name: Checkout BepInEx
+        uses: actions/checkout@v4
+        with:
+          repository: ResoniteModding/BepInEx
+          path: BepInEx
+          ref: master
+          submodules: recursive
+
+      - name: Copy docfx.json to BepInEx repository
         run: |
-          git clone https://github.com/ResoniteModding/BepInEx.git
           cp docfx.json BepInEx/
 
       - name: Setup .NET

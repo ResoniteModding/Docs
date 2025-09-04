@@ -14,23 +14,14 @@
         }
       ],
       "output": "api",
-      "shouldSkipMarkup": false,
       "disableGitFeatures": false,
-      "disableDefaultFilter": false,
-      "categoryLayout": "nested",
-      "namespaceLayout": "nested",
-      "memberLayout": "separatePages",
-      "properties": {
-        "TargetFramework": "net9.0"
-      },
-      "allowCompilationErrors": true,
-      "noRestore": false
+      "disableDefaultFilter": false
     }
   ],
   "build": {
     "content": [
       {
-        "files": ["api/**.md", "api/**/toc.yml"]
+        "files": ["api/**.yml", "api/index.md"]
       },
       {
         "files": ["docs/**.md", "docs/**/toc.yml", "toc.yml", "*.md"]
@@ -43,6 +34,10 @@
     ],
     "output": "_site",
     "template": ["default"],
-    "disableGitFeatures": false
+    "disableGitFeatures": false,
+    "globalMetadata": {
+      "_appTitle": "BepInEx API Documentation",
+      "_description": "BepInEx documentation and API listing"
+    }
   }
 }
