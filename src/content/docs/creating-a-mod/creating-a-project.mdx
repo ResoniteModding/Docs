@@ -123,15 +123,16 @@ The file structure in `ResoniteMod/` should look like this:
 - thunderstore.toml
 - .config/
   - dotnet-tools.json
-- src/
-  - ResoniteMod/
-    - Plugin.cs
-    - ResoniteMod.csproj
+- ResoniteMod/
+  - Plugin.cs
+  - ResoniteMod.csproj
+  - Properties/
+    - launchSettings.json
 </FileTree>
 
 Key points:
 
-- Your mod code is in `./src/<project-name>/`
+- Your mod code is in `./<project-name>/`
 - `Directory.Build.targets` file defines `PackTS` target, see the [Packaging and Publishing](/creating-a-mod/packaging-and-publishing) guide
 - `<project-name>.sln` is your project solution
 
