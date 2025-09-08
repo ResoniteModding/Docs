@@ -52,7 +52,7 @@ jobs:
       - name: Convert to Astro format
         working-directory: ./BepInEx
         run: |
-          docfx2astro -i ./api -o ../src/content/docs/reference --verbose
+          docfx2astro -i ./api -o ../src/content/docs/reference --group-by Namespace --verbose
 
       - name: Commit and push changes
         run: |
