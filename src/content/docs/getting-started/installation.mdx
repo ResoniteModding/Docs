@@ -19,16 +19,26 @@ Mod managers handle all the technical setup for you. They automatically install 
 
 <CardGrid>
   <Card title="Gale" icon="rocket">
-    <p>Modern, lightweight mod manager with clean interface and automatic updates.</p>
+    <p>Modern, lightweight mod manager with clean interface.</p>
     <LinkButton
       href="https://github.com/Kesomannen/gale?tab=readme-ov-file#installation"
       target={'_blank'}
       rel={'external'}
     >
-      Install Gale
+      Install
     </LinkButton>
   </Card>
-  <Card title="r2modmanPlus" icon="setting">
+  <Card title="Thunderstore Mod Manager" icon="setting">
+    <p>Official mod manager for Thunderstore.</p>
+    <LinkButton
+      href="https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager"
+      target={'_blank'}
+      rel={'external'}
+    >
+      Install
+    </LinkButton>
+  </Card>
+  {/* <Card title="r2modmanPlus" icon="setting">
     <p>Feature-rich mod manager with profile management and cross-platform support.</p>
     <LinkButton
       href="https://github.com/ebkr/r2modmanPlus?tab=readme-ov-file#installing"
@@ -37,7 +47,7 @@ Mod managers handle all the technical setup for you. They automatically install 
     >
       Install r2modmanPlus
     </LinkButton>
-  </Card>
+  </Card> */}
 </CardGrid>
 
 ### Getting Started
@@ -135,32 +145,32 @@ Installation: Download MonkeyLoader and Resonite GamePack ZIP, extract to Resoni
 | Feature                   | BepisLoader           | ResoniteModLoader     | MonkeyLoader                |
 | ------------------------- | --------------------- | --------------------- | --------------------------- |
 | **Philosophy**            | Lightweight & modular | Basic & minimal       | Feature-heavy all-in-one    |
-| **Release Status**        | Newest                | Oldest                | Recent                      |
-| **Ecosystem Size**        | Growing rapidly       | Large                 | Small                       |
 | **Thunderstore Support**  | ✅                    | ❌                    | ❌                          |
 | **Mod Distribution**      | Thunderstore, Manual  | JSON manifest, Manual | ~~NuGet~~ (Planned), Manual |
 | **Windows Hooking**       | HookFxr               | `-LoadAssembly`       | HookFxr                     |
 | **Linux Hooking**         | Bootstrap script      | `-LoadAssembly`       | Bootstrap script            |
 | **Installation Method**   | Mod managers, Manual  | Manual                | Manual                      |
 | **Mod Manager**           | ✅ r2modman, Gale     | ✅ Resolute           | ❌                          |
-| **In-game Config UI**     | ✅ Via libraries      | ✅ Via libraries      | ✅ Built-in                 |
-| **Harmony Patching**      | ✅                    | ✅                    | ✅                          |
+| **In-game Config UI**     | ✅ Official addon     | ✅ Community addon    | ✅ Built-in                 |
+| **Harmony Patching**      | ✅ HarmonyX           | ✅ Harmony            | ✅ Harmony                  |
 | **Pre-patching**          | ✅                    | ❌                    | ✅                          |
-| **Hot Reloading**         | ❌ Planned            | ✅ Via libraries      | ✅ Built-in                 |
-| **Localization**          | ✅ Via libraries      | ❌                    | ✅ Built-in                 |
-| **Dependency Management** | ✅ Via Thunderstore   | ✅ Via Resolute       | ❌ Manual                   |
+| **Hot Reloading**         | 🟡 Partial [^1]       | ✅ Community addon    | ✅ Built-in                 |
+| **Localization**          | ✅ Official addon     | ❌                    | ✅ Built-in                 |
+| **Dependency Management** | ✅ Via Mod Managers   | ✅ Via Resolute       | ❌ Manual                   |
 | **Developer Experience**  | Simple & flexible     | Very basic            | Complex & opinionated       |
 | **Learning Curve**        | Easy                  | Easy                  | Steep                       |
+
+[^1]: It supports [.NET Hot Reload](https://devblogs.microsoft.com/dotnet/introducing-net-hot-reload) provided by your IDE, as long as you launch with a debugger attached. A more complete implementation is planned.
 
 :::tip[Why BepisLoader?]
 BepisLoader is recommended for new users because:
 
-- **Thunderstore integration** - Access to a massive, established mod repository
-- **Mod manager support** - Easy installation and updates with r2modman/Gale
-- **BepInEx foundation** - Built on proven technology used across many games
-- **Works alongside RML** - Can use both BepisLoader and RML mods together
+- **Thunderstore integration** - Access to a massive, established mod repository.
+- **Mod manager support** - Easy installation and updates with r2modman/Gale.
+- **BepInEx foundation** - Built on proven technology used across many games.
+- **Works alongside RML and MonkeyLoader** - Can use BepisLoader, MonkeyLoader (via [MonkeyLoaderLoader](https://thunderstore.io/c/resonite/p/Nytra/MonkeyLoaderLoader)) and RML together. [^2]
 
-Note: BepisLoader and ResoniteModLoader can be used side-by-side! This gives you access to both Thunderstore mods (via BepisLoader) and the existing RML mod ecosystem. Only BepisLoader mods are managed through Thunderstore mod managers.
+[^2]: Only BepisLoader mods are managed through Thunderstore mod managers.
 :::
 
 ## Next Steps

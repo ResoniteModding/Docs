@@ -6,6 +6,7 @@ import mdx from '@astrojs/mdx';
 import starlightThemeRapide from 'starlight-theme-rapide';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
 import { loadEnv } from 'vite';
+import remarkGfm from 'remark-gfm';
 const { DOCSEARCH_APP_ID, DOCSEARCH_INDEX_NAME, DOCSEARCH_SEARCH_API_KEY } = loadEnv(
 	// @ts-ignore
 	process.env.NODE_ENV,
@@ -16,6 +17,9 @@ const { DOCSEARCH_APP_ID, DOCSEARCH_INDEX_NAME, DOCSEARCH_SEARCH_API_KEY } = loa
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://modding.resonite.net',
+	markdown: {
+		remarkPlugins: [remarkGfm],
+	},
 	integrations: [
 		starlight({
 			prerender: true,
