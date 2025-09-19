@@ -15,6 +15,63 @@ Before uploading your mod, you need to have built it into a `.dll`.
 
 The [Resonite BepInEx Template](https://github.com/ResoniteModding/BepInEx.Templates) comes with Thunderstore packaging built-in, using [TCLI](https://github.com/thunderstore-io/thunderstore-cli).
 
+### Understanding thunderstore.toml
+
+TCLI uses a `thunderstore.toml` configuration file to define how your mod should be packaged. This file is created automatically when using the template and controls everything about your package.
+
+Here's what each section does:
+
+```toml title="thunderstore.toml"
+[config]
+schemaVersion = "0.0.1"
+
+[package]
+namespace = "AuthorName" # Your Thunderstore team name
+name = "ProjectName" # Your mod's name (no spaces/special chars)
+versionNumber = "1.0.0" # Version from your .csproj file
+description = "Example mod description" # Max 250 characters
+websiteUrl = "https://github.com/ResoniteModding/ProjectName" # Your GitHub/website URL
+containsNsfwContent = false
+
+# Dependencies your mod needs
+[package.dependencies]
+ResoniteModding-BepisLoader = "1.3.1"
+ResoniteModding-BepisResoniteWrapper = "1.0.0"
+
+[build]
+icon = "./icon.png"
+readme = "./README.md"
+outdir = "./build"
+
+# Copy compiled DLL to plugins folder
+[[build.copy]]
+source = "./ProjectName/bin/Release/ProjectName.dll"
+target = "plugins/ProjectName/"
+
+# Include debug symbols (optional but recommended)
+[[build.copy]]
+source = "./ProjectName/bin/Release/ProjectName.pdb"
+target = "plugins/ProjectName/"
+
+# Optional: Include CHANGELOG
+# [[build.copy]]
+# source = "./CHANGELOG.md"
+# target = "/"
+
+[publish]
+repository = "https://thunderstore.io"
+communities = ["resonite"]
+
+[publish.categories]
+resonite = ["mods"] # Categories for your mod
+```
+
+:::note[Categories]
+You can always change your mod's categories later on Thunderstore's website after publishing. The categories in `thunderstore.toml` are just the initial settings.
+:::
+
+### Building Packages
+
 If you used the template, you have two options for building packages:
 
 ### Using TCLI directly
