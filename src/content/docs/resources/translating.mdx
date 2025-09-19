@@ -1,8 +1,219 @@
 ---
 title: Contributing Translations
-description: --
+description: Help translate the Resonite Modding Wiki into your language
 sidebar:
   order: 2
 ---
 
-work in progress.
+import { FileTree, Steps } from '@astrojs/starlight/components';
+
+Help make Resonite modding accessible to everyone by contributing translations to this documentation. This guide explains how to add translations for new languages or improve existing ones.
+
+## Current Languages
+
+The documentation currently supports:
+- **English** (en) - Primary language
+- Additional languages can be added through community contributions
+
+:::note[English File Location]
+Currently, English documentation files are located in the root `src/content/docs/` folder rather than in an `en/` subfolder. This may change in the future to `src/content/docs/en/` for consistency with other languages.
+:::
+
+## How Translations Work
+
+This documentation uses Starlight's built-in internationalization (i18n) system, which provides:
+- Automatic language switching
+- Fallback to English for untranslated pages
+- Right-to-left (RTL) language support
+- Localized UI elements
+
+## Contributing Translations
+
+### Getting Started
+
+<Steps>
+
+1. **Fork the repository** on GitHub
+
+2. **Check existing translations** in `src/content/docs/` to see which languages are already supported
+
+3. **Choose what to translate**:
+   - Full documentation pages
+   - UI strings (buttons, navigation, etc.)
+   - Or both!
+
+</Steps>
+
+### Translating Documentation Pages
+
+To translate documentation pages:
+
+<Steps>
+
+1. **Create a language folder** in `src/content/docs/` if it doesn't exist:
+
+   <FileTree>
+   - src/
+     - content/
+       - docs/
+         - (English files currently in root)
+         - fr/ (French - example)
+         - es/ (Spanish - example)
+         - ja/ (Japanese - example)
+   </FileTree>
+
+2. **Copy the English file** you want to translate to your language folder, keeping the same file name:
+
+   ```
+   src/content/docs/getting-started/installation.mdx (current English location)
+   → src/content/docs/fr/getting-started/installation.mdx
+   ```
+
+3. **Translate the content** while preserving:
+   - File structure and names
+   - Frontmatter fields (title, description)
+   - Code blocks (keep code in English)
+   - Component imports and usage
+
+4. **Test your translation** locally by running:
+   ```bash
+   pnpm dev
+   ```
+
+</Steps>
+
+### Translating UI Strings
+
+UI strings include navigation labels, buttons, and other interface elements.
+
+<Steps>
+
+1. **Create a translation file** in `src/content/i18n/` for your language:
+
+   <FileTree>
+   - src/
+     - content/
+       - i18n/
+         - fr.json (French)
+         - es.json (Spanish)
+         - ja.json (Japanese)
+   </FileTree>
+
+2. **Add translations** for UI strings. This project has custom UI strings for the disclaimer and footer. Here's an example structure:
+
+   ```json title="src/content/i18n/fr.json"
+   {
+     "disclaimer.title": "Bienvenue dans la documentation de modding Resonite!",
+     "disclaimer.independence.prefix": "Ceci est un",
+     "disclaimer.independence.type": "projet communautaire indépendant",
+     "disclaimer.independence.suffix": "pour la communauté de modding Resonite. Nous ne sommes pas affiliés avec",
+     "disclaimer.continue": "Continuer",
+     "disclaimer.visitOfficial": "Visiter le site officiel de Resonite",
+     "footer.independence": "Nous sommes un projet indépendant et ne sommes pas affiliés avec",
+     "footer.resonite": "Resonite",
+     "footer.or": "ou",
+     "footer.yellowdog": "Yellow Dog Man Studios S.r.o.",
+
+     // DocSearch strings
+     "docsearch.searchBox.cancelButtonText": "Annuler",
+     "docsearch.footer.selectText": "pour sélectionner",
+     "docsearch.footer.navigateText": "pour naviguer",
+     "docsearch.footer.closeText": "pour fermer"
+   }
+   ```
+
+   Check the existing `src/content/i18n/en.json` file for the complete list of strings to translate.
+
+3. **Only translate the values**, not the keys:
+   - ✅ `"search.label": "Rechercher"`
+   - ❌ `"recherche.etiquette": "Rechercher"`
+
+</Steps>
+
+## Translation Guidelines
+
+### Best Practices
+
+- **Maintain technical accuracy** - Don't translate technical terms that are commonly used in English (API, mod, plugin, etc.)
+- **Keep code examples unchanged** - Code should remain in English
+- **Preserve formatting** - Maintain markdown formatting, links, and structure
+- **Use consistent terminology** - Create a glossary for your language to ensure consistency
+- **Test your translations** - Build the site locally to ensure everything displays correctly
+
+### What NOT to Translate
+
+- File names and paths
+- Code blocks and examples
+- Configuration keys
+- Package names (npm, BepInEx, etc.)
+- URLs and links
+- Technical identifiers (GUID, etc.)
+
+### Quality Standards
+
+Before submitting translations:
+
+1. **Proofread** for spelling and grammar
+2. **Verify technical accuracy**
+3. **Check formatting** is preserved
+4. **Test locally** to ensure proper display
+5. **Review consistency** across related pages
+
+## Submitting Your Translation
+
+<Steps>
+
+1. **Commit your changes** with a clear message:
+   ```
+   Add French translation for installation guide
+   ```
+
+2. **Push to your fork** on GitHub
+
+3. **Create a Pull Request** with:
+   - Language and pages translated
+   - Any notes about terminology choices
+   - Screenshots if helpful
+
+4. **Wait for review** - Maintainers will review and provide feedback
+
+</Steps>
+
+## Maintaining Translations
+
+### Keeping Translations Updated
+
+When the English documentation changes:
+
+1. **Watch for updates** to pages you've translated
+2. **Update translations** to match new content
+3. **Mark outdated content** if you can't update immediately
+
+### Translation Status
+
+You can check which pages need translation by:
+- Looking for missing files in your language folder
+- Checking for outdated translation notices on the site
+- Reviewing recent commits to English pages
+
+## Getting Help
+
+### Translation Support
+
+- **Questions?** Open a discussion on GitHub
+- **Need context?** Ask in pull request comments
+- **Technical issues?** Create an issue on GitHub
+
+### Resources
+
+- [Starlight i18n Documentation](https://starlight.astro.build/guides/i18n/)
+- [Markdown Guide](https://www.markdownguide.org/)
+- [MDX Documentation](https://mdxjs.com/)
+
+## Recognition
+
+Contributors who provide significant translations will be:
+- Listed in the project README
+- Thanked in release notes
+
+Thank you for helping make Resonite modding documentation accessible to more people around the world!
