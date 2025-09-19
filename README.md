@@ -1,49 +1,116 @@
-# Starlight Starter Kit: Basics
+# Resonite Modding Wiki
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+[![Resonite](https://img.shields.io/badge/Resonite-Modding-blue)](https://resonite.com)
 
+The official documentation site for Resonite modding, providing comprehensive guides for creating mods using BepisLoader and the BepInEx framework.
+
+## 📚 Documentation Overview
+
+This wiki contains documentation for:
+
+- **Getting Started** - Installation guides for mod loaders and using existing mods
+- **Creating Mods** - Step-by-step tutorials for developing your own Resonite mods
+- **Guides** - Advanced topics including:
+  - Configuration management
+  - Localization with BepisLocaleLoader
+  - Debugging and troubleshooting
+- **BepInEx API Reference** - Auto-generated documentation for BepInEx classes and methods
+
+## 🚀 Quick Start
+
+### For Users
+
+Visit the live documentation at [modding.resonite.net](https://modding.resonite.net/) to:
+
+- Learn how to install mod loaders
+- Browse and install community mods
+- Troubleshoot common issues
+
+### For Developers
+
+Get started creating Resonite mods:
+
+1. Follow the [Installation Guide](/getting-started/installation) to set up BepisLoader
+2. Create your first project using the [BepInEx Template](https://github.com/ResoniteModding/BepInEx.Templates)
+3. Learn from the [Writing Code](/creating-a-mod/writing-code) guide
+4. Publish to [Thunderstore](https://thunderstore.io/c/resonite/)
+
+## 🛠️ Development
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm package manager
+
+### Local Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start dev server at localhost:4321
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
 ```
-pnpm create astro@latest -- --template starlight
-```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+## 📁 Project Structure
 
 ```
 .
-├── public/
+├── public/              # Static assets (favicons, etc.)
 ├── src/
-│   ├── assets/
+│   ├── assets/         # Images and other assets
+│   ├── components/     # Custom Astro components
 │   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+│   │   ├── docs/       # Documentation content (MDX files)
+│   │   └── config.ts   # Content collection config
+│   └── styles/         # Global styles
+├── astro.config.mjs    # Astro configuration
+└── package.json        # Project dependencies
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## 📝 Contributing
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+We welcome contributions! Here's how you can help:
 
-Static assets, like favicons, can be placed in the `public/` directory.
+### Adding/Updating Documentation
 
-## 🧞 Commands
+1. Fork this repository
+2. Create a new branch for your changes
+3. Edit or add MDX files in `src/content/docs/`
+4. Test your changes locally with `pnpm dev`
+5. Submit a pull request
 
-All commands are run from the root of the project, from a terminal:
+### Documentation Guidelines
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+- Use clear, concise language
+- Include code examples where appropriate
+- Test all code snippets
+- Follow the existing file structure
+- Add appropriate frontmatter metadata
 
-## 👀 Want to learn more?
+### Reporting Issues
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+Found an error or have a suggestion? Please [open an issue](https://github.com/your-repo/issues) with:
+
+- Page URL or file path
+- Description of the issue
+- Suggested fix (if applicable)
+
+## 🔧 Technologies
+
+- [Astro](https://astro.build) - Static site generator
+- [Starlight](https://starlight.astro.build) - Documentation theme
+- [MDX](https://mdxjs.com) - Markdown with components
+- [Svelte](https://svelte.dev) - Interactive components
+- [TypeScript](https://www.typescriptlang.org) - Type safety
+
+## 📄 License
+
+This documentation is licensed under [MIT License](LICENSE).
