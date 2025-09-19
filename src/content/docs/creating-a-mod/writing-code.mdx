@@ -69,12 +69,36 @@ public class Plugin : BasePlugin
 
 ```
 
-This is a very basic BepInEx 6 plugin.
+This is a very basic BepInEx 6 plugin that uses **BepisResoniteWrapper** - a library that provides commonly-used hooks and events for Resonite mods.
 
-Work in progress documentation, more will be added. For now, for more info, see BepInEx's own documentation:
+## BepisResoniteWrapper
+
+[BepisResoniteWrapper](https://github.com/ResoniteModding/BepisResoniteWrapper) is already included in the template as a dependency. This library simplifies mod development by providing ready-to-use events for common Resonite modding scenarios. In the example above, we're using the `OnEngineReady` event to safely access FrooxEngine functionality after the engine has fully initialized.
+
+### Available Events
+
+- **`ResoniteHooks.OnEngineReady`** - Fired when the Resonite engine has finished initializing
+  - Safe to access `Engine.Current` and all FrooxEngine classes
+  - This is where most of your mod's initialization should happen
+
+:::tip[Why use OnEngineReady?]
+Many FrooxEngine classes and systems aren't available when your plugin first loads. Using `OnEngineReady` ensures everything is initialized before your mod tries to access it, preventing crashes and errors.
+:::
+
+To use additional events or hooks, check the [BepisResoniteWrapper documentation](https://github.com/ResoniteModding/BepisResoniteWrapper) or explore other mods for examples.
+
+## Writing Your First Patch
+
+Work in progress documentation, more will be added.
+
+:::tip[Learning from Examples]
+While these docs are being expanded, you can learn a lot by looking at the source code of existing mods on [Thunderstore](https://thunderstore.io/c/resonite/). Many mod developers share their code on GitHub, and you can find links to their repositories on their mod pages.
+:::
+
+For now, for more info, see BepInEx's own documentation:
 
 <LinkButton
-  href="https://docs.bepinex.dev/articles/dev_guide/plugin_tutorial/2_plugin_start.html#plugin-structure"
+  href="https://docs.bepinex.dev/master/articles/dev_guide/plugin_tutorial/2_plugin_start.html?tabs=tabid-coreclr"
   variant="minimal"
   icon="external"
 >
@@ -108,10 +132,6 @@ For patching/hooking methods, you can use [MonoMod](https://github.com/MonoMod/M
 :::
 
 All of these libraries are compatible with each other as HarmonyX and MonoDetour simply use MonoMod.RuntimeDetour under the hood.
-
-## Writing Your First Patch
-
-work in progress.
 
 <LinkCard
   title="Publishing Your Mod"
