@@ -74,14 +74,25 @@ If you need manual control:
 
 1. **Download** BepisLoader from [Thunderstore](https://thunderstore.io/c/resonite/p/ResoniteModding/BepisLoader/) or [GitHub releases](https://github.com/ResoniteModding/BepisLoader/releases/latest)
 2. **Extract** the ZIP file
-3. **Copy** the contents of the `BepInExPack` folder to your Resonite installation root directory
-4. **Launch Resonite** - BepInEx will generate configuration files on first run
+3. **Copy** the contents of the `BepInExPack` folder into your Resonite installation root directory
+4. **Enable the modded entry point:**  
+   Open the `hookfxr.ini` file in your Resonite installation folder and replace `enable=false` with `enable=true`  
+   *Alternatively,* you can keep `enable=false` and add `--hookfxr-enable` to your game launch options to enable mods on launch
+5. **Launch Resonite** - BepInEx will generate configuration files on first run
 
 **Find your Resonite folder:**
 
 - Via Steam: `Steam > Library > Resonite > Manage > Browse local files`
 - **Windows**: `C:\Program Files (x86)\Steam\steamapps\common\Resonite`
 - **Linux**: `~/.steam/steam/steamapps/common/Resonite`
+
+### Enabling or Disabling Mods
+
+BepisLoader is not enabled by default after installation. Mods only load when the modded entry point is enabled.
+
+- To enable mods by default, change the setting `enable=false` to `enable=true` in `hookfxr.ini`.
+- If you prefer not to edit the ini file, add the command-line argument `--hookfxr-enable` to launch options instead.
+- To temporarily disable mods (even if enabled), add the `--hookfxr-disable` flag or set `enable=false` in the ini.
 
 ## Alternative Mod Loaders
 
