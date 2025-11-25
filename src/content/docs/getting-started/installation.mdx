@@ -5,7 +5,7 @@ sidebar:
   order: 1
 ---
 
-import { LinkButton, Tabs, TabItem } from '@astrojs/starlight/components';
+import { LinkButton, Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
 import Card from '@components/Card.astro';
 import CardGrid from '@components/CardGrid.astro';
 
@@ -93,6 +93,35 @@ BepisLoader is not enabled by default after installation. Mods only load when th
 - To enable mods by default, change the setting `enable=false` to `enable=true` in `hookfxr.ini`.
 - If you prefer not to edit the ini file, add the command-line argument `--hookfxr-enable` to launch options instead.
 - To temporarily disable mods (even if enabled), add the `--hookfxr-disable` flag or set `enable=false` in the ini.
+
+### Uninstalling BepisLoader
+
+To fully uninstall BepisLoader and remove all mods, delete the following files and folders from your Resonite installation directory:
+
+<FileTree>
+- BepisLoader.deps.json
+- BepisLoader.dll
+- BepisLoader.runtimeconfig.json
+- hookfxr.ini
+- hostfxr.dll
+- LinuxBootstrap.sh
+- BepInEx/
+</FileTree>
+
+Note that the `LinuxBootstrap.sh` file is modified by BepisLoader and must be restored to the original game version by verifying the integrity of game files on Steam.
+
+Also, remove any `--hookfxr-enable` or `--hookfxr-disable` launch flags from your game start parameters.
+
+#### Verify Integrity of Game Files (Steam)
+
+After uninstalling BepisLoader, verifying the integrity of game files is **required** to restore modified files (especially `LinuxBootstrap.sh`) to their original state:
+
+1. Open your Steam Library.
+2. Right-click on Resonite and select **Properties**.
+3. Navigate to the **Local Files** tab.
+4. Click **Verify integrity of game files...**.
+
+Steam will scan your installation and replace any modified or missing files, ensuring a clean, unmodded game state.
 
 ## Alternative Mod Loaders
 
